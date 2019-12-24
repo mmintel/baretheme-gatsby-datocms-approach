@@ -73,6 +73,5 @@
   },
   "bin": {
     "migrate": ".bin/migrate.js"
-  },
-  "devDependencies": {}
+  }
 }
