@@ -17,7 +17,7 @@
     "lint": "eslint ./**/* --ext js,jsx"
   },
   "dependencies": {
-    "@baretheme/utils": "^1.0.0",
+    "@baretheme/utils": ">=0.0.0",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
