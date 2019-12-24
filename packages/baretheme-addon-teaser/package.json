@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "@baretheme/utils": ">=0.0.0",
+    "@baretheme/ui": ">=0.0.0",
     "prop-types": "^15.7.2",
     "styled-components": "^4.4.1"
   }
