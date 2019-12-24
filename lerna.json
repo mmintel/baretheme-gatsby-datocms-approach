@@ -10,7 +10,6 @@
     "publish": {
       "registry": "https://registry.baretheme.com",
       "conventionalCommits": true,
-      "canary": true,
       "message": "chore(release): publish [skip-ci]"
     }
   }
