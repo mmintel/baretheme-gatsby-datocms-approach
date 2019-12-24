@@ -15,7 +15,7 @@ const StyledButton = withPalett(styled('button', {
   shouldForwardProp: (prop) => isPropValid(prop) && !blacklistProps.includes(prop),
 })`
   -webkit-appearance: none;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   user-select: none;
   cursor: pointer;
