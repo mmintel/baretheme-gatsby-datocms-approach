@@ -2,6 +2,7 @@
   "name": "@baretheme/gatsby-theme-baretheme",
   "version": "0.0.0",
   "main": "index.js",
+  "description": "Theme for Gatsby",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
   "publishConfig": {
