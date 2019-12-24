@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-plugin-baretheme-text",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Text component for baretheme",
   "main": "index.js",
   "publishConfig": {
