@@ -1,0 +1,17 @@
+{
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "packages": [
+    "packages/*"
+  ],
+  "version": "0.0.0",
+  "stream": true,
+  "command": {
+    "publish": {
+      "registry": "https://registry.baretheme.com",
+      "conventionalCommits": true,
+      "canary": true,
+      "message": "chore(release): publish [skip-ci]"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@baretheme/gatsby-plugin-baretheme-teaser",
+  "version": "0.0.0",
+  "description": "Teaser component for baretheme",
+  "main": "index.js",
+  "peerDependencies": {
+    "@baretheme/gatsby-theme-baretheme": ">0.0.0",
+    "react": "16.x"
+  },
+  "keywords": [
+    "baretheme",
+    "react-component",
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "styled-components": "^4.4.1"
+  }
+}

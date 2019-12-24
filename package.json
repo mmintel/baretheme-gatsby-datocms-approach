@@ -1,0 +1,73 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "dev": "lerna run dev --scope example",
+    "build": "lerna run build --scope example",
+    "release": "lerna publish --conventional-commits",
+    "fetch": "DATOCMS_API_KEY=4182957b4ca7cbc29b8d2e88d6b24f lerna exec --scope @baretheme/* node .bin/fetch.js",
+    "postinstall": "lerna bootstrap",
+    "lint": "eslint \"./packages/*/src/**/*.{js,jsx}\"",
+    "test": "jest --passWithNoTests",
+    "reset": "lerna clean --yes && lerna exec -- rm -rf node_modules .package-lock.json && lerna bootstrap",
+    "clean": "lerna exec --scope example -- npm run clean",
+    "storybook": "NODE_ENV=production start-storybook -p 6006",
+    "build-storybook": "NODE_ENV=production build-storybook"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-knobs": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/addon-viewport": "^5.2.6",
+    "@storybook/addons": "^5.2.6",
+    "@storybook/react": "^5.2.6",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-emotion": "^10.0.23",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-react-app": "^5.0.2",
+    "eslint-import-resolver-lerna": "^1.1.0",
+    "eslint-plugin-flowtype": "^3.13.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "23.0.5",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "globby": "^10.0.1",
+    "husky": "^3.1.0",
+    "jest": "24.9.0",
+    "jest-config": "24.9.0",
+    "lerna": "^3.18.4",
+    "lerna-update-wizard": "^0.17.5",
+    "lint-staged": "^9.5.0",
+    "sanitize-filename": "^1.6.3",
+    "semantic-release": "^15.13.31",
+    "storybook-addon-jsx": "^7.1.13"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@emotion/babel-preset-css-prop": "^10.0.23"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint -- --fix",
+      "git add"
+    ]
+  }
+}

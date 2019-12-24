@@ -1,0 +1,19 @@
+image: node
+
+cache:
+  paths:
+    - node_modules/
+    - .yarn
+
+stages:
+  - test
+
+before_script:
+  - yarn
+
+test:
+  image: buildkite/puppeteer
+  stage: test
+  script:
+    - yarn lint
+    - yarn test

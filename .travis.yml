@@ -1,0 +1,27 @@
+language: node_js
+
+cache:
+  directories:
+    - node_modules
+    - $HOME/.npm
+
+notifications:
+  email: false
+
+node_js:
+  - '12.4.0'
+
+before_install:
+  - npm i -g npm
+  - npm i
+
+script:
+  - npm test
+
+after_success:
+  - npm run coverage:combine
+  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

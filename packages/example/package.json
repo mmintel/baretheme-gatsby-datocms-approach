@@ -1,0 +1,23 @@
+{
+  "name": "example",
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "Marc <marc@mintel.me> (@mmintel)",
+  "license": "MIT",
+  "scripts": {
+    "dev": "gatsby develop",
+    "develop": "gatsby develop",
+    "serve": "gatsby serve",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "fetch": "echo \"Don't fetch anything in example\""
+  },
+  "dependencies": {
+    "@baretheme/gatsby-plugin-baretheme-text": ">0.0.0",
+    "@baretheme/gatsby-theme-baretheme": ">0.0.0",
+    "gatsby": "2.18.5",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
+  }
+}

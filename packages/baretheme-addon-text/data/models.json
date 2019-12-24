@@ -1,0 +1,40 @@
+{
+  "itemTypes": [{
+    "id": "150585",
+    "name": "Text",
+    "apiKey": "text",
+    "collectionAppeareance": "table",
+    "singleton": false,
+    "allLocalesRequired": true,
+    "sortable": false,
+    "modularBlock": false,
+    "draftModeActive": false,
+    "tree": false,
+    "orderingDirection": null,
+    "hasSingletonItem": false,
+    "singletonItem": null,
+    "fields": ["650800"],
+    "titleField": null,
+    "orderingField": null
+  }],
+  "fields": [{
+    "id": "650800",
+    "label": "Content",
+    "fieldType": "text",
+    "defaultValue": null,
+    "localized": false,
+    "apiKey": "content",
+    "hint": null,
+    "validators": {},
+    "appeareance": {
+      "editor": "markdown",
+      "parameters": {
+        "toolbar": ["heading", "bold", "italic", "strikethrough", "unordered_list", "ordered_list", "quote", "link", "image", "fullscreen"]
+      },
+      "addons": [],
+      "type": "markdown"
+    },
+    "position": 1,
+    "itemType": "150585"
+  }]
+}
