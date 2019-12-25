@@ -144,6 +144,9 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
                   type: __typename
                   ${mergedQueries}
                 }
+                disclaimerDocument {
+                  url
+                }
               }
               datoCmsDictionary(locale: { eq: $locale }) {
                 copyrightNotice

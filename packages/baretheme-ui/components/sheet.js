@@ -10,6 +10,8 @@ const SheetWrapper = styled.div`
   background-color: ${(props) => props.theme.color.raised};
   box-shadow: ${(props) => props.theme.shadow(0)};
   display: flex;
+  backface-visibility:hidden;
+  transform: translateZ(0);
 
   ${(props) => props.position === 'right' && css`
     top: 0;
