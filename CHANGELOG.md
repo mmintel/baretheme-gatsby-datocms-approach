@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.5](https://gitlab.com/baretheme/theme/compare/v0.0.4...v0.0.5) (2019-12-25)
+
+
+### Bug Fixes
+
+* wrong query ([b2d979a](https://gitlab.com/baretheme/theme/commit/b2d979a92bb2f83ed3a476eeb61df85e45eb9a44))
+
+
+
+
+
 ## [0.0.4](https://gitlab.com/baretheme/theme/compare/v0.0.3...v0.0.4) (2019-12-25)
 
 
