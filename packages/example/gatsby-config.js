@@ -8,18 +8,6 @@ module.exports = {
         useTranslations: true,
         plugins: [
           '@baretheme/gatsby-plugin-baretheme-text',
-          {
-            resolve: '@baretheme/addon-mailchimp',
-            options: {
-              endpoint: 'https://baretheme.us3.list-manage.com/subscribe/post?u=ae9407626dc29296e29bb6819&amp;id=c325a0b8ca',
-            },
-          },
-          {
-            resolve: '@baretheme/addon-google-analytics',
-            options: {
-              trackingId: 'UA-111111111-1',
-            },
-          },
         ],
       },
     },
