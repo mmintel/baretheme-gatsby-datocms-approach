@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.10](https://gitlab.com/baretheme/theme/compare/v0.0.9...v0.0.10) (2019-12-29)
+
+
+### Bug Fixes
+
+* scrollbug with sheet ([9d2344a](https://gitlab.com/baretheme/theme/commit/9d2344a9e67ebca3939553a8df93eaa44f2ec924))
+
+
+
+
+
 ## [0.0.9](https://gitlab.com/baretheme/theme/compare/v0.0.8...v0.0.9) (2019-12-29)
 
 
