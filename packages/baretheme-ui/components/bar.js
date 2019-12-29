@@ -70,6 +70,7 @@ BarItem.propTypes = {
 const activeStyles = (props) => css`
   font-weight: bold;
   color: ${props.theme.color.highlight};
+  cursor: auto;
 `;
 
 const StyledBarItemText = styled('div', {

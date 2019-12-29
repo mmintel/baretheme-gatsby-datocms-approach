@@ -7,7 +7,7 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@baretheme/gatsby-theme-baretheme": ">0.0.0",
+    "@baretheme/gatsby-theme-baretheme": "^0.0.5",
     "react": "16.x"
   },
   "dependencies": {
@@ -16,7 +16,6 @@
   },
   "keywords": [
     "baretheme",
-    "@baretheme/gatsby-theme-baretheme",
     "react-component",
     "gatsby",
     "gatsby-theme"

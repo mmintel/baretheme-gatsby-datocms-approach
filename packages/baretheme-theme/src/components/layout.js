@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { useStaticQuery, graphql } from 'gatsby';
 import { useSpring, animated, interpolate } from 'react-spring';
 
 // import { SlideIn } from "./transition"
@@ -13,6 +14,7 @@ import Footer from './footer';
 import MobileNavigation from './mobile-navigation';
 import LanguageSwitch from './language-switch';
 import Blocks from './blocks';
+import filterNavItems from '../util/filter-nav-items';
 
 const LayoutWrapper = styled.div`
   min-height: 100vh;
@@ -26,7 +28,7 @@ const LayoutWrapper = styled.div`
 
 const Main = styled.main``;
 
-const AnimatedOffscreenNavigation = ({ ctx }) => {
+const AnimatedOffscreenNavigation = ({ ctx, children }) => {
   const { y } = useSpring({
     y: ctx.search.isOpen ? ctx.search.sizes.height * 1 : 0,
   });
@@ -44,7 +46,7 @@ const AnimatedOffscreenNavigation = ({ ctx }) => {
           transform: y.interpolate((y) => `translateY(${y}px)`),
         }}
       >
-        <MobileNavigation onClose={ctx.closeNavigation} />
+        {children}
       </animated.div>
     </Offscreen>
   );
@@ -106,11 +108,14 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { children, pageContext } = this.props;
+    const { children, pageContext, data } = this.props;
+    const mainNavigation = filterNavItems(pageContext.layout.mainNavigation);
+    const footerNavigation = filterNavItems(pageContext.layout.secondaryNavigation);
+
     return (
       <div style={{ width: '100vw', overflow: 'hidden', position: 'relative' }}>
         <AnimatedLayout ctx={this.context} onClick={this.handleClick}>
-          <Header pageContext={pageContext} />
+          <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
           <Main>
             { pageContext.layout.before && (
               <Blocks blocks={pageContext.layout.before} />
@@ -120,19 +125,23 @@ class Layout extends React.Component {
               <Blocks blocks={pageContext.layout.after} />
             )}
           </Main>
-          <Footer pageContext={pageContext} />
+          <Footer navigation={footerNavigation} />
         </AnimatedLayout>
 
-        {/* TODO hide when "useCookies" set to false */}
-        <Sheet
-          position="bottom"
-          isOpen={this.context.cookieConsent.isOpen}
-        >
-          <CookieConsent onAccept={this.handleAcceptCookies} />
-        </Sheet>
+        { data.site.siteMetadata.useCookies && (
+          <Sheet
+            position="bottom"
+            isOpen={this.context.cookieConsent.isOpen}
+          >
+            <CookieConsent onAccept={this.handleAcceptCookies} />
+          </Sheet>
+        )}
 
-        {/* TODO hide navigation when no active menu item */}
-        <AnimatedOffscreenNavigation ctx={this.context} />
+        { mainNavigation.length > 0 && (
+          <AnimatedOffscreenNavigation ctx={this.context}>
+            <MobileNavigation onClose={this.context.closeNavigation} navigation={mainNavigation} />
+          </AnimatedOffscreenNavigation>
+        )}
 
         {this.context.config.useTranslations && (
           <Dialog
@@ -165,4 +174,15 @@ class Layout extends React.Component {
 
 Layout.contextType = UIContext;
 
-export default Layout;
+export default (props) => {
+  const data = useStaticQuery(graphql`
+    query LayoutQuery {
+      site {
+        siteMetadata {
+          useCookies
+        }
+      }
+    }
+  `);
+  return <Layout data={data} {...props} />;
+};

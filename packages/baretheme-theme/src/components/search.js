@@ -202,6 +202,7 @@ const Search = ({ isOpen, index }) => {
           focus={isOpen}
           align="center"
           type="search"
+          name="search"
           placeholder={intl.formatMessage({
             id: 'searchPlaceholder',
             defaultMessage: 'Search...',

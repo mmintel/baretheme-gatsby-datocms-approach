@@ -10,7 +10,7 @@ const UnregisteredBlock = ({ block }) => {
       <Container>
         <Alert>
           <Headline as="h2" mb={-2}>Unregistered component: <Display italic>{block.type}</Display></Headline>
-          <Display>Maybe you forgot to add `@baretheme/plugin-{componentName}` to `@baretheme/gatsby-theme-baretheme`?</Display>
+          <Display>Maybe you forgot to add `@baretheme/gatsby-plugin-baretheme-{componentName}` to `@baretheme/gatsby-theme-baretheme`?</Display>
         </Alert>
       </Container>
     </Section>

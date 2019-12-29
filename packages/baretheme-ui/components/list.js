@@ -93,6 +93,7 @@ const ListItem = (props) => {
 const activeStyles = (props) => css`
   font-weight: bold;
   color: ${props.theme.color.highlight};
+  cursor: auto;
 `;
 
 const StyledListItemText = styled.div`

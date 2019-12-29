@@ -4,7 +4,7 @@
   "description": "Teaser component for baretheme",
   "main": "index.js",
   "peerDependencies": {
-    "@baretheme/gatsby-theme-baretheme": ">0.0.0",
+    "@baretheme/gatsby-theme-baretheme": "^0.0.5",
     "react": "16.x"
   },
   "keywords": [

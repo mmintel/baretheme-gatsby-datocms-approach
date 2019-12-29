@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import composeRefs from '@seznam/compose-react-refs';
 import { Button, Shake } from '@baretheme/ui';
 import withSpacing from '../hocs/with-spacing';
 
@@ -24,8 +23,11 @@ const StyledField = styled.div`
   border: 2px solid transparent;
   transition: border-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
   border-radius: ${(props) => props.theme.radius(1)};
-  box-shadow: ${(props) => props.theme.shadow(0)};
-  background-color: ${(props) => props.theme.color.raised};
+
+  ${(props) => !props.blank && css`
+    box-shadow: ${props.theme.shadow(0)};
+    background-color: ${props.theme.color.raised};
+  `}
 `;
 
 const FieldBody = styled.div`
@@ -61,6 +63,7 @@ const FieldAddon = styled.div`
 `;
 
 const FieldHeader = styled.div`
+  min-height: 1ch;
   margin-left: ${(props) => props.theme.spacing(0)};
   margin-right: ${(props) => props.theme.spacing(0)};
   margin-top: ${(props) => props.theme.spacing(-2)};
@@ -115,10 +118,10 @@ const Field = withSpacing(React.forwardRef(
     onFocus,
     value,
     defaultValue,
+    blank,
     ...props
-  },
-  ref) => {
-    const innerRef = React.useRef(ref);
+  }, ref) => {
+    const innerRef = React.useRef(null);
     const [focused, setFocused] = React.useState();
     const [innerValue, setInnerValue] = React.useState();
 
@@ -160,8 +163,10 @@ const Field = withSpacing(React.forwardRef(
         <Shake animate={!!error}>
           <StyledField
             {...props}
+            blank={blank}
             error={error && innerValue}
             valid={valid}
+            ref={ref}
           >
             { prepend && <FieldAddon position="left">{prepend}</FieldAddon>}
             <FieldBody onClick={handleBodyClick}>
@@ -178,7 +183,7 @@ const Field = withSpacing(React.forwardRef(
                 <StyledInput
                   name={name}
                   defaultValue={defaultValue || value}
-                  ref={composeRefs(ref, innerRef)}
+                  ref={innerRef}
                   align={align}
                   onChange={handleChange}
                   onBlur={handleBlur}

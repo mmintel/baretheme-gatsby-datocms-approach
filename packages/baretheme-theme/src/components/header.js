@@ -1,7 +1,6 @@
 import React from 'react';
 import { Header, SocialAccounts, Logo } from '@baretheme/ui';
 import UIContext from '../context/ui';
-import filterNavItems from '../util/filter-nav-items';
 
 import MainNavigation from './main-navigation';
 import GlobalActions from './global-actions';
@@ -23,9 +22,8 @@ try {
   DarkThemeLogo = false;
 }
 
-const AppHeader = ({ pageContext }) => {
+const AppHeader = ({ navigation, socialAccounts }) => {
   const ui = React.useContext(UIContext);
-  const navItems = filterNavItems(pageContext.layout.mainNavigation);
 
   return (
     <Header
@@ -36,17 +34,15 @@ const AppHeader = ({ pageContext }) => {
           <Logo logo={DarkThemeLogo} />
         )
       }
-      accounts={<SocialAccounts items={pageContext.layout.socialAccounts} />}
-      nav={
-        navItems.length > 1 && (
-          <MainNavigation
-            isOpen={ui.navigation.isOpen}
-            onToggle={ui.toggleNavigation}
-            compact={ui.media.isLessThan('medium')}
-            items={navItems}
-          />
-        )
-      }
+      accounts={<SocialAccounts items={socialAccounts} />}
+      nav={(
+        <MainNavigation
+          isOpen={ui.navigation.isOpen}
+          onToggle={ui.toggleNavigation}
+          compact={ui.media.isLessThan('medium')}
+          items={navigation}
+        />
+      )}
       actions={ui.media.isGreaterThan('medium') && <GlobalActions />}
     />
   );

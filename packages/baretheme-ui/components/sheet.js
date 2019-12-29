@@ -32,8 +32,6 @@ const SheetWrapper = styled.div`
   `}
 `;
 
-const AnimatedWrapper = animated(SheetWrapper);
-
 const Sheet = ({
   children, isOpen, onResize, onClose, position, onRest,
 }) => {
@@ -66,18 +64,21 @@ const Sheet = ({
   }, [onClose, onResize, bounds]);
 
   return (
-    <AnimatedWrapper
+    <SheetWrapper
       position={position}
-      style={{
-        transform: interpolate(
-          [x, y],
-          (x, y) => `translateX(${x}px) translateY(${y}px)`,
-        ),
-      }}
       ref={ref}
     >
-      {children}
-    </AnimatedWrapper>
+      <animated.div
+        style={{
+          transform: interpolate(
+            [x, y],
+            (x, y) => `translateX(${x}px) translateY(${y}px)`,
+          ),
+        }}
+      >
+        {children}
+      </animated.div>
+    </SheetWrapper>
   );
 };
 

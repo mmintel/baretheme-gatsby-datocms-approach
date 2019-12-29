@@ -41,8 +41,9 @@ function getBarethemePlugins(plugins) {
   const dependencies = paths.map((p) => `require('${p}').default`);
   const file = `
     const dependencies = [${dependencies}];
+    const depWithLink = dependencies.find(d => d.link);
     export default {
-      link: dependencies.find(d => d.link).link,
+      link: depWithLink ? depWithLink.link : null,
       components: dependencies.reduce((acc, d) => d.components ? [...acc, ...d.components] : acc, []),
       onAcceptCookies: () => {
           dependencies.forEach(d => d.onAcceptCookies && d.onAcceptCookies())

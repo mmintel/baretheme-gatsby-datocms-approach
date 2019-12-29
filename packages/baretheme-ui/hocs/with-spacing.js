@@ -43,7 +43,7 @@ const spacings = [...margins, ...paddings];
 const spacingProps = spacings.map((spacing) => spacing.alias);
 
 const withSpacing = (Component) => {
-  const WithSpacing = React.forwardRef((props, ref) => {
+  const WithSpacing = ({ forwardedRef, ...props }) => {
     const propsWithoutSpacing = omit(props, spacingProps);
     const theme = useTheme();
     const usedSpacings = spacings.filter((spacing) => props[spacing.alias] !== undefined || props[spacing.alias] === null);
@@ -51,17 +51,34 @@ const withSpacing = (Component) => {
       ...acc,
       [spacing.attr]: props[spacing.alias] === 'auto' ? 'auto' : `${theme.spacing(props[spacing.alias])}`,
     }), {});
-    return <Component css={styles} ref={ref} {...propsWithoutSpacing} />;
-  });
+    return <Component css={styles} ref={forwardedRef} {...propsWithoutSpacing} />;
+  };
 
   const spacingPropTypes = spacings.reduce((acc, spacing) => ({
     ...acc,
     [spacing.alias]: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf(['auto'])]),
   }), {});
 
-  WithSpacing.propTypes = spacingPropTypes;
+  WithSpacing.defaultProps = {
+    forwardedRef: undefined,
+  };
 
-  return WithSpacing;
+  WithSpacing.propTypes = {
+    ...spacingPropTypes,
+    forwardedRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape({ current: PropTypes.any }),
+    ]),
+  };
+
+  function forwardRef(props, ref) {
+    return <WithSpacing {...props} forwardedRef={ref} />;
+  }
+
+  const name = Component.displayName || Component.name;
+  forwardRef.displayName = `withSpacing(${name})`;
+
+  return React.forwardRef(forwardRef);
 };
 
 export default withSpacing;
