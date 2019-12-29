@@ -7,11 +7,6 @@ import { useSpring, animated, interpolate } from 'react-spring';
 
 const SheetWrapper = styled.div`
   position: fixed;
-  background-color: ${(props) => props.theme.color.raised};
-  box-shadow: ${(props) => props.theme.shadow(0)};
-  display: flex;
-  backface-visibility:hidden;
-  transform: translateZ(0);
 
   ${(props) => props.position === 'right' && css`
     top: 0;
@@ -30,6 +25,12 @@ const SheetWrapper = styled.div`
     left: 0;
     width: 100%;
   `}
+`;
+
+const SheetBody = styled.div`
+  background-color: ${(props) => props.theme.color.raised};
+  box-shadow: ${(props) => props.theme.shadow(0)};
+  display: flex;
 `;
 
 const Sheet = ({
@@ -76,7 +77,9 @@ const Sheet = ({
           ),
         }}
       >
-        {children}
+        <SheetBody>
+          {children}
+        </SheetBody>
       </animated.div>
     </SheetWrapper>
   );
