@@ -14,7 +14,6 @@ export { default as Burger } from './components/burger';
 export { default as Link } from './components/link';
 export { default as Tooltip } from './components/tooltip';
 export { default as Tippy } from './components/tippy';
-export { default as SocialAccounts } from './components/social-accounts';
 export { default as Offscreen } from './components/offscreen';
 export { default as Logo } from './components/logo';
 export { default as List } from './components/list';

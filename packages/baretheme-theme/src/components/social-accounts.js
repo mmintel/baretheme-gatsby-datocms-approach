@@ -2,11 +2,11 @@ import React from 'react';
 import Icon from '@mdi/react';
 import { mdiTwitter, mdiInstagram } from '@mdi/js';
 import styled from '@emotion/styled';
-import Tooltip from './tooltip';
-import IconBar from './icon-bar';
+import { Tooltip, IconBar, IconBarItem } from '@baretheme/ui';
 
 const AccountLink = styled.a`
-  display: block;
+  display: flex;
+  align-items: center;
 `;
 
 const AccountIcon = styled(Icon)`
@@ -29,8 +29,8 @@ const SocialAccounts = ({ items }) => {
 
   return (
     <IconBar>
-      {items
-        && items.map((item) => (
+      {items && items.map((item) => (
+        <IconBarItem>
           <Tooltip key={item.id} content={item.title}>
             <AccountLink
               href={item.url}
@@ -40,7 +40,8 @@ const SocialAccounts = ({ items }) => {
               <AccountIcon path={getIcon(item.title)} size={1} />
             </AccountLink>
           </Tooltip>
-        ))}
+        </IconBarItem>
+      ))}
     </IconBar>
   );
 };

@@ -2,11 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import isPropValid from '@emotion/is-prop-valid';
 import useMeasure from 'react-use-measure';
 import { useSpring, animated, interpolate } from 'react-spring';
 
-const SheetWrapper = styled.div`
+const blacklistProps = ['position'];
+
+const SheetWrapper = styled(animated.div, {
+  shouldForwardProp: (prop) => isPropValid(prop) && !blacklistProps.includes(prop),
+})`
   position: fixed;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   ${(props) => props.position === 'right' && css`
     top: 0;
@@ -21,7 +28,7 @@ const SheetWrapper = styled.div`
   `}
 
   ${(props) => props.position === 'bottom' && css`
-    top: 100%;
+    bottom: 0;
     left: 0;
     width: 100%;
   `}
@@ -40,7 +47,7 @@ const Sheet = ({
 
   const { x, y } = useSpring({
     x: isOpen && position === 'right' ? bounds.width * -1 : 0,
-    y: isOpen && position === 'bottom' ? bounds.height * -1 : 0,
+    y: isOpen && position === 'bottom' ? 0 : bounds.height,
     onRest,
   });
 
@@ -68,20 +75,17 @@ const Sheet = ({
     <SheetWrapper
       position={position}
       ref={ref}
+      style={{
+        willChange: 'transform',
+        transform: interpolate(
+          [x, y],
+          (x, y) => `translateX(${x}px) translateY(${y}px)`,
+        ),
+      }}
     >
-      <animated.div
-        style={{
-          willChange: 'transform',
-          transform: interpolate(
-            [x, y],
-            (x, y) => `translateX(${x}px) translateY(${y}px)`,
-          ),
-        }}
-      >
-        <SheetBody>
-          {children}
-        </SheetBody>
-      </animated.div>
+      <SheetBody>
+        {children}
+      </SheetBody>
     </SheetWrapper>
   );
 };

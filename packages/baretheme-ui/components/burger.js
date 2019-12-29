@@ -21,7 +21,7 @@ const Burger = ({
   const theme = useTheme();
   return (
     <BurgerIcon
-      buttonWidth={28}
+      buttonWidth={16}
       isActive={isOpen}
       toggleButton={onToggle}
       barColor={theme.color.highlight}

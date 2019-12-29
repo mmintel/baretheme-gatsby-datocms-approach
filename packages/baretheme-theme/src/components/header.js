@@ -1,7 +1,8 @@
 import React from 'react';
-import { Header, SocialAccounts, Logo } from '@baretheme/ui';
+import { Header, Logo } from '@baretheme/ui';
 import UIContext from '../context/ui';
 
+import SocialAccounts from './social-accounts';
 import MainNavigation from './main-navigation';
 import GlobalActions from './global-actions';
 
