@@ -30,8 +30,8 @@ const SocialAccounts = ({ items }) => {
   return (
     <IconBar>
       {items && items.map((item) => (
-        <IconBarItem>
-          <Tooltip key={item.id} content={item.title}>
+        <IconBarItem key={item.id}>
+          <Tooltip content={item.title}>
             <AccountLink
               href={item.url}
               target="_blank"
