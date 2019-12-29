@@ -71,6 +71,7 @@ const Sheet = ({
     >
       <animated.div
         style={{
+          willChang: 'transform',
           transform: interpolate(
             [x, y],
             (x, y) => `translateX(${x}px) translateY(${y}px)`,
