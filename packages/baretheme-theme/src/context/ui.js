@@ -212,7 +212,7 @@ class UIProvider extends React.Component {
       isGreaterThan(breakpoint) {
         const br = getBreakpoint(breakpoint);
         if (typeof window !== 'undefined') {
-          return window.matchMedia(`(min-width: ${br.value}px)`).matches;
+          return window.matchMedia(`(min-width: ${br.value + 1}px)`).matches;
         }
         return br.index <= ssrBreakpoint.index;
       },
@@ -221,7 +221,7 @@ class UIProvider extends React.Component {
         const maxBr = getBreakpoint(max);
         if (typeof window !== 'undefined') {
           return window.matchMedia(
-            `(min-width: ${minBr.value}px) and (max-width: ${maxBr.value}px)`,
+            `(min-width: ${minBr.value + 1}px) and (max-width: ${maxBr.value}px)`,
           ).matches;
         }
         return (

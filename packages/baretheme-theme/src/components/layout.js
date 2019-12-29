@@ -137,11 +137,9 @@ class Layout extends React.Component {
           </Sheet>
         )}
 
-        { mainNavigation.length > 0 && (
-          <AnimatedOffscreenNavigation ctx={this.context}>
-            <MobileNavigation onClose={this.context.closeNavigation} navigation={mainNavigation} />
-          </AnimatedOffscreenNavigation>
-        )}
+        <AnimatedOffscreenNavigation ctx={this.context}>
+          <MobileNavigation onClose={this.context.closeNavigation} navigation={mainNavigation} />
+        </AnimatedOffscreenNavigation>
 
         {this.context.config.useTranslations && (
           <Dialog

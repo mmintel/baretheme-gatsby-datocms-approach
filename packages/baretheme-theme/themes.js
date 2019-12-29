@@ -62,7 +62,7 @@ const darkColors = {
   dimmed: '#666',
   faded: '#232323',
   highlight: '#fff',
-  raised: '#1d1d1d',
+  raised: '#222',
   lowered: '#161617',
   shadow: '0, 0, 0',
   overlay: `rgba(0,0,0,${alpha[7]})`,
