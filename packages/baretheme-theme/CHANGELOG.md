@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.11](https://gitlab.com/baretheme/theme/compare/v0.0.10...v0.0.11) (2019-12-29)
+
+
+### Bug Fixes
+
+* scrollbug with sheet ([436dd48](https://gitlab.com/baretheme/theme/commit/436dd483c0a4baed93d36f96de488709a3919126))
+
+
+
+
+
 ## [0.0.10](https://gitlab.com/baretheme/theme/compare/v0.0.9...v0.0.10) (2019-12-29)
 
 **Note:** Version bump only for package @baretheme/gatsby-theme-baretheme

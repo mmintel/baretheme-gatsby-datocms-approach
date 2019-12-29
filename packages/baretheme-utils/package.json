@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/utils",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "index.js",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
