@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.12](https://gitlab.com/baretheme/theme/compare/v0.0.11...v0.0.12) (2019-12-29)
+
+
+### Bug Fixes
+
+* cookie hidden by default ([2647512](https://gitlab.com/baretheme/theme/commit/26475123d373c9537d6a838efd289cb56a433653))
+
+
+
+
+
 ## [0.0.11](https://gitlab.com/baretheme/theme/compare/v0.0.10...v0.0.11) (2019-12-29)
 
 
