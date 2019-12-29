@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8](https://gitlab.com/baretheme/theme/compare/v0.0.7...v0.0.8) (2019-12-29)
+
+
+### Bug Fixes
+
+* scrollbug with sheet ([d0fb98e](https://gitlab.com/baretheme/theme/commit/d0fb98e1676abce3f3c77deb0983fd909313375c))
+
+
+
+
+
 ## [0.0.7](https://gitlab.com/baretheme/theme/compare/v0.0.6...v0.0.7) (2019-12-29)
 
 **Note:** Version bump only for package @baretheme/ui
