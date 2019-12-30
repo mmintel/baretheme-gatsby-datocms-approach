@@ -1,7 +1,7 @@
 {
   "name": "example",
   "private": true,
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "index.js",
   "author": "Marc <marc@mintel.me> (@mmintel)",
   "license": "MIT",
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@baretheme/gatsby-plugin-baretheme-mailchimp": "^0.0.4",
-    "@baretheme/gatsby-plugin-baretheme-text": "^0.0.13",
-    "@baretheme/gatsby-theme-baretheme": "^0.0.13",
+    "@baretheme/gatsby-plugin-baretheme-text": "^0.0.14",
+    "@baretheme/gatsby-theme-baretheme": "^0.0.14",
     "gatsby": "2.18.5",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
