@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.15](https://gitlab.com/baretheme/theme/compare/v0.0.14...v0.0.15) (2019-12-30)
+
+
+### Bug Fixes
+
+* remove border on actions without nav ([15eb43a](https://gitlab.com/baretheme/theme/commit/15eb43ad5d3c250ee176908c02c199ce78389eb7))
+
+
+
+
+
 ## [0.0.14](https://gitlab.com/baretheme/theme/compare/v0.0.13...v0.0.14) (2019-12-30)
 
 

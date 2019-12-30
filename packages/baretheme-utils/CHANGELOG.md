@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.15](https://gitlab.com/baretheme/theme/compare/v0.0.14...v0.0.15) (2019-12-30)
+
+**Note:** Version bump only for package @baretheme/utils
+
+
+
+
+
 ## [0.0.14](https://gitlab.com/baretheme/theme/compare/v0.0.13...v0.0.14) (2019-12-30)
 
 **Note:** Version bump only for package @baretheme/utils
