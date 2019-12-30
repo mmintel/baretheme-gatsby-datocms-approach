@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.13](https://gitlab.com/baretheme/theme/compare/v0.0.12...v0.0.13) (2019-12-30)
+
+**Note:** Version bump only for package @baretheme/gatsby-plugin-baretheme-text
+
+
+
+
+
 ## [0.0.12](https://gitlab.com/baretheme/theme/compare/v0.0.11...v0.0.12) (2019-12-29)
 
 **Note:** Version bump only for package @baretheme/gatsby-plugin-baretheme-text

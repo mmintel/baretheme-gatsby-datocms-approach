@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.13](https://gitlab.com/baretheme/theme/compare/v0.0.12...v0.0.13) (2019-12-30)
+
+
+### Bug Fixes
+
+* cookie messages ([0448db6](https://gitlab.com/baretheme/theme/commit/0448db6bf1e1f3a97f6cbb4327f8d6a45acfc7a8))
+
+
+
+
+
 ## [0.0.12](https://gitlab.com/baretheme/theme/compare/v0.0.11...v0.0.12) (2019-12-29)
 
 **Note:** Version bump only for package example
