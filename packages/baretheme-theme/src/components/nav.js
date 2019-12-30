@@ -4,7 +4,6 @@ import { List, Bar, Stack } from '@baretheme/ui';
 import Types from '../types';
 import useLocalePath from '../hooks/locale-path';
 
-import LocalePath from './locale-path';
 import Link from './link';
 
 const NavItem = ({
@@ -22,9 +21,13 @@ const NavItem = ({
   );
 };
 
+NavItem.defaultProps = {
+  path: undefined,
+};
+
 NavItem.propTypes = {
   title: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
+  path: PropTypes.string,
   item: PropTypes.elementType.isRequired,
   text: PropTypes.elementType.isRequired,
 };
@@ -50,15 +53,13 @@ const Nav = ({
     return (
       <Stack align={align} flush={flush}>
         {items && items.map((item) => (
-          <LocalePath path={item.slug} key={item.id}>
-            {(localePath) => (
-              <Stack.Item>
-                <Stack.ItemText as={Link} to={localePath}>
-                  { item.title }
-                </Stack.ItemText>
-              </Stack.Item>
-            )}
-          </LocalePath>
+          <NavItem
+            item={Stack.Item}
+            text={Stack.ItemText}
+            key={item.id}
+            title={item.title}
+            path={item.slug}
+          />
         ))}
       </Stack>
     );
@@ -68,15 +69,13 @@ const Nav = ({
     <List align={align}>
       <List.Body>
         {items && items.map((item) => (
-          <LocalePath path={item.slug} key={item.id}>
-            {(localePath) => (
-              <List.Item>
-                <List.ItemText as={Link} to={localePath}>
-                  { item.title }
-                </List.ItemText>
-              </List.Item>
-            )}
-          </LocalePath>
+          <NavItem
+            item={List.Item}
+            text={List.ItemText}
+            key={item.id}
+            title={item.title}
+            path={item.slug}
+          />
         ))}
       </List.Body>
     </List>

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Header, Logo } from '@baretheme/ui';
 import UIContext from '../context/ui';
 
@@ -36,7 +37,7 @@ const AppHeader = ({ navigation, socialAccounts }) => {
         )
       }
       accounts={<SocialAccounts items={socialAccounts} />}
-      nav={(
+      nav={navigation.length > 1 && (
         <MainNavigation
           isOpen={ui.navigation.isOpen}
           onToggle={ui.toggleNavigation}
@@ -47,6 +48,16 @@ const AppHeader = ({ navigation, socialAccounts }) => {
       actions={ui.media.isGreaterThan('medium') && <GlobalActions />}
     />
   );
+};
+
+AppHeader.defaultProps = {
+  navigation: [],
+  socialAccounts: [],
+};
+
+AppHeader.propTypes = {
+  navigation: PropTypes.arrayOf(PropTypes.object),
+  socialAccounts: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default AppHeader;

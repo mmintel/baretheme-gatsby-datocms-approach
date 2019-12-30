@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import composeRefs from '@seznam/compose-react-refs';
 import { Button, Shake } from '@baretheme/ui';
 import withSpacing from '../hocs/with-spacing';
 
@@ -166,7 +167,6 @@ const Field = withSpacing(React.forwardRef(
             blank={blank}
             error={error && innerValue}
             valid={valid}
-            ref={ref}
           >
             { prepend && <FieldAddon position="left">{prepend}</FieldAddon>}
             <FieldBody onClick={handleBodyClick}>
@@ -183,7 +183,7 @@ const Field = withSpacing(React.forwardRef(
                 <StyledInput
                   name={name}
                   defaultValue={defaultValue || value}
-                  ref={innerRef}
+                  ref={composeRefs(innerRef, ref)}
                   align={align}
                   onChange={handleChange}
                   onBlur={handleBlur}
