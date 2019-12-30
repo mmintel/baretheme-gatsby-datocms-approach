@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@baretheme/gatsby-plugin-baretheme-text": "^0.0.12",
+    "@baretheme/gatsby-plugin-baretheme-mailchimp": "^0.0.4",
     "@baretheme/gatsby-theme-baretheme": "^0.0.12",
     "gatsby": "2.18.5",
     "react": "^16.11.0",

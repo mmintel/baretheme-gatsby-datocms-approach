@@ -12,7 +12,7 @@ const StyledBanner = styled.div`
 const Content = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: ${(props) => props.theme.spacing(-2)};
 `;
 
@@ -20,6 +20,9 @@ const Actions = styled.div`
   display: flex;
   align-items: center;
   white-space: nowrap;
+  border-left: 1px solid ${(props) => props.theme.color.background};
+  margin-left: 1rem;
+  padding-left: 1rem;
 `;
 
 const Banner = ({ actions, children }) => (

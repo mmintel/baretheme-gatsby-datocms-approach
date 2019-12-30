@@ -150,7 +150,9 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
               }
               datoCmsDictionary(locale: { eq: $locale }) {
                 copyrightNotice
-                cookieConsent
+                cookieConsentDescription
+                cookieConsentAccept
+                cookieConsentReadMore
                 activateDarkTheme
                 activateLightTheme
                 openSearch

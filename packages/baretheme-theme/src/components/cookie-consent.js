@@ -4,6 +4,7 @@ import {
   Banner,
   Button,
   Display,
+  TextLink,
 } from '@baretheme/ui';
 import { FormattedMessage } from 'react-intl';
 
@@ -26,13 +27,17 @@ const CookieConsent = ({ onAccept }) => {
   return (
     <Banner actions={(
       <>
-        <Button size={-2} mr={-1}>Read more</Button>
-        <Button size={-2} palett="primary" onClick={handleAccept}>Ok</Button>
+        <TextLink size={-3} mr={-1}>
+          <FormattedMessage id="cookieConsentReadMore" defaultMessage="Read more" />
+        </TextLink>
+        <Button size={-3} palett="primary" onClick={handleAccept}>
+          <FormattedMessage id="cookieConsentAccept" defaultMessage="Okay" />
+        </Button>
       </>
     )}
     >
-      <Display size={-1}>
-        <FormattedMessage id="cookieConsent" defaultMessage="This website uses cookies." />
+      <Display size={-3}>
+        <FormattedMessage id="cookieConsentDescription" defaultMessage="This website uses cookies." />
       </Display>
     </Banner>
   );

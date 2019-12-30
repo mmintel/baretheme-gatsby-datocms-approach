@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import isPropValid from '@emotion/is-prop-valid';
-import { Display } from '@baretheme/ui';
 import { timingFunctions, rgba } from 'polished';
 import withPalett from '../hocs/with-palett';
 import withSpacing from '../hocs/with-spacing';
 import withColor from '../hocs/with-color';
 
-const blacklistProps = ['styles', 'color', 'loading'];
+const blacklistProps = ['styles', 'color', 'loading', 'size'];
 
 const StyledButton = withPalett(styled('button', {
   shouldForwardProp: (prop) => isPropValid(prop) && !blacklistProps.includes(prop),
@@ -20,12 +19,13 @@ const StyledButton = withPalett(styled('button', {
   user-select: none;
   cursor: pointer;
   line-height: ${(props) => props.theme.lineHeight(0)};
-  padding: 0.5em 1.5em;
   border-radius: 2em;
   background-color: transparent;
   transition:
     background 0.5s ${timingFunctions('easeInOut')},
     transform 0.5s ${timingFunctions('easeInOutElastic')};
+  font-size: ${(props) => props.theme.fontSize(props.size)};
+  padding: 0.5em 1.5em;
 
   &:active {
     transform: scale(0.95);
@@ -56,10 +56,8 @@ const StyledButton = withPalett(styled('button', {
 const Button = ({
   children, size, type, nativeType, ...props
 }) => (
-  <StyledButton type={nativeType} palett={type !== 'default' ? type : null} {...props}>
-    <Display selectable={false} size={size}>
-      {children}
-    </Display>
+  <StyledButton size={size} type={nativeType} palett={type !== 'default' ? type : null} {...props}>
+    {children}
   </StyledButton>
 );
 

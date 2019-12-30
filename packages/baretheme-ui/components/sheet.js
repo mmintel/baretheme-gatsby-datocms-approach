@@ -35,7 +35,7 @@ const SheetWrapper = styled('div', {
 
 const SheetBody = styled(animated.div)`
   background-color: ${(props) => props.theme.color.raised};
-  box-shadow: ${(props) => props.theme.shadow(0)};
+  box-shadow: ${(props) => props.theme.shadow(1)};
   display: flex;
 `;
 
