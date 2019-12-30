@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Container } from '@baretheme/ui';
+import { css } from '@emotion/core';
 
 const HeaderWrapper = styled.header`
   padding-top: ${(props) => props.theme.spacing(1)};
@@ -30,8 +31,10 @@ const HeaderNavigation = styled.div`
 `;
 
 const HeaderActions = styled.div`
-  border-left: 1px solid ${(props) => props.theme.color.faded};
-  padding-left: ${(props) => props.theme.spacing(1)};
+  ${(props) => props.hasNav && css`
+    border-left: 1px solid ${props.theme.color.faded};
+    padding-left: ${props.theme.spacing(1)};
+  `}
 `;
 
 const Header = ({
@@ -40,17 +43,17 @@ const Header = ({
   <HeaderWrapper>
     <HeaderContainer>
       {(logo || accounts) && (
-      <HeaderSite>
-        {logo}
-        {accounts && <HeaderAccounts>{accounts}</HeaderAccounts>}
-      </HeaderSite>
+        <HeaderSite>
+          {logo}
+          {accounts && <HeaderAccounts>{accounts}</HeaderAccounts>}
+        </HeaderSite>
       )}
       {children}
       {(nav || actions) && (
-      <HeaderNavigation>
-        {nav}
-        {actions && <HeaderActions>{actions}</HeaderActions>}
-      </HeaderNavigation>
+        <HeaderNavigation>
+          {nav}
+          {actions && <HeaderActions hasNav={!!nav}>{actions}</HeaderActions>}
+        </HeaderNavigation>
       )}
     </HeaderContainer>
   </HeaderWrapper>
