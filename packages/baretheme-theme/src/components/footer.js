@@ -19,9 +19,7 @@ const AppFooter = ({ navigation }) => (
       />
       )}
   >
-    {navigation.length > 1 && (
-      <Nav type="bar" align="center" items={navigation} />
-    )}
+    <Nav type="bar" align="center" items={navigation} />
   </StyledFooter>
 );
 
