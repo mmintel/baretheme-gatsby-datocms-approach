@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
+
+import Link from './link';
 import Logo from './logo';
 import SocialAccounts from './social-accounts';
 
@@ -16,7 +18,9 @@ const BrandAccounts = styled.div`
 
 const Brand = ({ socialAccounts }) => (
   <StyledBrand>
-    <Logo />
+    <Link to="/">
+      <Logo />
+    </Link>
     { socialAccounts.length > 0 && (
       <BrandAccounts>
         <SocialAccounts items={socialAccounts} />

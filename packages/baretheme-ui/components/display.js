@@ -28,9 +28,9 @@ const StyledDisplay = styled('span', {
   `}
 `;
 
-const Display = ({ ...props }) => (
+const Display = withSpacing(withColor(({ ...props }) => (
   <StyledDisplay {...props} />
-);
+)));
 
 Display.defaultProps = {
   selectable: true,
@@ -73,13 +73,6 @@ Headline.propTypes = {
 };
 
 const StyledParagraph = styled(Display)`
-  & + & {
-    margin-bottom: 0.125em;
-
-    &:not(:first-of-type) {
-      margin-top: 0.75em;
-    }
-  }
 `;
 
 export const Paragraph = ({ as, ...props }) => <StyledParagraph as={as} {...props} />;
@@ -93,4 +86,4 @@ Paragraph.propTypes = {
 };
 
 
-export default withColor(withSpacing(Display));
+export default Display;

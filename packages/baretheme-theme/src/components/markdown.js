@@ -30,18 +30,18 @@ const parseHtml = htmlParser({
 const ParagraphRenderer = ({ children }) => {
   const { align } = useMarkdownContext();
   return (
-    <Paragraph align={align}>{children}</Paragraph>
+    <Paragraph align={align} mb={1}>{children}</Paragraph>
   );
 };
 
 const HeadlineRenderer = ({ level, children }) => {
   const { align } = useMarkdownContext();
   const sizes = {
-    1: 5,
-    2: 4,
-    3: 3,
-    4: 2,
-    5: 1,
+    1: 3,
+    2: 2,
+    3: 1,
+    4: 1,
+    5: 0,
     6: 0,
   };
   return <Headline align={align} size={sizes[level]} as={`h${level}`}>{children}</Headline>;
