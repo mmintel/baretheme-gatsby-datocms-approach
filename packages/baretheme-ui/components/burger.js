@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { useTheme } from 'emotion-theming';
-import { HamburgerVortex as MenuIcon } from 'react-animated-burgers';
+import { Icon } from '@baretheme/ui';
+import { mdiClose, mdiMenu } from '@mdi/js';
 
-const BurgerIcon = styled(MenuIcon)`
+const BurgerIcon = styled.div`
   position: relative;
-  z-index: 1;
+  z-index: 200;
   cursor: pointer;
   fill: ${(props) => props.theme.color.foreground};
 
@@ -17,17 +17,21 @@ const BurgerIcon = styled(MenuIcon)`
 
 const Burger = ({
   onToggle, isOpen,
-}) => {
-  const theme = useTheme();
-  return (
-    <BurgerIcon
-      buttonWidth={16}
-      isActive={isOpen}
-      toggleButton={onToggle}
-      barColor={theme.color.highlight}
-    />
-  );
-};
+}) => (
+  <BurgerIcon>
+    {isOpen ? (
+      <Icon
+        path={mdiClose}
+        onClick={onToggle}
+      />
+    ) : (
+      <Icon
+        path={mdiMenu}
+        onClick={onToggle}
+      />
+    )}
+  </BurgerIcon>
+);
 
 Burger.defaultProps = {
   isOpen: false,

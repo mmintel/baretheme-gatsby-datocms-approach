@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Location } from '@reach/router';
 import { List, Bar, Stack } from '@baretheme/ui';
 import Types from '../types';
 import useLocalePath from '../hooks/locale-path';
@@ -14,9 +15,17 @@ const NavItem = ({
   const localePath = useLocalePath(path);
   return (
     <ItemComponent>
-      <TextComponent as={Link} to={localePath}>
-        { title }
-      </TextComponent>
+      <Location>
+        {({ location }) => (location.pathname === localePath ? (
+          <TextComponent active>
+            { title }
+          </TextComponent>
+        ) : (
+          <TextComponent as={Link} to={localePath}>
+            { title }
+          </TextComponent>
+        ))}
+      </Location>
     </ItemComponent>
   );
 };

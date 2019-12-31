@@ -12,6 +12,7 @@ const SheetWrapper = styled('div', {
   shouldForwardProp: (prop) => isPropValid(prop) && !blacklistProps.includes(prop),
 })`
   position: fixed;
+  z-index: 500;
   transform: translateY(100%);
 
   ${(props) => props.position === 'right' && css`

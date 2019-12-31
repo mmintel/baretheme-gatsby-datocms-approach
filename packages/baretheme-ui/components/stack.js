@@ -81,9 +81,7 @@ const StyledStackItemText = styled('div', {
     }
   `}
 
-  ${(props) => props.active && css`
-    ${activeStyles}
-  `}
+  ${(props) => props.active && activeStyles}
 
   &.active {
     ${activeStyles}

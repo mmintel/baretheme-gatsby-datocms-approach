@@ -50,7 +50,7 @@ const lightColors = {
   raised: '#fff',
   lowered: '#efefef',
   shadow: '170, 170, 170',
-  overlay: `rgba(255,255,255,${alpha[7]})`,
+  overlay: `rgba(255,255,255,${alpha[5]})`,
 };
 
 const darkColors = {
@@ -65,7 +65,7 @@ const darkColors = {
   raised: '#252525',
   lowered: '#161617',
   shadow: '0, 0, 0',
-  overlay: `rgba(0,0,0,${alpha[7]})`,
+  overlay: `rgba(0,0,0,${alpha[5]})`,
 };
 
 const shared = {

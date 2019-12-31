@@ -11,12 +11,13 @@ import Search from './search';
 import CookieConsent from './cookie-consent';
 import Header from './header';
 import Footer from './footer';
-import MobileNavigation from './mobile-navigation';
+import MainNavigation from './main-navigation';
 import LanguageSwitch from './language-switch';
 import Blocks from './blocks';
 import filterNavItems from '../util/filter-nav-items';
 
 const LayoutWrapper = styled.div`
+  position: relative;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -27,6 +28,22 @@ const LayoutWrapper = styled.div`
 `;
 
 const Main = styled.main``;
+
+const LayoutOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: background-color 0.5s ease-in-out;
+  pointer-events: none;
+
+  ${(props) => props.open && css`
+    pointer-events: auto;
+    background-color: ${props.theme.color.overlay};
+  `}
+`;
 
 const AnimatedOffscreenNavigation = ({ ctx, children }) => {
   const { y } = useSpring({
@@ -41,12 +58,15 @@ const AnimatedOffscreenNavigation = ({ ctx, children }) => {
       onRest={ctx.onLayoutAnimationRest}
     >
       <animated.div
+        onClick={ctx.closeSearch}
         style={{
           willChange: 'transform',
           transform: y.interpolate((y) => `translateY(${y}px)`),
         }}
       >
-        {children}
+        <div onClick={(e) => e.stopPropagation()} role="presentation">
+          {children}
+        </div>
       </animated.div>
     </Offscreen>
   );
@@ -76,25 +96,7 @@ const AnimatedLayout = ({ ctx, children, onClick }) => {
 };
 
 class Layout extends React.Component {
-  componentDidMount() {
-    if (
-      this.context.media.isGreaterThan('medium')
-      && this.context.navigation.isOpen
-    ) {
-      this.context.closeNavigation();
-    }
-  }
-
-  componentDidUpdate() {
-    if (
-      this.context.media.isGreaterThan('medium')
-      && this.context.navigation.isOpen
-    ) {
-      this.context.closeNavigation();
-    }
-  }
-
-  handleClick = () => {
+  handleOverlayClick = () => {
     if (this.context.navigation.isOpen) {
       this.context.closeNavigation();
     }
@@ -109,12 +111,14 @@ class Layout extends React.Component {
 
   render() {
     const { children, pageContext, data } = this.props;
+    const offscreenOpen = this.context.navigation.isOpen || this.context.search.isOpen;
     const mainNavigation = filterNavItems(pageContext.layout.mainNavigation);
     const footerNavigation = filterNavItems(pageContext.layout.secondaryNavigation);
 
     return (
       <div style={{ width: '100vw', overflow: 'hidden', position: 'relative' }}>
-        <AnimatedLayout ctx={this.context} onClick={this.handleClick}>
+        <AnimatedLayout ctx={this.context}>
+          <LayoutOverlay onClick={this.handleOverlayClick} open={offscreenOpen} />
           <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
           <Main>
             { pageContext.layout.before && (
@@ -138,7 +142,7 @@ class Layout extends React.Component {
         )}
 
         <AnimatedOffscreenNavigation ctx={this.context}>
-          <MobileNavigation onClose={this.context.closeNavigation} navigation={mainNavigation} />
+          <MainNavigation onClose={this.context.closeNavigation} navigation={mainNavigation} />
         </AnimatedOffscreenNavigation>
 
         {this.context.config.useTranslations && (

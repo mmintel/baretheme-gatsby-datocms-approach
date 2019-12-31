@@ -10,7 +10,6 @@ export default styled.div`
   margin: 0 auto;
 
   ${(props) => props.size === 'small' && css`
-    width: 75%;
     max-width: 800px;
     min-width: 320px;
   `}

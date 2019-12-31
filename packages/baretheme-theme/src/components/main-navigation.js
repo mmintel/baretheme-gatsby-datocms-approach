@@ -1,31 +1,21 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
-import { Burger } from '@baretheme/ui';
+import styled from '@emotion/styled';
 import Nav from './nav';
+import Indicators from './indicators';
 
-const MainNavigation = ({
-  compact, items, onToggle, isOpen,
-}) => (
-  <nav>
-    {compact && <Burger onToggle={onToggle} isOpen={isOpen} />}
-    {!compact && <Nav type="bar" items={items} />}
-  </nav>
+const StyledMainNavigation = styled.div`
+  min-width: 280px;
+`;
+
+const StyledIndicators = styled(Indicators)`
+  margin: 2rem ${(props) => props.theme.spacing(1)} 1rem;
+`;
+
+const MainNavigation = ({ navigation, ...props }) => (
+  <StyledMainNavigation>
+    <StyledIndicators />
+    <Nav type="stack" items={navigation} {...props} />
+  </StyledMainNavigation>
 );
-
-MainNavigation.defaultProps = {
-  compact: false,
-  isOpen: false,
-  onToggle: () => {},
-};
-
-MainNavigation.propTypes = {
-  compact: PropTypes.bool,
-  onToggle: PropTypes.func,
-  isOpen: PropTypes.bool,
-  items: PropTypes.arrayOf(PropTypes.shape({
-    slug: PropTypes.string,
-  })).isRequired,
-};
 
 export default MainNavigation;
