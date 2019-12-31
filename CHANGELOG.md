@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.18](https://gitlab.com/baretheme/theme/compare/v0.0.17...v0.0.18) (2019-12-31)
+
+
+### Bug Fixes
+
+* show footer nav always ([92acc9b](https://gitlab.com/baretheme/theme/commit/92acc9b3038bdc9d2d85765aefc44b199df1b234))
+
+
+
+
+
 ## [0.0.17](https://gitlab.com/baretheme/theme/compare/v0.0.16...v0.0.17) (2019-12-31)
 
 
