@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.19](https://gitlab.com/baretheme/theme/compare/v0.0.18...v0.0.19) (2019-12-31)
+
+
+### Bug Fixes
+
+* typo and logo navigation ([7937133](https://gitlab.com/baretheme/theme/commit/7937133ad6b5fefe70e1a93bbcd5c35b04e4dd7a))
+
+
+
+
+
 ## [0.0.18](https://gitlab.com/baretheme/theme/compare/v0.0.17...v0.0.18) (2019-12-31)
 
 **Note:** Version bump only for package @baretheme/ui
