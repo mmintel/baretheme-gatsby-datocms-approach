@@ -21,9 +21,11 @@ const LayoutWrapper = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: ${(props) => props.theme.color.background};
 
-  ${(props) => css`
-    background-color: ${props.theme.color.background};
+  ${(props) => props.locked && css`
+    overflow: hidden;
+    max-height: 100vh;
   `}
 `;
 
@@ -74,14 +76,14 @@ const AnimatedOffscreenNavigation = ({ ctx, children }) => {
 
 const AnimatedLayoutWrapper = animated(LayoutWrapper);
 
-const AnimatedLayout = ({ ctx, children, onClick }) => {
+const AnimatedLayout = ({ ctx, locked, children }) => {
   const { x, y } = useSpring({
     x: ctx.navigation.isOpen ? ctx.navigation.sizes.width * -1 : 0,
     y: ctx.search.isOpen ? ctx.search.sizes.height * 1 : 0,
   });
   return (
     <AnimatedLayoutWrapper
-      onClick={onClick}
+      locked={locked}
       style={{
         willChange: 'transform',
         transform: interpolate(
@@ -117,7 +119,7 @@ class Layout extends React.Component {
 
     return (
       <div style={{ width: '100vw', overflow: 'hidden', position: 'relative' }}>
-        <AnimatedLayout ctx={this.context}>
+        <AnimatedLayout ctx={this.context} locked={offscreenOpen}>
           <LayoutOverlay onClick={this.handleOverlayClick} open={offscreenOpen} />
           <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
           <Main>
