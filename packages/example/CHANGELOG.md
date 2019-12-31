@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.16](https://gitlab.com/baretheme/theme/compare/v0.0.15...v0.0.16) (2019-12-31)
+
+
+### Bug Fixes
+
+* improve navigation ([d7be9e6](https://gitlab.com/baretheme/theme/commit/d7be9e6e09dfa2194d490c1383797f368cf5f6ab))
+
+
+
+
+
 ## [0.0.15](https://gitlab.com/baretheme/theme/compare/v0.0.14...v0.0.15) (2019-12-30)
 
 **Note:** Version bump only for package example
