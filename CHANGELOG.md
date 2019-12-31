@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.17](https://gitlab.com/baretheme/theme/compare/v0.0.16...v0.0.17) (2019-12-31)
+
+
+### Bug Fixes
+
+* prevent scrolling when nav open ([c22e06a](https://gitlab.com/baretheme/theme/commit/c22e06a054866c148745af783c788a3e1bacd688))
+
+
+
+
+
 ## [0.0.16](https://gitlab.com/baretheme/theme/compare/v0.0.15...v0.0.16) (2019-12-31)
 
 
