@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled from '@emotion/styled';
+import { useTheme } from 'emotion-theming';
 import { Display } from '@baretheme/ui';
 
 export default {
@@ -61,7 +62,7 @@ const StyledSwatches = styled.div`
 `;
 
 const Swatches = () => {
-  const theme = React.useContext(ThemeContext);
+  const theme = useTheme();
   const colors = Object.keys(theme.color);
   return (
     <StyledSwatches>
