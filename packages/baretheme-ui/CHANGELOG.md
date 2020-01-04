@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.20](https://gitlab.com/baretheme/theme/compare/v0.0.19...v0.0.20) (2020-01-04)
+
+**Note:** Version bump only for package @baretheme/ui
+
+
+
+
+
 ## [0.0.19](https://gitlab.com/baretheme/theme/compare/v0.0.18...v0.0.19) (2019-12-31)
 
 
