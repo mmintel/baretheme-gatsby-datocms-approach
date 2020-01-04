@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Section, Headline, Display, Container, Alert,
 } from '@baretheme/ui';
@@ -15,6 +16,12 @@ const UnregisteredBlock = ({ block }) => {
       </Container>
     </Section>
   );
+};
+
+UnregisteredBlock.propTypes = {
+  block: PropTypes.shape({
+    type: PropTypes.string,
+  }).isRequired,
 };
 
 export default UnregisteredBlock;

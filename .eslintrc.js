@@ -10,7 +10,7 @@ module.exports = {
     "no-shadow": 0,
     "max-len": 0,
     "react/jsx-filename-extension": 0,
-    "react/prop-types": 1,
+    "react/prop-types": 2,
     "react/jsx-props-no-spreading": 0,
     "react/destructuring-assignment": 0,
     "consistent-return": 0,

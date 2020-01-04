@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { HelmetDatoCms } from 'gatsby-source-datocms';
 import Helmet from 'react-helmet';
@@ -24,5 +25,22 @@ const Site = ({ children, pageContext }) => (
     {children}
   </>
 );
+
+Site.propTypes = {
+  children: PropTypes.node.isRequired,
+  pageContext: PropTypes.shape({
+    node: PropTypes.shape({
+      locale: PropTypes.string,
+    }),
+    site: PropTypes.shape({
+      faviconMetaTags: PropTypes.object,
+      globalSeo: PropTypes.shape({
+        fallbackSeo: PropTypes.shape({
+          title: PropTypes.string,
+        }),
+      }),
+    }),
+  }).isRequired,
+};
 
 export default Site;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiTwitter, mdiInstagram } from '@mdi/js';
 import styled from '@emotion/styled';
@@ -44,6 +45,18 @@ const SocialAccounts = ({ items }) => {
       ))}
     </IconBar>
   );
+};
+
+SocialAccounts.defaultProps = {
+  items: [],
+};
+
+SocialAccounts.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    url: PropTypes.string,
+    title: PropTypes.string,
+  })),
 };
 
 export default SocialAccounts;

@@ -102,7 +102,7 @@ const FieldPlaceholder = styled.div`
   `}
 `;
 
-const Field = withSpacing(React.forwardRef(
+const Field = React.forwardRef(
   ({
     name,
     label,
@@ -197,11 +197,12 @@ const Field = withSpacing(React.forwardRef(
       </FieldContext.Provider>
     );
   },
-));
+);
 
 Field.defaultProps = {
   blank: false,
   focus: false,
+  valid: true,
   append: '',
   prepend: '',
   align: 'left',
@@ -218,6 +219,7 @@ Field.defaultProps = {
 
 Field.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
+  valid: PropTypes.bool,
   blank: PropTypes.bool,
   focus: PropTypes.bool,
   placeholder: PropTypes.string,
@@ -259,4 +261,4 @@ FieldButton.propTypes = {
 FieldButton.displayName = 'Field.Button';
 Field.Button = FieldButton;
 
-export default Field;
+export default withSpacing(Field);

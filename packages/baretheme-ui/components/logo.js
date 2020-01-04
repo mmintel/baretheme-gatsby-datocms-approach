@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 const StyledLogo = styled.div`
@@ -24,5 +25,15 @@ const Logo = ({ logo }) => (
     )}
   </StyledLogo>
 );
+
+Logo.propTypes = {
+  logo: PropTypes.shape({
+    file: PropTypes.string,
+    meta: PropTypes.shape({
+      format: PropTypes.string,
+      alt: PropTypes.string,
+    }),
+  }).isRequired,
+};
 
 export default Logo;

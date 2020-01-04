@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Container } from '@baretheme/ui';
 
@@ -14,5 +15,9 @@ const Footer = ({ children, ...props }) => (
     </Container>
   </FooterWrapper>
 );
+
+Footer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Footer;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { FormattedMessage } from 'react-intl';
 
@@ -21,5 +22,13 @@ const AppFooter = ({ navigation }) => (
     <Nav type="bar" size={-1} align="center" items={navigation} />
   </StyledFooter>
 );
+
+AppFooter.defaultProps = {
+  navigation: [],
+};
+
+AppFooter.propTypes = {
+  navigation: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default AppFooter;

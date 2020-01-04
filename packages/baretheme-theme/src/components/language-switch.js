@@ -79,4 +79,20 @@ const AppLanguageSwitch = ({ locales, allSlugLocales, parent }) => {
   return <LanguageSwitch items={items} onSwitch={handleSwitch} />;
 };
 
+AppLanguageSwitch.defaultProps = {
+  locales: [],
+  allSlugLocales: [],
+  parent: null,
+};
+
+AppLanguageSwitch.propTypes = {
+  locales: PropTypes.arrayOf(PropTypes.string),
+  allSlugLocales: PropTypes.arrayOf(PropTypes.shape({
+    locale: PropTypes.arrayOf(PropTypes.string),
+  })),
+  parent: PropTypes.shape({
+    slug: PropTypes.string,
+  }),
+};
+
 export default AppLanguageSwitch;

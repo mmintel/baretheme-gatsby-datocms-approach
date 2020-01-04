@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Container } from '@baretheme/ui';
 
@@ -15,12 +16,17 @@ const HeaderContainer = styled(Container)`
 
 const Header = ({
   children,
+  ...props
 }) => (
-  <HeaderWrapper>
+  <HeaderWrapper {...props}>
     <HeaderContainer>
       {children}
     </HeaderContainer>
   </HeaderWrapper>
 );
+
+Header.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default Header;

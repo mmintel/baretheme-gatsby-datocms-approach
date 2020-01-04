@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -15,6 +16,7 @@ import MainNavigation from './main-navigation';
 import LanguageSwitch from './language-switch';
 import Blocks from './blocks';
 import filterNavItems from '../util/filter-nav-items';
+import Indicators from './indicators';
 
 const LayoutWrapper = styled.div`
   position: relative;
@@ -30,6 +32,10 @@ const LayoutWrapper = styled.div`
 `;
 
 const Main = styled.main``;
+
+const StyledIndicators = styled(Indicators)`
+  margin: 2rem ${(props) => props.theme.spacing(1)} 1rem;
+`;
 
 const LayoutOverlay = styled.div`
   position: absolute;
@@ -47,20 +53,21 @@ const LayoutOverlay = styled.div`
   `}
 `;
 
-const AnimatedOffscreenNavigation = ({ ctx, children }) => {
+const AnimatedOffscreenNavigation = ({ children }) => {
+  const ui = React.useContext(UIContext);
   const { y } = useSpring({
-    y: ctx.search.isOpen ? ctx.search.sizes.height * 1 : 0,
+    y: ui.search.isOpen ? ui.search.sizes.height * 1 : 0,
   });
   return (
     <Offscreen
       position="right"
-      isOpen={ctx.navigation.isOpen}
-      onResize={ctx.setNavigationSize}
-      onClose={ctx.closeNavigation}
-      onRest={ctx.onLayoutAnimationRest}
+      isOpen={ui.navigation.isOpen}
+      onResize={ui.setNavigationSize}
+      onClose={ui.closeNavigation}
+      onRest={ui.onLayoutAnimationRest}
     >
       <animated.div
-        onClick={ctx.closeSearch}
+        onClick={ui.closeSearch}
         style={{
           willChange: 'transform',
           transform: y.interpolate((y) => `translateY(${y}px)`),
@@ -74,12 +81,17 @@ const AnimatedOffscreenNavigation = ({ ctx, children }) => {
   );
 };
 
+AnimatedOffscreenNavigation.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 const AnimatedLayoutWrapper = animated(LayoutWrapper);
 
-const AnimatedLayout = ({ ctx, locked, children }) => {
+const AnimatedLayout = ({ locked, children }) => {
+  const ui = React.useContext(UIContext);
   const { x, y } = useSpring({
-    x: ctx.navigation.isOpen ? ctx.navigation.sizes.width * -1 : 0,
-    y: ctx.search.isOpen ? ctx.search.sizes.height * 1 : 0,
+    x: ui.navigation.isOpen ? ui.navigation.sizes.width * -1 : 0,
+    y: ui.search.isOpen ? ui.search.sizes.height * 1 : 0,
   });
   return (
     <AnimatedLayoutWrapper
@@ -97,86 +109,134 @@ const AnimatedLayout = ({ ctx, locked, children }) => {
   );
 };
 
-class Layout extends React.Component {
-  handleOverlayClick = () => {
-    if (this.context.navigation.isOpen) {
-      this.context.closeNavigation();
+AnimatedLayout.defaultProps = {
+  locked: false,
+};
+
+AnimatedLayout.propTypes = {
+  locked: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+};
+
+const Layout = ({ children, pageContext, data }) => {
+  const ui = React.useContext(UIContext);
+  const offscreenOpen = ui.navigation.isOpen || ui.search.isOpen;
+  const mainNavigation = filterNavItems(pageContext.layout.mainNavigation);
+  const footerNavigation = filterNavItems(pageContext.layout.secondaryNavigation);
+
+  const handleOverlayClick = () => {
+    if (ui.navigation.isOpen) {
+      ui.closeNavigation();
     }
-    if (this.context.search.isOpen) {
-      this.context.closeSearch();
+    if (ui.search.isOpen) {
+      ui.closeSearch();
     }
   };
 
-  handleAcceptCookies = () => {
-    this.context.acceptCookies();
-  }
+  const handleAcceptCookies = () => {
+    ui.acceptCookies();
+  };
 
-  render() {
-    const { children, pageContext, data } = this.props;
-    const offscreenOpen = this.context.navigation.isOpen || this.context.search.isOpen;
-    const mainNavigation = filterNavItems(pageContext.layout.mainNavigation);
-    const footerNavigation = filterNavItems(pageContext.layout.secondaryNavigation);
+  return (
+    <div style={{ width: '100vw', overflow: 'hidden', position: 'relative' }}>
+      <AnimatedLayout ctx={ui} locked={offscreenOpen}>
+        <LayoutOverlay onClick={handleOverlayClick} open={offscreenOpen} />
+        <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
+        <Main>
+          { pageContext.layout.before && (
+            <Blocks blocks={pageContext.layout.before} />
+          )}
+          {children}
+          { pageContext.layout.after && (
+            <Blocks blocks={pageContext.layout.after} />
+          )}
+        </Main>
+        <Footer navigation={footerNavigation} />
+      </AnimatedLayout>
 
-    return (
-      <div style={{ width: '100vw', overflow: 'hidden', position: 'relative' }}>
-        <AnimatedLayout ctx={this.context} locked={offscreenOpen}>
-          <LayoutOverlay onClick={this.handleOverlayClick} open={offscreenOpen} />
-          <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
-          <Main>
-            { pageContext.layout.before && (
-              <Blocks blocks={pageContext.layout.before} />
-            )}
-            {children}
-            { pageContext.layout.after && (
-              <Blocks blocks={pageContext.layout.after} />
-            )}
-          </Main>
-          <Footer navigation={footerNavigation} />
-        </AnimatedLayout>
+      { data.site.siteMetadata.useCookies && (
+        <Sheet
+          position="bottom"
+          isOpen={ui.cookieConsent.isOpen}
+        >
+          <CookieConsent readmoreUrl={`/${pageContext.layout.disclaimerDocument.slug}`} onAccept={handleAcceptCookies} />
+        </Sheet>
+      )}
 
-        { data.site.siteMetadata.useCookies && (
-          <Sheet
-            position="bottom"
-            isOpen={this.context.cookieConsent.isOpen}
-          >
-            <CookieConsent readmoreUrl={`/${pageContext.layout.disclaimerDocument.slug}`} onAccept={this.handleAcceptCookies} />
-          </Sheet>
-        )}
-
-        <AnimatedOffscreenNavigation ctx={this.context}>
-          <MainNavigation onClose={this.context.closeNavigation} navigation={mainNavigation} />
-        </AnimatedOffscreenNavigation>
-
-        {this.context.config.useTranslations && (
-          <Dialog
-            isOpen={this.context.languageSwitch.isOpen}
-            onClose={this.context.toggleLanguageSwitch}
-          >
-            <LanguageSwitch
-              parent={pageContext.node.treeParent}
-              locales={pageContext.site.locales}
-              allSlugLocales={pageContext.node.allSlugLocales}
+      <AnimatedOffscreenNavigation ctx={ui}>
+        <MainNavigation
+          header={(
+            <StyledIndicators
+              useSearch={data.site.siteMetadata.useSearch}
+              useTranslations={data.site.siteMetadata.useTranslations}
+              useThemeToggle={data.site.siteMetadata.useThemeToggle}
             />
-          </Dialog>
-        )}
+          )}
+          onClose={ui.closeNavigation}
+          navigation={mainNavigation}
+        />
+      </AnimatedOffscreenNavigation>
 
-        {this.context.config.useSearch && (
-          <Offscreen
-            position="top"
-            isOpen={this.context.search.isOpen}
-            onResize={this.context.setSearchSize}
-            onClose={this.context.closeSearch}
-            onRest={this.context.onLayoutAnimationRest}
-          >
-            <Search isOpen={this.context.search.isOpen} />
-          </Offscreen>
-        )}
-      </div>
-    );
-  }
-}
+      {ui.config.useTranslations && (
+        <Dialog
+          isOpen={ui.languageSwitch.isOpen}
+          onClose={ui.toggleLanguageSwitch}
+        >
+          <LanguageSwitch
+            parent={pageContext.node.treeParent}
+            locales={pageContext.site.locales}
+            allSlugLocales={pageContext.node.allSlugLocales}
+          />
+        </Dialog>
+      )}
 
-Layout.contextType = UIContext;
+      {ui.config.useSearch && (
+        <Offscreen
+          position="top"
+          isOpen={ui.search.isOpen}
+          onResize={ui.setSearchSize}
+          onClose={ui.closeSearch}
+          onRest={ui.onLayoutAnimationRest}
+        >
+          <Search isOpen={ui.search.isOpen} />
+        </Offscreen>
+      )}
+    </div>
+  );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        useThemeToggle: PropTypes.bool,
+        useSearch: PropTypes.bool,
+        useCookies: PropTypes.bool,
+        useTranslations: PropTypes.bool,
+      }),
+    }),
+  }).isRequired,
+  pageContext: PropTypes.shape({
+    layout: PropTypes.shape({
+      mainNavigation: PropTypes.array,
+      secondaryNavigation: PropTypes.array,
+      socialAccounts: PropTypes.array,
+      before: PropTypes.array,
+      after: PropTypes.array,
+      disclaimerDocument: PropTypes.shape({
+        slug: PropTypes.string,
+      }),
+    }),
+    node: PropTypes.shape({
+      treeParent: PropTypes.object,
+      allSlugLocales: PropTypes.array,
+    }),
+    site: PropTypes.shape({
+      locales: PropTypes.array,
+    }),
+  }).isRequired,
+};
 
 export default (props) => {
   const data = useStaticQuery(graphql`
@@ -184,6 +244,9 @@ export default (props) => {
       site {
         siteMetadata {
           useCookies
+          useTranslations
+          useSearch
+          useThemeToggle
         }
       }
     }

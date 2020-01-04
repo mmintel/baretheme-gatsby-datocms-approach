@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useTheme } from 'emotion-theming';
 import { Display } from '@baretheme/ui';
@@ -54,6 +55,11 @@ const Swatch = ({ color, name }) => (
     </SwatchInfo>
   </StyledSwatch>
 );
+
+Swatch.propTypes = {
+  color: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 const StyledSwatches = styled.div`
   display: flex;

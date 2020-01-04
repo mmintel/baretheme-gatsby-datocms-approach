@@ -1,5 +1,5 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
 import { mdiTranslate, mdiMagnify, mdiThemeLightDark } from '@mdi/js';
 import { FormattedMessage } from 'react-intl';
 
@@ -11,12 +11,14 @@ import {
 } from '@baretheme/ui';
 import UIContext from '../context/ui';
 
-const GlobalActions = ({ data, ...props }) => {
+const Indicators = ({
+  useTranslations, useSearch, useThemeToggle, ...props
+}) => {
   const ui = React.useContext(UIContext);
 
   return (
     <IconBar {...props}>
-      {data.site.siteMetadata.useTranslations && (
+      {useTranslations && (
         <IconBarItem>
           <Tooltip
             content={(
@@ -30,7 +32,7 @@ const GlobalActions = ({ data, ...props }) => {
           </Tooltip>
         </IconBarItem>
       )}
-      {data.site.siteMetadata.useThemeToggle && (
+      {useThemeToggle && (
         <IconBarItem>
           <Tooltip
             content={
@@ -51,7 +53,7 @@ const GlobalActions = ({ data, ...props }) => {
           </Tooltip>
         </IconBarItem>
       )}
-      {data.site.siteMetadata.useSearch && (
+      {useSearch && (
         <IconBarItem>
           <Tooltip
             content={
@@ -66,17 +68,16 @@ const GlobalActions = ({ data, ...props }) => {
   );
 };
 
-export default (props) => {
-  const data = useStaticQuery(graphql`
-    query GlobalActionsQuery {
-      site {
-        siteMetadata {
-          useTranslations
-          useSearch
-          useThemeToggle
-        }
-      }
-    }
-  `);
-  return <GlobalActions data={data} {...props} />;
+Indicators.defaultProps = {
+  useSearch: false,
+  useThemeToggle: true,
+  useTranslations: false,
 };
+
+Indicators.propTypes = {
+  useSearch: PropTypes.bool,
+  useTranslations: PropTypes.bool,
+  useThemeToggle: PropTypes.bool,
+};
+
+export default Indicators;

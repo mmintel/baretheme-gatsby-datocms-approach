@@ -26,12 +26,10 @@ const StyledIcon = styled(ReactIcon, {
 `;
 
 const Icon = React.forwardRef(({
-  size, onClick, styles, color, ...props
+  size, onClick, color, ...props
 }, ref) => (
-
   <StyledIcon
     onClick={onClick}
-    styles={styles}
     ref={ref}
     size={size}
     color={color}
@@ -42,11 +40,13 @@ const Icon = React.forwardRef(({
 Icon.defaultProps = {
   size: 1,
   onClick: undefined,
+  color: undefined,
 };
 
 Icon.propTypes = {
   size: PropTypes.number,
   onClick: PropTypes.func,
+  color: PropTypes.string,
 };
 
 export default withSpacing(withColor(Icon));

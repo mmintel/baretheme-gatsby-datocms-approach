@@ -156,6 +156,7 @@ SearchResults.defaultProps = {
 };
 
 SearchResults.propTypes = {
+  query: PropTypes.string.isRequired,
   results: PropTypes.arrayOf(
     PropTypes.shape({
       locale: PropTypes.string,
