@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.24](https://gitlab.com/baretheme/theme/compare/v0.0.23...v0.0.24) (2020-01-04)
+
+
+### Bug Fixes
+
+* cookie consent url ([e47392a](https://gitlab.com/baretheme/theme/commit/e47392a24a4badd52399bea6b8f27ba7d73ab32c))
+
+
+
+
+
 ## [0.0.23](https://gitlab.com/baretheme/theme/compare/v0.0.22...v0.0.23) (2020-01-04)
 
 
