@@ -153,10 +153,11 @@ const SearchResults = ({ query, results }) => {
 
 SearchResults.defaultProps = {
   results: [],
+  query: undefined,
 };
 
 SearchResults.propTypes = {
-  query: PropTypes.string.isRequired,
+  query: PropTypes.string,
   results: PropTypes.arrayOf(
     PropTypes.shape({
       locale: PropTypes.string,

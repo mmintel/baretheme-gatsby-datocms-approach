@@ -236,6 +236,8 @@ Field.propTypes = {
   loading: PropTypes.bool,
 };
 
+const FieldWithSpacing = withSpacing(Field);
+
 const StyledButton = styled(Button)`
   border-radius: 0;
 
@@ -259,6 +261,6 @@ FieldButton.propTypes = {
 };
 
 FieldButton.displayName = 'Field.Button';
-Field.Button = FieldButton;
+FieldWithSpacing.Button = FieldButton;
 
-export default withSpacing(Field);
+export default FieldWithSpacing;
