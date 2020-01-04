@@ -88,7 +88,7 @@ AppLanguageSwitch.defaultProps = {
 AppLanguageSwitch.propTypes = {
   locales: PropTypes.arrayOf(PropTypes.string),
   allSlugLocales: PropTypes.arrayOf(PropTypes.shape({
-    locale: PropTypes.arrayOf(PropTypes.string),
+    locale: PropTypes.string,
   })),
   parent: PropTypes.shape({
     slug: PropTypes.string,
