@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { FormattedMessage } from 'react-intl';
 
-import { Footer } from '@baretheme/ui';
+import { Footer, Display } from '@baretheme/ui';
 import Nav from './nav';
 
 const StyledFooter = styled(Footer)`
@@ -10,16 +10,15 @@ const StyledFooter = styled(Footer)`
 `;
 
 const AppFooter = ({ navigation }) => (
-  <StyledFooter
-    copyright={(
+  <StyledFooter>
+    <Display align="center" as="div" mb={1} size={-1}>
       <FormattedMessage
         id="copyrightNotice"
         defaultMessage={'Copyright {year}'}
         values={{ year: new Date().getFullYear() }}
       />
-      )}
-  >
-    <Nav type="bar" align="center" items={navigation} />
+    </Display>
+    <Nav type="bar" size={-1} align="center" items={navigation} />
   </StyledFooter>
 );
 
