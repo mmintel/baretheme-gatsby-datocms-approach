@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.23](https://gitlab.com/baretheme/theme/compare/v0.0.22...v0.0.23) (2020-01-04)
+
+**Note:** Version bump only for package example
+
+
+
+
+
 ## [0.0.22](https://gitlab.com/baretheme/theme/compare/v0.0.21...v0.0.22) (2020-01-04)
 
 **Note:** Version bump only for package example

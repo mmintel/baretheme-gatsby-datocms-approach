@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.23](https://gitlab.com/baretheme/theme/compare/v0.0.22...v0.0.23) (2020-01-04)
+
+
+### Bug Fixes
+
+* nav size ([0b0691b](https://gitlab.com/baretheme/theme/commit/0b0691b0f43e2bbf3697039b58ce5a0bb0e6bd69))
+
+
+
+
+
 ## [0.0.22](https://gitlab.com/baretheme/theme/compare/v0.0.21...v0.0.22) (2020-01-04)
 
 
