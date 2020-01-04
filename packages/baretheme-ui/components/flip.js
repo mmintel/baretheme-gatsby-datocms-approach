@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { useSpring, animated } from 'react-spring';
-import useResizeAware from 'react-resize-aware';
 
 const StyledFlip = styled.div`
   perspective: 1000px;
@@ -19,10 +18,6 @@ const Side = styled.div`
   align-items: stretch;
   backface-visibility: hidden;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-
   > * {
     width: 100%;
   }
@@ -34,34 +29,33 @@ const Front = styled(Side)`
 `;
 
 const Back = styled(Side)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   transform: rotateY(180deg);
 `;
 
 const Flip = ({
   flipped, back, front,
 }) => {
-  const [resizeListener, sizes] = useResizeAware();
-
   const { transform } = useSpring({
     transform: `rotateY(${flipped ? 180 : 0}deg)`,
     config: { mass: 12, tension: 500, friction: 80 },
   });
 
   return (
-    <>
-      {resizeListener}
-      <StyledFlip style={{ width: sizes.width, height: sizes.height }}>
-        <Flipper style={{ transform }}>
-          <Front>
-            {resizeListener}
-            {front}
-          </Front>
-          <Back style={{ width: sizes.width, height: sizes.height }}>
-            {back}
-          </Back>
-        </Flipper>
-      </StyledFlip>
-    </>
+    <StyledFlip>
+      <Flipper style={{ transform }}>
+        <Front>
+          {front}
+        </Front>
+        <Back>
+          {back}
+        </Back>
+      </Flipper>
+    </StyledFlip>
   );
 };
 
