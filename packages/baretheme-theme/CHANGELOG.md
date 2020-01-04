@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.27](https://gitlab.com/baretheme/theme/compare/v0.0.26...v0.0.27) (2020-01-04)
+
+
+### Bug Fixes
+
+* prop-type ([b36d43d](https://gitlab.com/baretheme/theme/commit/b36d43d6bdb7414b38f18bb29f28c90c393fc4c7))
+
+
+
+
+
 ## [0.0.26](https://gitlab.com/baretheme/theme/compare/v0.0.25...v0.0.26) (2020-01-04)
 
 
