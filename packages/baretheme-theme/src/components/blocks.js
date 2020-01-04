@@ -5,7 +5,7 @@ import UnregisteredBlock from './unregistered-block';
 let components = [];
 
 try {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line
   components = require('../../.cache/addons').default.components;
 } catch (e) {
   components = [];

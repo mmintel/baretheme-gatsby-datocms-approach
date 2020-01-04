@@ -2,7 +2,13 @@ import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { Link } from '@baretheme/ui';
 
-const addons = require('../../.cache/addons').default;
+let addons;
+try {
+  // eslint-disable-next-line
+  addons = require('../../.cache/addons').default;
+} catch (e) {
+  // ignore
+}
 
 const AppLink = (props) => {
   if (addons.link) {

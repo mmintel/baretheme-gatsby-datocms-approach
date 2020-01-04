@@ -12,7 +12,7 @@ import Link from './link';
 let cookieCallback = () => {};
 
 try {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line
   cookieCallback = require('../../.cache/addons').default.onAcceptCookies;
 } catch (e) {
   cookieCallback = () => {};
