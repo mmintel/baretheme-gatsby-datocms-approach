@@ -7,6 +7,7 @@ import {
   TextLink,
 } from '@baretheme/ui';
 import { FormattedMessage } from 'react-intl';
+import Link from './link';
 
 let cookieCallback = () => {};
 
@@ -18,7 +19,7 @@ try {
 }
 
 
-const CookieConsent = ({ onAccept }) => {
+const CookieConsent = ({ readmoreUrl, onAccept }) => {
   const handleAccept = () => {
     onAccept();
     cookieCallback();
@@ -27,9 +28,13 @@ const CookieConsent = ({ onAccept }) => {
   return (
     <Banner actions={(
       <>
-        <TextLink size={-3} mr={-1}>
-          <FormattedMessage id="cookieConsentReadMore" defaultMessage="Read more" />
-        </TextLink>
+        { readmoreUrl && (
+          <TextLink size={-3} mr={-1}>
+            <Link to={readmoreUrl}>
+              <FormattedMessage id="cookieConsentReadMore" defaultMessage="Read more" />
+            </Link>
+          </TextLink>
+        )}
         <Button size={-3} palett="primary" onClick={handleAccept}>
           <FormattedMessage id="cookieConsentAccept" defaultMessage="Okay" />
         </Button>
@@ -45,9 +50,11 @@ const CookieConsent = ({ onAccept }) => {
 
 CookieConsent.defaultProps = {
   onAccept: () => {},
+  readmoreUrl: undefined,
 };
 
 CookieConsent.propTypes = {
+  readmoreUrl: PropTypes.string,
   onAccept: PropTypes.func,
 };
 

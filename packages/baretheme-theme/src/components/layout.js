@@ -139,7 +139,7 @@ class Layout extends React.Component {
             position="bottom"
             isOpen={this.context.cookieConsent.isOpen}
           >
-            <CookieConsent onAccept={this.handleAcceptCookies} />
+            <CookieConsent readmoreUrl={`/${pageContext.layout.disclaimerDocument.slug}`} onAccept={this.handleAcceptCookies} />
           </Sheet>
         )}
 

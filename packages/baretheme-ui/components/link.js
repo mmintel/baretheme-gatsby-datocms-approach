@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isInternalLink from 'is-internal-link';
 
 const Link = ({
   children, to, internal, external, activeClassName, ...props
 }) => {
-  const isInternal = /^\/(?!\/)/.test(to);
+  const isInternal = isInternalLink(to);
   const InternalComponent = internal;
   const ExternalComponent = external;
 

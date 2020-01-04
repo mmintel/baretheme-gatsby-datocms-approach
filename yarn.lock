@@ -11518,6 +11518,11 @@ is-interactive@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-interactive/-/is-interactive-1.0.0.tgz#cea6e6ae5c870a7b0a0004070b7b587e0252912e"
   integrity sha512-2HvIEKRoqS62guEC+qBjpvRubdX910WCMuJTZ+I9yvqKU2/12eSL549HMwtabb4oupdj2sMP50k+XJfB/8JE6w==
 
+is-internal-link@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/is-internal-link/-/is-internal-link-1.1.4.tgz#d5a9f691ff935ab3d47cb47817bbfa019b6f9060"
+  integrity sha512-nKnNaunkj3/rlu3QTXl33TFQvmj+TvxLQ6M3JaW1NaEt+Iipjhquk4vs0GFn9eUdZlx12K7OEULr4hMitTjq8g==
+
 is-invalid-path@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/is-invalid-path/-/is-invalid-path-0.1.0.tgz#307a855b3cf1a938b44ea70d2c61106053714f34"

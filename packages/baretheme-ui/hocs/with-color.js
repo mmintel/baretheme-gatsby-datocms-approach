@@ -12,7 +12,7 @@ const withColor = (Component) => {
     ({ color, ...props }, ref) => <Component color={color} ref={ref} {...props} />,
   );
 
-  WithColor.displayName = `${Component.displayName}WithColor`;
+  WithColor.displayName = `${Component.displayName || Component.name}WithColor`;
 
   WithColor.defaultProps = {
     color: 'inherit',
