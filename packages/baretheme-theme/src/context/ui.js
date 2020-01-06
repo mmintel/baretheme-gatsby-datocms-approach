@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import store from 'store';
 
-import themes from '../../themes';
+import themes from '@baretheme/ui/themes';
 
 const UIContext = React.createContext(null);
 

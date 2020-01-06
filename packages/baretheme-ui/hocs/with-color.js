@@ -1,11 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import themes from '@baretheme/gatsby-theme-baretheme/themes';
-
-const colors = [
-  ...Object.keys(themes.dark.color),
-  ...Object.keys(themes.light.color),
-];
+import { colors } from '@baretheme/ui/themes';
 
 const withColor = (Component) => {
   const WithColor = React.forwardRef(

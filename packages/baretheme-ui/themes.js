@@ -1,42 +1,9 @@
 import modularScale from 'modular-scale';
 import { uniq, merge } from 'lodash';
 import { darken, lighten } from 'polished';
-
-const radii = ['0', '0.25rem', '0.5rem', '1rem'];
-
-const radius = (n) => radii[n];
-
-const breakpoints = [
-  {
-    key: 'huge',
-    value: 1440,
-  },
-  {
-    key: 'large',
-    value: 1170,
-  },
-  {
-    key: 'medium',
-    value: 768,
-  },
-  {
-    key: 'small',
-    value: 450,
-  },
-];
-
-const alpha = {
-  0: 0,
-  1: 0.125,
-  2: 0.25,
-  3: 0.5,
-  4: 0.75,
-  5: 0.8,
-  6: 0.9,
-  7: 0.95,
-  8: 0.975,
-  9: 0.99,
-};
+import alpha from './theme/alpha';
+import radius from './theme/radius';
+import breakpoints from './theme/breakpoints';
 
 const lightColors = {
   error: '#eb4034',
@@ -106,8 +73,9 @@ function generateShadows(color) {
   return shadows;
 }
 
-const themes = {
-  light: merge({}, shared, {
+const themes = [
+  merge({}, shared, {
+    name: 'light',
     shadow: (n) => {
       const shadows = generateShadows(lightColors.shadow);
       return shadows[n];
@@ -125,7 +93,8 @@ const themes = {
       },
     },
   }),
-  dark: merge({}, shared, {
+  merge({}, shared, {
+    name: 'dark',
     shadow: (n) => {
       const shadows = generateShadows(darkColors.shadow);
       return shadows[n];
@@ -143,12 +112,13 @@ const themes = {
       },
     },
   }),
-};
-
-export const themeNames = Object.keys(themes);
-export const colors = [
-  ...Object.keys(themes.light.color),
-  ...Object.keys(themes.dark.color),
 ];
-export const palettes = uniq([...Object.keys(themes.light.palettes), ...Object.keys(themes.dark.palettes)]);
+
+export const themeNames = themes.map((t) => t.name);
+export const colors = [
+  ...Object.keys(themes[0].color),
+  ...Object.keys(themes[1].color),
+];
+export const palettes = uniq([...Object.keys(themes[0].palettes), ...Object.keys(themes[0].palettes)]);
+
 export default themes;
