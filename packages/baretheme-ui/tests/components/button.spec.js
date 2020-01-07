@@ -1,7 +1,7 @@
 import React from 'react';
 import { act } from 'react-test-renderer';
 import { Button, themes } from '@baretheme/ui';
-import { renderWithTheme } from './helpers';
+import { renderWithTheme } from '../helpers';
 
 describe('Button component', () => {
   it('renders without crashing', () => {

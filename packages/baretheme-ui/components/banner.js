@@ -25,8 +25,8 @@ const Actions = styled.div`
   padding-left: 1rem;
 `;
 
-const Banner = ({ actions, children }) => (
-  <StyledBanner>
+const Banner = ({ actions, children, ...props }) => (
+  <StyledBanner {...props}>
     <Container>
       <Content>
         {children}

@@ -31,11 +31,13 @@ const StyledBar = styled.ul`
   margin-right: ${(props) => props.flush && `-${props.theme.spacing(1)}`};
 `;
 
-const Bar = ({ align, flush, children }) => {
+const Bar = ({
+  align, flush, children, ...props
+}) => {
   const value = React.useMemo(() => ({ align }), [align]);
   return (
     <BarContext.Provider value={value}>
-      <StyledBar flush={flush} align={align}>
+      <StyledBar flush={flush} align={align} {...props}>
         {children}
       </StyledBar>
     </BarContext.Provider>
@@ -58,9 +60,9 @@ const StyledBarItem = styled.li`
   flex: ${(props) => props.align !== 'center' && 1};
 `;
 
-const BarItem = ({ children }) => {
+const BarItem = ({ children, ...props }) => {
   const { align } = useBarContext();
-  return <StyledBarItem align={align}>{children}</StyledBarItem>;
+  return <StyledBarItem align={align} {...props}>{children}</StyledBarItem>;
 };
 
 BarItem.propTypes = {
