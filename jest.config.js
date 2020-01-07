@@ -11,7 +11,7 @@ module.exports = {
   },
   coverageDirectory: '<rootDir>/coverage/',
   collectCoverageFrom: [
-    '<rootDir>/packages/*/src/**/*.{js,jsx}',
+    '<rootDir>/packages/**/*.{js,jsx}',
   ],
   testPathIgnorePatterns: [...defaults.testPathIgnorePatterns, '.cache', 'public'],
   transformIgnorePatterns: [
@@ -21,7 +21,12 @@ module.exports = {
     __PATH_PREFIX__: '',
   },
   testURL: 'http://localhost',
-  setupFiles: ['<rootDir>/loadershim.js'],
+  setupFiles: [
+    '<rootDir>/loadershim.js',
+  ],
+  setupFilesAfterEnv: [
+    '<rootDir>/jest.setup.js',
+  ],
   snapshotSerializers: [
     'jest-emotion',
   ],
