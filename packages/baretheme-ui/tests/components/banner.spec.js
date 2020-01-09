@@ -1,35 +1,25 @@
 import React from 'react';
-import { act } from 'react-test-renderer';
 import { Banner } from '@baretheme/ui';
-import { renderWithTheme } from '../helpers';
+import { render } from '../helpers';
 
 describe('Banner component', () => {
   it('renders without crashing', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Banner>{text}</Banner>);
-    });
-    expect(component).toBeDefined();
+    const { container } = render(<Banner>{text}</Banner>);
+    expect(container.firstChild).toBeInTheDocument();
   });
 
   it('renders children', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Banner>{text}</Banner>);
-    });
-    const element = component.root.children[0];
-    expect(element.props.children).toEqual(text);
+    const { getByText } = render(<Banner>{text}</Banner>);
+    const node = getByText(text);
+    expect(node).toBeInTheDocument();
   });
 
   it('passes props', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Banner data-test="test">{text}</Banner>);
-    });
-    expect(component.toJSON().props['data-test']).toEqual('test');
+    const { container } = render(<Banner data-test="test">{text}</Banner>);
+    expect(container.firstChild).toHaveAttribute('data-test', 'test');
   });
 
   describe('actions', () => {
@@ -38,21 +28,15 @@ describe('Banner component', () => {
     const Actions = () => <span>{actionsText}</span>;
 
     it('renders when passed', () => {
-      let component;
-      act(() => {
-        component = renderWithTheme(<Banner actions={<Actions />}>{text}</Banner>);
-      });
-      const elements = component.root.findAllByProps({ children: actionsText });
-      expect(elements.length).toEqual(1);
+      const { getByText } = render(<Banner actions={<Actions />}>{text}</Banner>);
+      const node = getByText(actionsText);
+      expect(node).toBeInTheDocument();
     });
 
     it('does not render when not passed', () => {
-      let component;
-      act(() => {
-        component = renderWithTheme(<Banner>{text}</Banner>);
-      });
-      const elements = component.root.findAllByProps({ children: actionsText });
-      expect(elements.length).toEqual(0);
+      const { queryByText } = render(<Banner>{text}</Banner>);
+      const node = queryByText(actionsText);
+      expect(node).toBeNull();
     });
   });
 });

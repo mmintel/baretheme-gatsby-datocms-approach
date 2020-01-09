@@ -16,18 +16,18 @@ const BurgerIcon = styled.div`
 `;
 
 const Burger = ({
-  onToggle, isOpen,
+  onToggle, isOpen, ...props
 }) => (
-  <BurgerIcon>
+  <BurgerIcon {...props} onClick={onToggle}>
     {isOpen ? (
       <Icon
+        data-testid="close"
         path={mdiClose}
-        onClick={onToggle}
       />
     ) : (
       <Icon
+        data-testid="open"
         path={mdiMenu}
-        onClick={onToggle}
       />
     )}
   </BurgerIcon>

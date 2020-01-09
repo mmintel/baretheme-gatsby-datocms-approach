@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
 import { themes } from '@baretheme/ui';
 import { ThemeProvider } from 'emotion-theming';
 
-export function renderWithTheme(component) {
-  return renderer.create(
-    <ThemeProvider theme={themes[0]}>
-      {component}
-    </ThemeProvider>,
-  );
-}
+const Wrapper = ({ children }) => (
+  <ThemeProvider theme={themes[0]}>
+    {children}
+  </ThemeProvider>
+);
+
+Wrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const customRender = (ui, options) => render(ui, { wrapper: Wrapper, ...options });
+
+export { customRender as render };
 
 export function expectRenderError(element, expectedError) {
   // Noop error boundary for testing.

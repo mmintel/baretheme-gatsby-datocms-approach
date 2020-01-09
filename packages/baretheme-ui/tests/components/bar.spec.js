@@ -1,83 +1,57 @@
 import React from 'react';
-import { act } from 'react-test-renderer';
 import { Bar, themes } from '@baretheme/ui';
-import { renderWithTheme, expectRenderError } from '../helpers';
+import { render, expectRenderError } from '../helpers';
 
 describe('Bar component', () => {
   it('renders without crashing', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar>{text}</Bar>);
-    });
-    expect(component).toBeDefined();
+    const { container } = render(<Bar>{text}</Bar>);
+    expect(container.firstChild).toBeInTheDocument();
   });
 
   it('renders children', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar>{text}</Bar>);
-    });
-    const element = component.root.children[0];
-    expect(element.props.children).toEqual(text);
+    const { getByText } = render(<Bar>{text}</Bar>);
+    const node = getByText(text);
+    expect(node).toBeInTheDocument();
   });
 
   it('passes props', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar data-test="test">{text}</Bar>);
-    });
-    expect(component.toJSON().props['data-test']).toEqual('test');
+    const { container } = render(<Bar data-test="test">{text}</Bar>);
+    expect(container.firstChild).toHaveAttribute('data-test', 'test');
   });
 
   it('adds correct styles with align', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar align="left">{text}</Bar>);
-    });
-    expect(component.toJSON()).toHaveStyleRule('justify-content', 'flex-start');
+    const { container, rerender } = render(<Bar align="left">{text}</Bar>);
+    expect(container.firstChild).toHaveStyleRule('justify-content', 'flex-start');
 
-    act(() => {
-      component = renderWithTheme(<Bar align="center">{text}</Bar>);
-    });
-    expect(component.toJSON()).toHaveStyleRule('justify-content', 'center');
+    rerender(<Bar align="center">{text}</Bar>);
+    expect(container.firstChild).toHaveStyleRule('justify-content', 'center');
 
-    act(() => {
-      component = renderWithTheme(<Bar align="right">{text}</Bar>);
-    });
-    expect(component.toJSON()).toHaveStyleRule('justify-content', 'flex-end');
+    rerender(<Bar align="right">{text}</Bar>);
+    expect(container.firstChild).toHaveStyleRule('justify-content', 'flex-end');
   });
 
   it('adds correct styles without align', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar>{text}</Bar>);
-    });
-    expect(component.toJSON()).toHaveStyleRule('justify-content', 'flex-start');
+    const { container } = render(<Bar>{text}</Bar>);
+    expect(container.firstChild).toHaveStyleRule('justify-content', 'flex-start');
   });
 
   it('adds correct styles with flush', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar flush>{text}</Bar>);
-    });
-    expect(component.toJSON()).toHaveStyleRule('margin-left', `-${themes[0].spacing(1)}`);
-    expect(component.toJSON()).toHaveStyleRule('margin-right', `-${themes[0].spacing(1)}`);
+    const { container } = render(<Bar flush>{text}</Bar>);
+    expect(container.firstChild).toHaveStyleRule('margin-left', `-${themes[0].spacing(1)}`);
+    expect(container.firstChild).toHaveStyleRule('margin-right', `-${themes[0].spacing(1)}`);
   });
 
   it('adds correct styles without flush', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Bar>{text}</Bar>);
-    });
-    expect(component.toJSON()).not.toHaveStyleRule('margin-left', `-${themes[0].spacing(1)}`);
-    expect(component.toJSON()).not.toHaveStyleRule('margin-right', `-${themes[0].spacing(1)}`);
+    const { container } = render(<Bar>{text}</Bar>);
+    expect(container.firstChild).not.toHaveStyleRule('margin-left', `-${themes[0].spacing(1)}`);
+    expect(container.firstChild).not.toHaveStyleRule('margin-right', `-${themes[0].spacing(1)}`);
   });
 
   describe('Bar.Item compound component', () => {
@@ -87,31 +61,25 @@ describe('Bar component', () => {
     });
 
     it('renders children', () => {
-      let component;
       const text = 'Test';
-      act(() => {
-        component = renderWithTheme(
-          <Bar>
-            <Bar.Item>{text}</Bar.Item>
-          </Bar>,
-        );
-      });
-      const element = component.root.findByType(Bar.Item);
-      expect(element.props.children).toEqual(text);
+      const { getByText } = render(
+        <Bar>
+          <Bar.Item>{text}</Bar.Item>
+        </Bar>,
+      );
+      const node = getByText(text);
+      expect(node).toBeInTheDocument();
     });
 
     it('passes props', () => {
-      let component;
       const text = 'Test';
-      act(() => {
-        component = renderWithTheme(
-          <Bar>
-            <Bar.Item data-test="test">{text}</Bar.Item>
-          </Bar>,
-        );
-      });
-      const element = component.root.findByType(Bar.Item);
-      expect(element.props['data-test']).toEqual('test');
+      const { getByText } = render(
+        <Bar>
+          <Bar.Item data-test="test">{text}</Bar.Item>
+        </Bar>,
+      );
+      const node = getByText(text);
+      expect(node).toHaveAttribute('data-test', 'test');
     });
   });
 
@@ -122,50 +90,48 @@ describe('Bar component', () => {
     });
 
     it('renders children', () => {
-      let component;
       const text = 'Test';
-      act(() => {
-        component = renderWithTheme(
-          <Bar>
-            <Bar.Item>
-              <Bar.ItemText>{text}</Bar.ItemText>
-            </Bar.Item>
-          </Bar>,
-        );
-      });
-      const element = component.root.findByType(Bar.ItemText);
-      expect(element.props.children).toEqual(text);
+      const { getByText } = render(
+        <Bar>
+          <Bar.Item>
+            <Bar.ItemText>
+              {text}
+            </Bar.ItemText>
+          </Bar.Item>
+        </Bar>,
+      );
+      const node = getByText(text);
+      expect(node).toBeInTheDocument();
     });
 
     it('passes props', () => {
-      let component;
       const text = 'Test';
-      act(() => {
-        component = renderWithTheme(
-          <Bar>
-            <Bar.Item>
-              <Bar.ItemText data-test="test">{text}</Bar.ItemText>
-            </Bar.Item>
-          </Bar>,
-        );
-      });
-      const element = component.root.findByType(Bar.ItemText);
-      expect(element.props['data-test']).toEqual('test');
+      const { getByText } = render(
+        <Bar>
+          <Bar.Item>
+            <Bar.ItemText data-test="test">
+              {text}
+            </Bar.ItemText>
+          </Bar.Item>
+        </Bar>,
+      );
+      const node = getByText(text);
+      expect(node).toHaveAttribute('data-test', 'test');
     });
 
     it('sets active styles', () => {
-      let component;
       const text = 'Test';
-      act(() => {
-        component = renderWithTheme(
-          <Bar>
-            <Bar.Item>
-              <Bar.ItemText data-test="test" active>{text}</Bar.ItemText>
-            </Bar.Item>
-          </Bar>,
-        );
-      });
-      expect(component.toJSON().children[0].children[0]).toHaveStyleRule('font-weight', 'bold');
+      const { getByText } = render(
+        <Bar>
+          <Bar.Item>
+            <Bar.ItemText active>
+              {text}
+            </Bar.ItemText>
+          </Bar.Item>
+        </Bar>,
+      );
+      const node = getByText(text);
+      expect(node).toHaveStyleRule('font-weight', 'bold');
     });
   });
 });

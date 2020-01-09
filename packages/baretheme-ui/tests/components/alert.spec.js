@@ -1,34 +1,24 @@
 import React from 'react';
-import { act } from 'react-test-renderer';
 import { Alert } from '@baretheme/ui';
-import { renderWithTheme } from '../helpers';
+import { render } from '../helpers';
 
 describe('Alert component', () => {
   it('renders without crashing', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Alert>{text}</Alert>);
-    });
-    expect(component).toBeDefined();
+    const { container } = render(<Alert>{text}</Alert>);
+    expect(container.firstChild).toBeInTheDocument();
   });
 
   it('renders children', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Alert>{text}</Alert>);
-    });
-    const element = component.root.children[0];
-    expect(element.props.children).toEqual(text);
+    const { getByText } = render(<Alert>{text}</Alert>);
+    const node = getByText(text);
+    expect(node).toBeInTheDocument();
   });
 
   it('passes props', () => {
-    let component;
     const text = 'Test';
-    act(() => {
-      component = renderWithTheme(<Alert data-test="test">{text}</Alert>);
-    });
-    expect(component.toJSON().props['data-test']).toEqual('test');
+    const { container } = render(<Alert data-test="test">{text}</Alert>);
+    expect(container.firstChild).toHaveAttribute('data-test', 'test');
   });
 });
