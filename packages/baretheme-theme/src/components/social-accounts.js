@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '@mdi/react';
 import { mdiTwitter, mdiInstagram } from '@mdi/js';
 import styled from '@emotion/styled';
-import { Tooltip, IconBar, IconBarItem } from '@baretheme/ui';
+import { Tooltip, IconBar } from '@baretheme/ui';
 
 const AccountLink = styled.a`
   display: flex;
@@ -31,7 +31,7 @@ const SocialAccounts = ({ items }) => {
   return (
     <IconBar>
       {items && items.map((item) => (
-        <IconBarItem key={item.id}>
+        <IconBar.Item key={item.id}>
           <Tooltip content={item.title}>
             <AccountLink
               href={item.url}
@@ -41,7 +41,7 @@ const SocialAccounts = ({ items }) => {
               <AccountIcon path={getIcon(item.title)} size={1} />
             </AccountLink>
           </Tooltip>
-        </IconBarItem>
+        </IconBar.Item>
       ))}
     </IconBar>
   );

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import Display from './display';
 
-const StyledChip = styled.span`
+const StyledChip = styled(Display)`
   display: inline-block;
   line-height: 100%;
   background-color: ${(props) => props.theme.color.dimmed};
@@ -20,10 +20,8 @@ const StyledChip = styled.span`
   }
 `;
 
-const Chip = ({ children, ...props }) => (
-  <Display {...props}>
-    <StyledChip>{children}</StyledChip>
-  </Display>
+const Chip = ({ children, size, ...props }) => (
+  <StyledChip size={size} {...props}>{children}</StyledChip>
 );
 
 Chip.defaultProps = {

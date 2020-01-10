@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
+const CardContext = React.createContext();
+
+function useCardContext() {
+  const context = React.useContext(CardContext);
+  if (!context) {
+    throw new Error(
+      'Card compound components cannot be rendered outside the Card component',
+    );
+  }
+  return context;
+}
+
 const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,9 +23,13 @@ const StyledCard = styled.div`
   border-radius: ${(props) => props.theme.radius(1)};
 `;
 
-const Card = (props) => <StyledCard {...props} />;
+const Card = (props) => (
+  <CardContext.Provider value={{}}>
+    <StyledCard {...props} />
+  </CardContext.Provider>
+);
 
-const CardBody = styled.div`
+const StyledCardBody = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -25,6 +41,11 @@ const CardBody = styled.div`
   `}
 `;
 
+const CardBody = ({ center, ...props }) => {
+  useCardContext();
+  return <StyledCardBody center={center} {...props} />;
+};
+
 CardBody.defaultProps = {
   center: false,
 };
@@ -33,10 +54,15 @@ CardBody.propTypes = {
   center: PropTypes.bool,
 };
 
-const CardHead = styled.div`
+const StyledCardHead = styled.div`
   padding: ${(props) => props.theme.spacing(1)} ${(props) => props.theme.spacing(0)};
   border-bottom: 1px solid ${(props) => props.theme.color.faded};
 `;
+
+const CardHead = (props) => {
+  useCardContext();
+  return <StyledCardHead {...props} />;
+};
 
 CardBody.displayName = 'Card.Body';
 CardHead.displayName = 'Card.Head';

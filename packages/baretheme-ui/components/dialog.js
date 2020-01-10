@@ -34,7 +34,9 @@ const CloseIcon = styled(Icon)`
 const AnimatedCloseIcon = animated(CloseIcon);
 const AnimatedDialog = animated(StyledDialog);
 
-const Dialog = ({ isOpen, children, onClose }) => {
+const Dialog = ({
+  isOpen, children, onClose, ...props
+}) => {
   const { opacity, y, x } = useSpring({
     opacity: isOpen ? 1 : 0,
     y: isOpen ? 0 : -100,
@@ -67,7 +69,7 @@ const Dialog = ({ isOpen, children, onClose }) => {
   }, [isOpen, onClose]);
 
   return (
-    <AnimatedDialog style={{ opacity }} isOpen={isOpen} onClick={onClose}>
+    <AnimatedDialog style={{ opacity }} isOpen={isOpen} onClick={onClose} {...props}>
       <AnimatedCloseIcon
         style={{ transform: x.interpolate((x) => `translateX(${x}%)`) }}
         path={mdiClose}

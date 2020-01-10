@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSpring, animated } from 'react-spring';
 
-const Shake = ({ animate, children }) => {
+const Shake = ({ animate, children, ...props }) => {
   const { x } = useSpring({
     from: { x: 0 },
     x: animate ? 1 : 0,
@@ -19,6 +19,7 @@ const Shake = ({ animate, children }) => {
           })
           .interpolate((x) => `rotate(${x}deg)`),
       }}
+      {...props}
     >
       {children}
     </animated.div>

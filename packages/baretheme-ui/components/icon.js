@@ -13,25 +13,34 @@ const StyledIcon = styled(ReactIcon, {
 })`
   fill: ${(props) => props.theme.color.foreground};
 
-  ${(props) => props.color && css`
-    fill: ${props.theme.color[props.color]};
-  `}
-
   ${(props) => props.onClick && css`
     cursor: pointer;
-    &:hover {
+  `}
+
+  ${(props) => props.color && css`
+    fill: ${props.color};
+  `}
+
+  ${(props) => props.onClick && !props.color && css`
+    :hover {
       fill: ${props.theme.emphasize(props.theme.color.foreground)};
+    }
+  `}
+
+  ${(props) => props.onClick && props.color && css`
+    :hover {
+      fill: ${props.theme.emphasize(props.color)};
     }
   `}
 `;
 
 const Icon = React.forwardRef(({
-  size, onClick, color, ...props
+  size, path, color, ...props
 }, ref) => (
   <StyledIcon
-    onClick={onClick}
     ref={ref}
     size={size}
+    path={path}
     color={color}
     {...props}
   />
@@ -39,13 +48,12 @@ const Icon = React.forwardRef(({
 
 Icon.defaultProps = {
   size: 1,
-  onClick: undefined,
   color: undefined,
 };
 
 Icon.propTypes = {
+  path: PropTypes.string.isRequired,
   size: PropTypes.number,
-  onClick: PropTypes.func,
   color: PropTypes.string,
 };
 

@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl';
 
 import {
   IconBar,
-  IconBarItem,
   Icon,
   Tooltip,
 } from '@baretheme/ui';
@@ -19,7 +18,7 @@ const Indicators = ({
   return (
     <IconBar {...props}>
       {useTranslations && (
-        <IconBarItem>
+        <IconBar.Item>
           <Tooltip
             content={(
               <FormattedMessage
@@ -30,10 +29,10 @@ const Indicators = ({
           >
             <Icon path={mdiTranslate} onClick={ui.toggleLanguageSwitch} />
           </Tooltip>
-        </IconBarItem>
+        </IconBar.Item>
       )}
       {useThemeToggle && (
-        <IconBarItem>
+        <IconBar.Item>
           <Tooltip
             content={
               ui.currentTheme === 'dark' ? (
@@ -51,10 +50,10 @@ const Indicators = ({
           >
             <Icon path={mdiThemeLightDark} onClick={ui.toggleTheme} />
           </Tooltip>
-        </IconBarItem>
+        </IconBar.Item>
       )}
       {useSearch && (
-        <IconBarItem>
+        <IconBar.Item>
           <Tooltip
             content={
               <FormattedMessage id="openSearch" defaultMessage="Open search" />
@@ -62,7 +61,7 @@ const Indicators = ({
           >
             <Icon path={mdiMagnify} onClick={ui.toggleSearch} />
           </Tooltip>
-        </IconBarItem>
+        </IconBar.Item>
       )}
     </IconBar>
   );

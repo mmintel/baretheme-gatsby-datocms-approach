@@ -138,6 +138,12 @@ const Field = React.forwardRef(
       }
     }, [focus]);
 
+    React.useEffect(() => {
+      if (value) {
+        setInnerValue(value);
+      }
+    }, [value]);
+
     const handleFocus = (e) => {
       setFocused(true);
       onFocus(e);
@@ -154,29 +160,30 @@ const Field = React.forwardRef(
       onChange(e);
     };
 
-    const handleBodyClick = () => {
+    const handleClick = () => {
       const el = innerRef.current;
       el.focus();
     };
 
     return (
       <FieldContext.Provider value={{ loading, error, valid }}>
-        <Shake animate={!!error}>
+        <Shake animate={!!error} onClick={handleClick}>
           <StyledField
             {...props}
+            data-testid="field"
             blank={blank}
             error={error && innerValue}
             valid={valid}
           >
             { prepend && <FieldAddon position="left">{prepend}</FieldAddon>}
-            <FieldBody onClick={handleBodyClick}>
+            <FieldBody>
               <FieldHeader compact={innerValue || focused}>
                 { label && !(error && innerValue) && <FieldLabel htmlFor={name}>{label}</FieldLabel>}
                 { error && innerValue && <FieldError>{error}</FieldError>}
               </FieldHeader>
               <StyledInputWrapper>
                 { placeholder && (
-                  <FieldPlaceholder visible={!innerValue && focused} align={align}>
+                  <FieldPlaceholder visible={!innerValue} align={align}>
                     { placeholder }
                   </FieldPlaceholder>
                 )}
@@ -188,6 +195,7 @@ const Field = React.forwardRef(
                   onChange={handleChange}
                   onBlur={handleBlur}
                   onFocus={handleFocus}
+                  data-testid="input"
                 />
               </StyledInputWrapper>
             </FieldBody>
@@ -206,6 +214,7 @@ Field.defaultProps = {
   append: '',
   prepend: '',
   align: 'left',
+  name: undefined,
   label: undefined,
   value: undefined,
   defaultValue: undefined,
@@ -232,7 +241,7 @@ Field.propTypes = {
   onBlur: PropTypes.func,
   onFocus: PropTypes.func,
   label: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   loading: PropTypes.bool,
 };
 

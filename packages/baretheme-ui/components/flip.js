@@ -38,7 +38,7 @@ const Back = styled(Side)`
 `;
 
 const Flip = ({
-  flipped, back, front,
+  flipped, back, front, ...props
 }) => {
   const { transform } = useSpring({
     transform: `rotateY(${flipped ? 180 : 0}deg)`,
@@ -46,8 +46,8 @@ const Flip = ({
   });
 
   return (
-    <StyledFlip>
-      <Flipper style={{ transform }}>
+    <StyledFlip {...props}>
+      <Flipper style={{ transform }} data-testid="flipper">
         <Front>
           {front}
         </Front>

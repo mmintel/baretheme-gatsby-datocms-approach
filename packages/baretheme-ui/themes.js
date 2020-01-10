@@ -115,10 +115,10 @@ const themes = [
 ];
 
 export const themeNames = themes.map((t) => t.name);
-export const colors = [
+export const colors = uniq([
   ...Object.keys(themes[0].color),
   ...Object.keys(themes[1].color),
-];
+]);
 export const palettes = uniq([...Object.keys(themes[0].palettes), ...Object.keys(themes[0].palettes)]);
 
 export default themes;

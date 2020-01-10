@@ -234,12 +234,13 @@ class UIProvider extends React.Component {
 
   render() {
     const { config, children } = this.props;
+    const theme = themes.find((theme) => theme.name === this.state.currentTheme);
     return (
       <UIContext.Provider
         value={{
           ...this.state,
           config,
-          theme: themes[this.state.currentTheme],
+          theme,
           closeCookieConsent: this.closeCookieConsent,
           acceptCookies: this.acceptCookies,
           declineCookies: this.declineCookies,
@@ -253,9 +254,7 @@ class UIProvider extends React.Component {
           toggleSearch: this.toggleSearch,
           toggleTheme: this.toggleTheme,
           toggleLanguageSwitch: this.toggleLanguageSwitch,
-          media: this.buildMediaQueries(
-            themes[this.state.currentTheme].breakpoints,
-          ),
+          media: this.buildMediaQueries(theme.breakpoints),
         }}
       >
         {children}

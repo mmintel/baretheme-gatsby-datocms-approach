@@ -1,7 +1,7 @@
 import React from 'react';
 import { number, boolean, select } from '@storybook/addon-knobs';
 import { colors } from '@baretheme/gatsby-theme-baretheme';
-import Display, { Headline } from '../components/display';
+import { Display, Headline } from '@baretheme/ui';
 
 export default {
   title: 'Components.Display',

@@ -1,7 +1,6 @@
 import React from 'react';
 import { mdiMenu, mdiAccount } from '@mdi/js';
-import IconBar from '../components/icon-bar';
-import IconBarItem from '../components/icon-bar-item';
+import { IconBar } from '@baretheme/ui';
 import Icon from '../components/icon';
 
 export default {
@@ -10,11 +9,11 @@ export default {
 
 export const simple = () => (
   <IconBar>
-    <IconBarItem>
+    <IconBar.Item>
       <Icon path={mdiMenu} />
-    </IconBarItem>
-    <IconBarItem>
+    </IconBar.Item>
+    <IconBar.Item>
       <Icon path={mdiAccount} />
-    </IconBarItem>
+    </IconBar.Item>
   </IconBar>
 );

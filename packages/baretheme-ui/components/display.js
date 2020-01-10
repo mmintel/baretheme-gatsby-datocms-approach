@@ -53,37 +53,4 @@ Display.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const StyledHeadline = styled(Display)`
-  font-weight: bold;
-  color: ${(props) => props.theme.color.highlight};
-
-  &&& + & {
-    margin-top: 0 !important;
-  }
-`;
-
-export const Headline = ({ as, ...props }) => <StyledHeadline as={as} {...props} />;
-
-Headline.defaultProps = {
-  as: 'h2',
-};
-
-Headline.propTypes = {
-  as: PropTypes.node,
-};
-
-const StyledParagraph = styled(Display)`
-`;
-
-export const Paragraph = ({ as, ...props }) => <StyledParagraph as={as} {...props} />;
-
-Paragraph.defaultProps = {
-  as: 'p',
-};
-
-Paragraph.propTypes = {
-  as: PropTypes.node,
-};
-
-
 export default Display;
