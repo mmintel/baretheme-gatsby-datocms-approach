@@ -22,9 +22,9 @@ try {
 const Logo = () => {
   const ui = React.useContext(UIContext);
   return ui.currentTheme === 'light' ? (
-    <BaseLogo logo={LightThemeLogo} />
+    <BaseLogo src={LightThemeLogo.file} alt={LightThemeLogo.meta.alt} svg={LightThemeLogo.meta.format === 'svg'} />
   ) : (
-    <BaseLogo logo={DarkThemeLogo} />
+    <BaseLogo src={DarkThemeLogo.file} alt={DarkThemeLogo.meta.alt} svg={DarkThemeLogo.meta.format === 'svg'} />
   );
 };
 

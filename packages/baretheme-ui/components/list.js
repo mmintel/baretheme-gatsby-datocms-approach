@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-import { Headline } from './display';
+import { Headline } from '@baretheme/ui';
 import withSpacing from '../hocs/with-spacing';
 
 const ListContext = React.createContext();

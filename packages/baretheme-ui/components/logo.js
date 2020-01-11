@@ -16,24 +16,29 @@ const StyledLogo = styled.div`
   }
 `;
 
-const Logo = ({ logo }) => (
-  <StyledLogo>
-    {logo.meta.format === 'svg' ? (
-      <div dangerouslySetInnerHTML={{ __html: logo.file }} />
+const Logo = ({
+  src, alt, svg, ...props
+}) => (
+  <StyledLogo {...props}>
+    {svg ? (
+      // eslint-disable-next-line react/no-danger
+      <div data-testid="svgContainer" dangerouslySetInnerHTML={{ __html: src }} />
     ) : (
-      <img src={logo.file} alt={logo.meta.alt} />
+      <img data-testid="image" src={src} alt={alt} />
     )}
   </StyledLogo>
 );
 
+Logo.defaultProps = {
+  src: '',
+  svg: false,
+  alt: '',
+};
+
 Logo.propTypes = {
-  logo: PropTypes.shape({
-    file: PropTypes.string,
-    meta: PropTypes.shape({
-      format: PropTypes.string,
-      alt: PropTypes.string,
-    }),
-  }).isRequired,
+  src: PropTypes.string,
+  svg: PropTypes.bool,
+  alt: PropTypes.string,
 };
 
 export default Logo;

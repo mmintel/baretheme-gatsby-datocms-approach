@@ -2,6 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import isInternalLink from 'is-internal-link';
 
+const DefaultInternal = ({
+  to,
+  children,
+  // eslint-disable-next-line react/prop-types
+  activeClassName,
+  ...props
+}) => <a href={to} {...props}>{children}</a>;
+
+DefaultInternal.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
+
 const Link = ({
   children, to, internal, external, activeClassName, ...props
 }) => {
@@ -24,7 +37,7 @@ const Link = ({
 };
 
 Link.defaultProps = {
-  internal: 'a',
+  internal: DefaultInternal,
   external: 'a',
   to: undefined,
   className: undefined,

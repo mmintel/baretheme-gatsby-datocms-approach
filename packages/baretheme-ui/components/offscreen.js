@@ -29,7 +29,7 @@ const OffscreenWrapper = styled.div`
 const AnimatedWrapper = animated(OffscreenWrapper);
 
 const Offscreen = ({
-  children, isOpen, onResize, onClose, position, onRest,
+  children, isOpen, onResize, onClose, position, onRest, ...props
 }) => {
   const [resizeListener, sizes] = useResizeAware();
 
@@ -39,25 +39,19 @@ const Offscreen = ({
     onRest,
   });
 
-  React.useEffect(() => {
-    const handleKeyup = (e) => {
-      if (e.key === 'Escape') {
-        if (onClose && typeof onClose === 'function') {
-          onClose();
-        }
+  const handleKeyup = (e) => {
+    if (e.key === 'Escape') {
+      if (onClose && typeof onClose === 'function') {
+        onClose();
       }
-    };
+    }
+  };
 
+  React.useEffect(() => {
     if (onResize && typeof onResize === 'function') {
       onResize(sizes);
     }
-
-    document.addEventListener('keyup', handleKeyup);
-
-    return () => {
-      document.removeEventListener('keyup', handleKeyup);
-    };
-  }, [onClose, onResize, sizes]);
+  }, [onResize, sizes]);
 
   return (
     <AnimatedWrapper
@@ -68,6 +62,8 @@ const Offscreen = ({
           (x, y) => `translateX(${x}px) translateY(${y}px)`,
         ),
       }}
+      onKeyUp={handleKeyup}
+      {...props}
     >
       {resizeListener}
       {children}
