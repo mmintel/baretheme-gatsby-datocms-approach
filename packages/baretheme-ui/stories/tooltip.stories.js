@@ -3,7 +3,7 @@ import { select, boolean } from '@storybook/addon-knobs';
 import Tooltip from '../components/tooltip';
 
 export default {
-  title: 'Components.Tooltip',
+  title: 'Components/Tooltip',
 };
 
 const placements = ['top', 'bottom', 'left', 'right'].reduce(

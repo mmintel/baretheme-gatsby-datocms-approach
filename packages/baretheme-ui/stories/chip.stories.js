@@ -2,7 +2,7 @@ import React from 'react';
 import Chip from '../components/chip';
 
 export default {
-  title: 'Components.Chip',
+  title: 'Components/Chip',
 };
 
 export const Single = () => <Chip>Test</Chip>;

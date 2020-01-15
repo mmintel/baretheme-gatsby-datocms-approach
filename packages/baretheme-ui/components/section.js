@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { UIContext } from '@baretheme/gatsby-theme-baretheme';
+import { useViewportContext } from '@baretheme/ui';
 import withSpacing from '../hocs/with-spacing';
 
 const StyledSection = styled.section`
@@ -9,23 +10,27 @@ const StyledSection = styled.section`
   }
 `;
 
-const ResponsiveSection = (props) => <StyledSection {...props} />;
+const SectionWithSpacing = withSpacing(StyledSection);
 
-const Section = withSpacing(({ mt, mb, ...props }) => {
-  const ui = React.useContext(UIContext);
+const Section = ({ mt, mb, ...props }) => {
+  const viewport = useViewportContext();
   return (
-    <ResponsiveSection
-      mt={ui.media.isGreaterThan('medium') ? mt : mt - 1}
-      mb={ui.media.isGreaterThan('medium') ? mb : mb - 1}
+    <SectionWithSpacing
+      mt={viewport.media.isGreaterThan('medium') ? mt : mt - 1}
+      mb={viewport.media.isGreaterThan('medium') ? mb : mb - 1}
       {...props}
     />
   );
-});
-
+};
 
 Section.defaultProps = {
   mt: 4,
   mb: 4,
+};
+
+Section.propTypes = {
+  mt: PropTypes.number,
+  mb: PropTypes.number,
 };
 
 export default Section;

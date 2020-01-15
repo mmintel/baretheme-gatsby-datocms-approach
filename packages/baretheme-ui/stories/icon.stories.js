@@ -6,7 +6,7 @@ import { action } from '@storybook/addon-actions';
 import Icon from '../components/icon';
 
 export default {
-  title: 'Components.Icon',
+  title: 'Components/Icon',
 };
 
 export const withoutAction = () => <Icon size={number('size', 1)} color={select('color', ['inherit', ...colors])} path={mdiMenu} />;

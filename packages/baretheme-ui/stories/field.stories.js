@@ -4,7 +4,7 @@ import { mdiMagnify } from '@mdi/js';
 import { Field, Icon } from '@baretheme/ui';
 
 export default {
-  title: 'Components.Field',
+  title: 'Components/Field',
 };
 
 export const simple = () => (

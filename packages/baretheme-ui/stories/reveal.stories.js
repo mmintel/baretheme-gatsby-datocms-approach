@@ -2,7 +2,7 @@ import React from 'react';
 import { Reveal } from '@baretheme/ui';
 
 export default {
-  title: 'Components.Reveal',
+  title: 'Components/Reveal',
 };
 
 export const simple = () => (

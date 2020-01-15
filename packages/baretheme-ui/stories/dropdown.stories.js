@@ -3,7 +3,7 @@ import { boolean } from '@storybook/addon-knobs';
 import Dropdown from '../components/dropdown';
 
 export default {
-  title: 'Components.Dropdown',
+  title: 'Components/Dropdown',
 };
 
 export const automatic = () => (

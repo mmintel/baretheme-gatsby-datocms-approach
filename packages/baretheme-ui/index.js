@@ -36,3 +36,4 @@ export { default as Header } from './components/header';
 export { default as withSpacing } from './hocs/with-spacing';
 export { default as withColor } from './hocs/with-color';
 export { default as withPalett } from './hocs/with-palett';
+export { default as ViewportContext, ViewportProvider, useViewportContext } from './context/viewport';

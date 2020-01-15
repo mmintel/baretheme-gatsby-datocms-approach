@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { render } from '@testing-library/react';
-import { themes } from '@baretheme/ui';
+import { themes, ViewportProvider } from '@baretheme/ui';
 import { ThemeProvider } from 'emotion-theming';
 
-const Wrapper = ({ children }) => (
-  <ThemeProvider theme={themes[0]}>
-    {children}
-  </ThemeProvider>
-);
+const Wrapper = ({ children }) => {
+  const theme = themes[0];
+  return (
+    <ThemeProvider theme={theme}>
+      <ViewportProvider theme={theme}>
+        {children}
+      </ViewportProvider>
+    </ThemeProvider>
+  );
+};
 
 Wrapper.propTypes = {
   children: PropTypes.node.isRequired,

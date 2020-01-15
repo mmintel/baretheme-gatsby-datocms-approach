@@ -4,7 +4,7 @@ import { select } from '@storybook/addon-knobs';
 import List from '../components/list';
 
 export default {
-  title: 'Components.List',
+  title: 'Components/List',
 };
 
 export const single = () => (

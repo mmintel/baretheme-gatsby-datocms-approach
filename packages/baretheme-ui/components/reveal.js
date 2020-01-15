@@ -21,17 +21,17 @@ const Reveal = ({ threshold, children, ...props }) => {
   });
 
   return (
-    <div ref={ref} {...props}>
-      <animated.div
-        style={{
-          willChange: 'opacity, transform',
-          opacity: o,
-          transform: y.interpolate((y) => `translateY(${y}px)`),
-        }}
-      >
-        {children}
-      </animated.div>
-    </div>
+    <animated.div
+      style={{
+        willChange: 'opacity, transform',
+        opacity: o,
+        transform: y.interpolate((y) => `translateY(${y}px)`),
+      }}
+      ref={ref}
+      {...props}
+    >
+      {children}
+    </animated.div>
   );
 };
 

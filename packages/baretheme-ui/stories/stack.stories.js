@@ -4,7 +4,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import Stack from '../components/stack';
 
 export default {
-  title: 'Components.Stack',
+  title: 'Components/Stack',
 };
 
 export const single = () => (

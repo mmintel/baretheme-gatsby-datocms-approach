@@ -4,7 +4,7 @@ import { IconBar } from '@baretheme/ui';
 import Icon from '../components/icon';
 
 export default {
-  title: 'Components.IconBar',
+  title: 'Components/IconBar',
 };
 
 export const simple = () => (

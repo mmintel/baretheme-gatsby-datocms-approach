@@ -3,7 +3,7 @@ import { boolean } from '@storybook/addon-knobs';
 import { Flip, Card } from '@baretheme/ui';
 
 export default {
-  title: 'Components.Flip',
+  title: 'Components/Flip',
 };
 
 export const simple = () => (

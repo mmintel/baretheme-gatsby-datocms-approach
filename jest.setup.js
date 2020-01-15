@@ -1,5 +1,19 @@
 import '@testing-library/jest-dom/extend-expect';
 import { matchers } from 'jest-emotion';
+import matchMediaPolyfill from 'mq-polyfill';
+
+require('intersection-observer');
+
+matchMediaPolyfill(window);
+window.matchMedia('(min-width: 920px)');
+window.resizeTo = function resizeTo(width, height) {
+  Object.assign(this, {
+    innerWidth: width,
+    innerHeight: height,
+    outerWidth: width,
+    outerHeight: height,
+  }).dispatchEvent(new this.Event('resize'));
+};
 
 expect.extend(matchers);
 

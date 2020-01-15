@@ -4,7 +4,7 @@ import { boolean } from '@storybook/addon-knobs';
 import Burger from '../components/burger';
 
 export default {
-  title: 'Components.Burger',
+  title: 'Components/Burger',
 };
 
 export const desktop = () => <Burger onToggle={action('onToggle')} isOpen={boolean('isOpen', false)} />;

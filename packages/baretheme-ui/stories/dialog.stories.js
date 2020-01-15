@@ -4,7 +4,7 @@ import { boolean } from '@storybook/addon-knobs';
 import Dialog from '../components/dialog';
 
 export default {
-  title: 'Components.Dialog',
+  title: 'Components/Dialog',
 };
 
 export const Simple = () => (

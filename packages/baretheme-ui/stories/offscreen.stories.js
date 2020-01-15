@@ -4,7 +4,7 @@ import { boolean, select } from '@storybook/addon-knobs';
 import Offscreen from '../components/offscreen';
 
 export default {
-  title: 'Components.Offscreen',
+  title: 'Components/Offscreen',
 };
 
 export const simple = () => (

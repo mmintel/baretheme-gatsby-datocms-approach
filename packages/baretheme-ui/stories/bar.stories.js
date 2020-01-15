@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 import Bar from '../components/bar';
 
 export default {
-  title: 'Components.Bar',
+  title: 'Components/Bar',
 };
 
 export const single = () => (

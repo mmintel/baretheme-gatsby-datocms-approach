@@ -2,7 +2,7 @@ import React from "react";
 import { IntlProvider } from "react-intl";
 import styled from '@emotion/styled'
 import { ThemeProvider } from 'emotion-theming'
-import { Container, Icon, Bootstrap } from "@baretheme/ui";
+import { Container, Icon, Bootstrap, ViewportProvider } from "@baretheme/ui";
 import { mdiThemeLightDark } from "@mdi/js";
 import { UIContext, UIProvider, config } from "@baretheme/gatsby-theme-baretheme";
 
@@ -19,24 +19,26 @@ const ThemeDecorator = storyFn => (
       <UIContext.Consumer>
         {ctx => (
           <ThemeProvider theme={ctx.theme}>
-            <Bootstrap />
-            <Container>
-              <Actions>
-                <Icon onClick={ctx.toggleTheme} path={mdiThemeLightDark} />
-              </Actions>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  minHeight: "100vh",
-                  flexDirection: 'column',
-                  padding: "2rem"
-                }}
-              >
-                {storyFn()}
-              </div>
-            </Container>
+            <ViewportProvider theme={ctx.theme}>
+              <Bootstrap />
+              <Container>
+                <Actions>
+                  <Icon onClick={ctx.toggleTheme} path={mdiThemeLightDark} />
+                </Actions>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    minHeight: "100vh",
+                    flexDirection: 'column',
+                    padding: "2rem"
+                  }}
+                >
+                  {storyFn()}
+                </div>
+              </Container>
+            </ViewportProvider>
           </ThemeProvider>
         )}
       </UIContext.Consumer>

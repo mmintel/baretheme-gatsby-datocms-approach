@@ -1,10 +1,10 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import Display, { Headline } from '../components/display';
+import { Display, Headline } from '@baretheme/ui';
 import TextLink from '../components/text-link';
 
 export default {
-  title: 'Components.TextLink',
+  title: 'Components/TextLink',
 };
 
 export const simple = () => <TextLink onClick={action('click')}>TextLink</TextLink>;

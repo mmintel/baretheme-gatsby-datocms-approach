@@ -4,7 +4,7 @@ import { colors } from '@baretheme/gatsby-theme-baretheme';
 import { Display, Headline } from '@baretheme/ui';
 
 export default {
-  title: 'Components.Display',
+  title: 'Components/Display',
 };
 
 export const simple = () => (
