@@ -22,12 +22,12 @@ const StyledStack = styled.div`
 `;
 
 const Stack = ({
-  align, flush, children,
+  align, flush, children, ...props
 }) => {
   const value = React.useMemo(() => ({ align }), [align]);
   return (
     <StackContext.Provider value={value}>
-      <StyledStack flush={flush}>
+      <StyledStack flush={flush} {...props}>
         {children}
       </StyledStack>
     </StackContext.Provider>

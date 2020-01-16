@@ -41,7 +41,7 @@ const SheetBody = styled(animated.div)`
 `;
 
 const Sheet = ({
-  children, isOpen, onResize, onClose, position, onRest,
+  children, isOpen, onResize, onClose, position, onRest, ...props
 }) => {
   const [ref, bounds] = useMeasure();
 
@@ -75,6 +75,7 @@ const Sheet = ({
     <SheetWrapper
       position={position}
       ref={ref}
+      {...props}
     >
       <SheetBody
         style={{
