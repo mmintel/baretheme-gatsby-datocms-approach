@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.29](https://gitlab.com/baretheme/theme/compare/v0.0.28...v0.0.29) (2020-01-17)
+
+
+### Bug Fixes
+
+* data ([69dba03](https://gitlab.com/baretheme/theme/commit/69dba03aa71384d393e5a23645df6275bbde7cb0))
+* data ([256a1d5](https://gitlab.com/baretheme/theme/commit/256a1d5709ba48df7bbf13e5e2347295344d93de))
+
+
+
+
+
 ## [0.0.28](https://gitlab.com/baretheme/theme/compare/v0.0.27...v0.0.28) (2020-01-04)
 
 
