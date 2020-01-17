@@ -11,7 +11,10 @@ module.exports = {
   },
   coverageDirectory: '<rootDir>/coverage/',
   collectCoverageFrom: [
-    '<rootDir>/packages/**/*.{js,jsx}',
+    '<rootDir>/packages/*/components/**/*.{js,jsx}',
+    '<rootDir>/packages/*/context/**/*.{js,jsx}',
+    '<rootDir>/packages/*/hocs/**/*.{js,jsx}',
+    '<rootDir>/packages/*/src/**/*.{js,jsx}',
   ],
   testPathIgnorePatterns: [...defaults.testPathIgnorePatterns, '.cache', 'public'],
   transformIgnorePatterns: [

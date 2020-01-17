@@ -3,18 +3,15 @@ const fs = require('fs');
 const {
   reset,
   importModels,
-  importMenu,
   exportModels,
   exportContent,
 } = require('@mmintel/datocms-tools')
 const prompts = require('prompts');
 const path = require('path');
 const coreModels = require('../data/models.json.js');
-const coreMenuItems = require('../data/menu.json.js');
 const { uniqBy } = require('lodash');
 
 let models = coreModels;
-let menuItems = coreMenuItems;
 
 const gatsbyConfig = require(path.resolve(process.cwd(), 'gatsby-config.js'));
 const themeOptions = gatsbyConfig.plugins.find(plugin => plugin.resolve === '@baretheme/gatsby-theme-baretheme').options;
@@ -97,12 +94,6 @@ const run = async function() {
   await importModels({
     models,
     apiKey,
-  })
-
-  await importMenu({
-    apiKey,
-    menuItems,
-    models
   })
 
   console.log('All done.')
