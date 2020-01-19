@@ -154,7 +154,7 @@ const Layout = ({ children, pageContext, data }) => {
         <Footer navigation={footerNavigation} />
       </AnimatedLayout>
 
-      { data.site.siteMetadata.useCookies && (
+      { data.site.siteMetadata.useCookies && pageContext.layout.disclaimerDocument && (
         <Sheet
           position="bottom"
           isOpen={ui.cookieConsent.isOpen}

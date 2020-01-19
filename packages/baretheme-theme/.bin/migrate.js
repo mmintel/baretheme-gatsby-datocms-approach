@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require('fs');
+const fs = require('fs-extra');
 const {
   reset,
   importModels,
@@ -8,7 +8,7 @@ const {
 } = require('@mmintel/datocms-tools')
 const prompts = require('prompts');
 const path = require('path');
-const coreModels = require('../data/models.json.js');
+const coreModels = require('@baretheme/gatsby-theme-baretheme/data/models.json');
 const { uniqBy } = require('lodash');
 
 let models = coreModels;
@@ -16,7 +16,7 @@ let models = coreModels;
 const gatsbyConfig = require(path.resolve(process.cwd(), 'gatsby-config.js'));
 const themeOptions = gatsbyConfig.plugins.find(plugin => plugin.resolve === '@baretheme/gatsby-theme-baretheme').options;
 
-themeOptions.plugins.forEach(pluginName => {
+themeOptions.plugins && themeOptions.plugins.forEach(pluginName => {
   const plugin = require(pluginName);
 
   if (plugin.models) {
@@ -38,14 +38,16 @@ themeOptions.plugins.forEach(pluginName => {
   if (plugin.register) {
     plugin.register.forEach(reg => {
       reg.locations.forEach(location => {
-        const field = models.fields.find(f => f.apiKey === location);
-        const itemTypes = field.validators.itemsItemType.itemTypes;
+        const fields = models.fields.filter(f => f.apiKey === location);
+        fields.forEach(field => {
+          const itemTypes = field.validators.itemsItemType.itemTypes;
 
-        reg.apiKeys.forEach(apiKey => {
-          const itemType = models.itemTypes.find(i => i.apiKey === apiKey);
-          if (!itemTypes.find(i => i === itemType.id)) {
-            itemTypes.push(itemType.id);
-          }
+          reg.apiKeys.forEach(apiKey => {
+            const itemType = models.itemTypes.find(i => i.apiKey === apiKey);
+            if (!itemTypes.find(i => i === itemType.id)) {
+              itemTypes.push(itemType.id);
+            }
+          })
         })
       })
     })
@@ -70,19 +72,20 @@ const questions = [
 const run = async function() {
   const response = await prompts(questions);
   const { apiKey } = response;
+  const timestamp = new Date().toISOString().replace(/[^\w]/g, "")
 
   if (!apiKey) return;
 
   exportModels({
     apiKey,
   }).then((data) => {
-    fs.outputFileSync(path.resolve(process.cwd(), '.backups/models.json'), JSON.stringify(data));
+    fs.outputFileSync(path.resolve(process.cwd(), `.backups/models-${timestamp}.json`), JSON.stringify(data));
   });
 
   exportContent({
     apiKey,
   }).then((data) => {
-    fs.outputFileSync(path.resolve(process.cwd(), '.backups/content.json'), JSON.stringify(data));
+    fs.outputFileSync(path.resolve(process.cwd(), `.backups/content-${timestamp}.json`), JSON.stringify(data));
   });
 
   if (response.reset) {

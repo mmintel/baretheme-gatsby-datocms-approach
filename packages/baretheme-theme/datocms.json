@@ -1,0 +1,8 @@
+{
+  "name": "Baretheme",
+  "previewImage": "",
+  "templateId": "21063",
+  "deploymentType": "netlify",
+  "netlifyBuildCommand": "gatsby build",
+  "netlifyBuildDirectory": "public"
+}

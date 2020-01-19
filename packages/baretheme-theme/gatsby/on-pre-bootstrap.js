@@ -90,6 +90,8 @@ async function prefetchAssets(apiKey) {
   const assets = path.resolve(cacheDir, 'assets');
   fse.ensureDir(assets);
 
+  if (!layoutQuery.layout) return;
+
   const { lightThemeLogo } = layoutQuery.layout;
   const { darkThemeLogo } = layoutQuery.layout;
   const files = [

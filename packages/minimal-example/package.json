@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "minimal-example",
   "private": true,
   "version": "0.0.29",
   "main": "index.js",

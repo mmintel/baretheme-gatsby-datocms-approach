@@ -9,7 +9,7 @@ const useViewportContext = function useViewportContext() {
 };
 
 
-const ViewportProvider = ({ theme, children }) => {
+const ViewportProvider = ({ breakpoints, children }) => {
   const buildMediaQueries = (breakpoints) => {
     const getBreakpoint = (breakpoint) => {
       const index = breakpoints.findIndex((item) => item.key === breakpoint);
@@ -57,7 +57,7 @@ const ViewportProvider = ({ theme, children }) => {
 
   return (
     <ViewportContext.Provider value={{
-      media: buildMediaQueries(theme.breakpoints),
+      media: buildMediaQueries(breakpoints),
     }}
     >
       {children}
@@ -66,16 +66,15 @@ const ViewportProvider = ({ theme, children }) => {
 };
 
 ViewportProvider.defaultProps = {
-  theme: {
-    breakpoints: [],
-  },
+  breakpoints: [],
 };
 
 ViewportProvider.propTypes = {
   children: PropTypes.element.isRequired,
-  theme: PropTypes.shape({
-    breakpoints: PropTypes.array,
-  }),
+  breakpoints: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string,
+    value: PropTypes.number,
+  })),
 };
 
 export default ViewportContext;

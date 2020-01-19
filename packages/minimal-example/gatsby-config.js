@@ -3,7 +3,7 @@ module.exports = {
     {
       resolve: '@baretheme/gatsby-theme-baretheme',
       options: {
-        apiKey: '7a48ce3a32ee399b44045ae0fa8487',
+        apiKey: 'cec37e1d28219d9063490b23b49807',
         useSearch: true,
         useCookies: true,
         useTranslations: true,

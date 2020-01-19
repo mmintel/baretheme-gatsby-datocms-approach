@@ -7,7 +7,6 @@ module.exports = (themeOptions) => {
 
   plugins.forEach((plgn) => {
     let plugin;
-    console.log(plgn);
     if (typeof plgn === 'object') {
       // eslint-disable-next-line
       plugin = require(plgn.resolve);

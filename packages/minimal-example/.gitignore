@@ -1,0 +1,6 @@
+.cache
+.backups
+node_modules
+public
+yarn-error.log
+CHANGELOG.md

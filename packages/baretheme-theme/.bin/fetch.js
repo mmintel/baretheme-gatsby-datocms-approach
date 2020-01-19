@@ -7,7 +7,7 @@ const necessaryModels = [
   'layout',
   'asset',
   'dictionary',
-  'link'
+  'link',
 ];
 
 const ignoreSubfieldsIn = [

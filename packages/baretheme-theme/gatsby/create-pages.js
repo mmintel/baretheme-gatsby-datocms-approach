@@ -6,8 +6,9 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
   const { createPage } = actions;
   const documentTemplate = path.resolve(__dirname, '../src/components/document.js');
   const queries = [];
+  const plugins = options.plugins || [];
 
-  options.plugins.forEach((plgn) => {
+  plugins.forEach((plgn) => {
     // eslint-disable-next-line
     let plugin = require(`${plgn.name}`);
 
@@ -20,8 +21,9 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
     }
   });
 
-  const mergedQueries = queries.reduce(
+  const blockQueries = queries.reduce(
     (acc, query) => `
+      type: __typename
       ${acc}
       ${query}
     `,
@@ -58,8 +60,7 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
               tags
             }
             blocks {
-              type: __typename
-              ${mergedQueries}
+              ${blockQueries}
             }
           }
         }
@@ -138,11 +139,11 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
                 }
                 before {
                   type: __typename
-                  ${mergedQueries}
+                  ${blockQueries}
                 }
                 after {
                   type: __typename
-                  ${mergedQueries}
+                  ${blockQueries}
                 }
                 disclaimerDocument {
                   slug

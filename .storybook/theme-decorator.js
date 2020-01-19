@@ -19,7 +19,7 @@ const ThemeDecorator = storyFn => (
       <UIContext.Consumer>
         {ctx => (
           <ThemeProvider theme={ctx.theme}>
-            <ViewportProvider theme={ctx.theme}>
+            <ViewportProvider theme={ctx.theme.breakpoints}>
               <Bootstrap />
               <Container>
                 <Actions>
