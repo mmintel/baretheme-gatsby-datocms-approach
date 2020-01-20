@@ -1,9 +1,11 @@
+require('dotenv').config();
+
 module.exports = {
   plugins: [
     {
       resolve: '@baretheme/gatsby-theme-baretheme',
       options: {
-        apiKey: 'cec37e1d28219d9063490b23b49807',
+        apiKey: process.env.DATOCMS_API_KEY,
         useSearch: true,
         useCookies: true,
         useTranslations: true,

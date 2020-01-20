@@ -8,11 +8,17 @@
     "fetch": "DATOCMS_API_KEY=4182957b4ca7cbc29b8d2e88d6b24f lerna exec --scope @baretheme/* node .bin/fetch.js",
     "postinstall": "lerna bootstrap",
     "lint": "eslint \"./packages/*/src/**/*.{js,jsx}\"",
-    "test": "jest",
+    "lint-staged": "lint-staged",
     "reset": "lerna clean --yes && lerna exec -- rm -rf node_modules .package-lock.json && lerna bootstrap",
     "clean": "lerna exec --scope example -- npm run clean",
     "storybook": "NODE_ENV=production start-storybook -p 6006",
-    "build-storybook": "NODE_ENV=production build-storybook"
+    "build-storybook": "NODE_ENV=production build-storybook",
+    "cy:open": "cypress open",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "jest",
+    "test:e2e": "START_SERVER_AND_TEST_INSECURE=1 start-server-and-test dev http://localhost:8000 cy:open",
+    "cy:run": "cypress run",
+    "test:e2e:ci": "start-server-and-test develop http://localhost:8000 cy:run"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
@@ -68,7 +74,11 @@
     "packages/*"
   ],
   "dependencies": {
-    "@emotion/babel-preset-css-prop": "^10.0.23"
+    "@emotion/babel-preset-css-prop": "^10.0.23",
+    "@testing-library/cypress": "^5.0.2",
+    "cypress": "^3.8.2",
+    "eslint-plugin-cypress": "^2.8.1",
+    "start-server-and-test": "^1.10.6"
   },
   "lint-staged": {
     "*.{js,jsx}": [

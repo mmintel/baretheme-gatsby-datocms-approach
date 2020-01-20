@@ -16,6 +16,7 @@
   "dependencies": {
     "@baretheme/gatsby-plugin-baretheme-text": "^0.0.29",
     "@baretheme/gatsby-theme-baretheme": "^0.0.29",
+    "dotenv": "^8.2.0",
     "gatsby": "2.18.22",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"

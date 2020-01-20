@@ -11,3 +11,4 @@ coverage
 public
 dist
 storybook-static
+.env
