@@ -12,3 +12,4 @@ public
 dist
 storybook-static
 .env
+cypress/videos/

@@ -9586,6 +9586,13 @@ gatsby-core-utils@^1.0.26:
     ci-info "2.0.0"
     node-object-hash "^2.0.0"
 
+gatsby-cypress@^0.2.21:
+  version "0.2.21"
+  resolved "https://registry.yarnpkg.com/gatsby-cypress/-/gatsby-cypress-0.2.21.tgz#e79eb377b3e4e7cf99e2bd61d061bed263c7d73a"
+  integrity sha512-CoBxPVL8NXtj6v9xPhJFmhgbkC/ay1R/8F0N0EwpiCqRI/he7p5IkEBcZBW94qioGGYBfhK6PHxMfOhoIo7USQ==
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
 gatsby-graphiql-explorer@^0.2.32:
   version "0.2.32"
   resolved "https://registry.yarnpkg.com/gatsby-graphiql-explorer/-/gatsby-graphiql-explorer-0.2.32.tgz#0664d32e6ae81d42689967141acfa2783c1a3478"

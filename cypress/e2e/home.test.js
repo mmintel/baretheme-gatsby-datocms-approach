@@ -1,7 +1,7 @@
 describe('Home checks', () => {
   beforeEach(() => {
     cy.visit('/');
-    cy.wait(500);
+    cy.waitForRouteChange();
   });
 
   it('has the example title', () => {
