@@ -14,6 +14,21 @@ variables:
   GET_PHASE: $GET_PHASE
   EDIT_USER: $EDIT_USER
 
+artifacts:
+  when: on_failure
+  expire_in: '1 week'
+  untracked: true
+  paths:
+    - cypress/videos
+    - cypress/screenshots
+
+artifacts:
+  when: on_success
+  expire_in: '3 days'
+  untracked: true
+  paths:
+    - cypress/screenshots
+
 cache:
   paths:
     - node_modules/
