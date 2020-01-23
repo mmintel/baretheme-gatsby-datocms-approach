@@ -1,50 +1,56 @@
-image: node
-
-variables:
-  GET_PHASE_KITS: $GET_PHASE_KITS
-  GET_KIT: $GET_KIT
-  GET_PHASE_ASSETS: $GET_PHASE_ASSETS
-  GET_USER: $GET_USER
-  CREATE_USER: $CREATE_USER
-  ADD_USER_KIT: $ADD_USER_KIT
-  GET_USER_BY_ID: $GET_USER_BY_ID
-  GET_PHASES: $GET_PHASES
-  ADD_USER_ASSET: $ADD_USER_ASSET
-  GET_ASSET: $GET_ASSET
-  GET_PHASE: $GET_PHASE
-  EDIT_USER: $EDIT_USER
-
-artifacts:
-  when: on_failure
-  expire_in: '1 week'
-  untracked: true
-  paths:
-    - cypress/videos
-    - cypress/screenshots
-
-artifacts:
-  when: on_success
-  expire_in: '3 days'
-  untracked: true
-  paths:
-    - cypress/screenshots
-
-cache:
-  paths:
-    - node_modules/
-    - .yarn
-    - .cache
-
+# first, install Cypress, then run all tests (in parallel)
 stages:
+  - build
   - test
 
-before_script:
-  - apt-get update -qq && apt-get install -y libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-  - yarn install --frozen-lockfile
+# to cache both npm modules and Cypress binary we use environment variables
+# to point at the folders we can list as paths in "cache" job settings
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
 
-test:
-  image: buildkite/puppeteer
+# cache using branch name
+# https://gitlab.com/help/ci/caching/index.md
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm
+    - cache/Cypress
+    - node_modules
+
+# this job installs NPM dependencies and Cypress
+install:
+  image: cypress/base:10
+  stage: build
+
+  script:
+    - yarn install --frozen-lockfile
+    - $(npm bin)/print-env CI
+    - npm run cy:verify
+
+# all jobs that actually run tests can use the same definition
+.job_template:
+  image: cypress/base:10
   stage: test
   script:
-    - yarn lint
-    - yarn test
+    - $(npm bin)/print-env CI
+    - npm run test:e2e:ci -- --parallel --group "electrons on GitLab CI"
+  artifacts:
+    when: always
+    paths:
+      - cypress/videos/**/*.mp4
+      - cypress/screenshots/**/*.png
+    expire_in: 1 day
+
+# actual job definitions
+# all steps are the same, they come from the template above
+electrons-1:
+  extends: .job_template
+electrons-2:
+  extends: .job_template
+electrons-3:
+  extends: .job_template
+electrons-4:
+  extends: .job_template
+electrons-5:
+  extends: .job_template

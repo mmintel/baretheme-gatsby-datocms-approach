@@ -14,10 +14,11 @@
     "build-storybook": "NODE_ENV=production build-storybook",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
+    "cy:record": "cypress run --record",
     "test": "npm run test:unit && npm run test:e2e:ci",
     "test:unit": "jest",
     "test:e2e": "START_SERVER_AND_TEST_INSECURE=1 CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:open",
-    "test:e2e:ci": "START_SERVER_AND_TEST_INSECURE=1 CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:run"
+    "test:e2e:ci": "START_SERVER_AND_TEST_INSECURE=1 CYPRESS_SUPPORT=y start-server-and-test dev http://localhost:8000 cy:record"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
