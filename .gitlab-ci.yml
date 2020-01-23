@@ -25,7 +25,6 @@ install:
 
   script:
     - yarn install --frozen-lockfile
-    - $(npm bin)/print-env CI
     - npm run cy:verify
 
 # all jobs that actually run tests can use the same definition
@@ -33,7 +32,6 @@ install:
   image: cypress/base:10
   stage: test
   script:
-    - $(npm bin)/print-env CI
     - npm run test:e2e:ci -- --parallel --group "electrons on GitLab CI"
   artifacts:
     when: always
