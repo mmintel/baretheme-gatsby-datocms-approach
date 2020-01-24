@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.32](https://gitlab.com/baretheme/theme/compare/v0.0.31...v0.0.32) (2020-01-24)
+
+
+### Bug Fixes
+
+* placeholder of field ([213b22a](https://gitlab.com/baretheme/theme/commit/213b22a70abe05180ff4c9d4a1c2bbb62849b4ab))
+
+
+
+
+
 ## [0.0.31](https://gitlab.com/baretheme/theme/compare/v0.0.29...v0.0.31) (2020-01-24)
 
 

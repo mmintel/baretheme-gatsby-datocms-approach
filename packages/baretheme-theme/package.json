@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-theme-baretheme",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "main": "index.js",
   "description": "Theme for Gatsby",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
@@ -18,8 +18,8 @@
     "lint": "eslint ./**/* --ext js,jsx"
   },
   "dependencies": {
-    "@baretheme/ui": "^0.0.31",
-    "@baretheme/utils": "^0.0.31",
+    "@baretheme/ui": "^0.0.32",
+    "@baretheme/utils": "^0.0.32",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
