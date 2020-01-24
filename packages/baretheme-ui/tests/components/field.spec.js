@@ -44,12 +44,13 @@ describe('Field component', () => {
     expect(node).toHaveFocus();
   });
 
-  it('hides the placeholder with a value', () => {
+  it('hides the placeholder with a value and when focused', () => {
     const placeholderText = 'Placeholder-Text';
     const { getByTestId, getByText } = render(
       <Field placeholder={placeholderText} />,
     );
     const node = getByTestId('input');
+    fireEvent.focus(node);
     fireEvent.change(node, {
       target: {
         value: 'Test',

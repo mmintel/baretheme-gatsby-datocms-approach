@@ -8,26 +8,33 @@ export default {
 };
 
 export const simple = () => (
-  <Field
-    valid={boolean('valid', false)}
-    focus={boolean('focus', false)}
-    value={text('value', 'John Doe')}
-    error={text('error', undefined)}
-    placeholder={text('placeholder', 'I am a placeholder')}
-  />
+  <>
+    <Field
+      mb={1}
+      valid={boolean('valid', false)}
+      focus={boolean('focus', false)}
+      label={text('label', 'E-Mail')}
+      error={text('error', undefined)}
+      placeholder={text('placeholder', 'I am a placeholder')}
+    />
+    <Field
+      valid={boolean('valid', false)}
+      value={text('value', 'John Doe')}
+      error={text('error', undefined)}
+      placeholder={text('placeholder', 'I am a placeholder')}
+    />
+  </>
 );
 
 export const withAppend = () => (
   <>
     <Field
       mb={1}
-      focus={boolean('focus', false)}
       value={text('value', 'John Doe')}
       placeholder={text('placeholder', 'I am a placeholder')}
       append={<Field.Button>Submit</Field.Button>}
     />
     <Field
-      focus={boolean('focus', false)}
       value={text('value', 'John Doe')}
       placeholder={text('placeholder', 'I am a placeholder')}
       append={<Field.Button palett="primary" append>Submit</Field.Button>}

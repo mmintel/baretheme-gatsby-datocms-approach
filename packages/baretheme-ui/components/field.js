@@ -73,7 +73,7 @@ const FieldHeader = styled.div`
   transition: transform ease-in-out 0.5s;
 
   ${(props) => !props.compact && css`
-    transform: scale(1.5) translateY(0.6rem);
+    transform: scale(1.5) translateY(0.7rem);
   `}
 `;
 
@@ -183,7 +183,7 @@ const Field = React.forwardRef(
               </FieldHeader>
               <StyledInputWrapper>
                 { placeholder && (
-                  <FieldPlaceholder visible={!innerValue} align={align}>
+                  <FieldPlaceholder visible={!innerValue && focused} align={align}>
                     { placeholder }
                   </FieldPlaceholder>
                 )}
