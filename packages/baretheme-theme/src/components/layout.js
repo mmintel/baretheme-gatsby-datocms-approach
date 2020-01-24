@@ -18,7 +18,7 @@ import Blocks from './blocks';
 import filterNavItems from '../util/filter-nav-items';
 import Indicators from './indicators';
 
-const LayoutWrapper = styled.div`
+const LayoutBody = styled.div`
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -85,7 +85,7 @@ AnimatedOffscreenNavigation.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const AnimatedLayoutWrapper = animated(LayoutWrapper);
+const AnimatedLayoutBody = animated(LayoutBody);
 
 const AnimatedLayout = ({ locked, children }) => {
   const ui = React.useContext(UIContext);
@@ -94,7 +94,7 @@ const AnimatedLayout = ({ locked, children }) => {
     y: ui.search.isOpen ? ui.search.sizes.height * 1 : 0,
   });
   return (
-    <AnimatedLayoutWrapper
+    <AnimatedLayoutBody
       locked={locked}
       style={{
         willChange: 'transform',
@@ -105,7 +105,7 @@ const AnimatedLayout = ({ locked, children }) => {
       }}
     >
       {children}
-    </AnimatedLayoutWrapper>
+    </AnimatedLayoutBody>
   );
 };
 
@@ -117,6 +117,12 @@ AnimatedLayout.propTypes = {
   locked: PropTypes.bool,
   children: PropTypes.node.isRequired,
 };
+
+const LayoutWrapper = styled.div`
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+`;
 
 const Layout = ({ children, pageContext, data }) => {
   const ui = React.useContext(UIContext);
@@ -138,7 +144,7 @@ const Layout = ({ children, pageContext, data }) => {
   };
 
   return (
-    <div style={{ width: '100vw', overflow: 'hidden', position: 'relative' }}>
+    <LayoutWrapper>
       <AnimatedLayout ctx={ui} locked={offscreenOpen}>
         <LayoutOverlay onClick={handleOverlayClick} open={offscreenOpen} />
         <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
@@ -201,7 +207,7 @@ const Layout = ({ children, pageContext, data }) => {
           <Search isOpen={ui.search.isOpen} />
         </Offscreen>
       )}
-    </div>
+    </LayoutWrapper>
   );
 };
 
