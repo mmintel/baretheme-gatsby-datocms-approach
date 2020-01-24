@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/ui",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Shared ui components for baretheme",
   "main": "index.js",
   "publishConfig": {

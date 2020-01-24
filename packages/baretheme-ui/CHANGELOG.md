@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.30](https://gitlab.com/baretheme/theme/compare/v0.0.29...v0.0.30) (2020-01-24)
+
+
+### Bug Fixes
+
+* stability issues ([e3c1a9e](https://gitlab.com/baretheme/theme/commit/e3c1a9ed88009ff70f910906d1ea3c3da3bb2724))
+
+
+
+
+
 ## [0.0.29](https://gitlab.com/baretheme/theme/compare/v0.0.28...v0.0.29) (2020-01-17)
 
 **Note:** Version bump only for package @baretheme/ui
