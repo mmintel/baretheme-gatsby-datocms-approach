@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-plugin-baretheme-teaser",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Teaser component for baretheme",
   "main": "index.js",
   "peerDependencies": {
@@ -14,8 +14,8 @@
     "gatsby-plugin"
   ],
   "dependencies": {
-    "@baretheme/ui": "^0.0.30",
-    "@baretheme/utils": "^0.0.30",
+    "@baretheme/ui": "^0.0.31",
+    "@baretheme/utils": "^0.0.31",
     "prop-types": "^15.7.2"
   }
 }

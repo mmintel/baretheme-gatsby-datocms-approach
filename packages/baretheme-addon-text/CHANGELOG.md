@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.31](https://gitlab.com/baretheme/theme/compare/v0.0.29...v0.0.31) (2020-01-24)
+
+
+### Bug Fixes
+
+* do not ignore changelog ([99bddc5](https://gitlab.com/baretheme/theme/commit/99bddc5cdd3c6fd0bc8617b9e639d68f84137ebf))
+
+
+
+
+
 ## [0.0.30](https://gitlab.com/baretheme/theme/compare/v0.0.29...v0.0.30) (2020-01-24)
 
 **Note:** Version bump only for package @baretheme/gatsby-plugin-baretheme-text

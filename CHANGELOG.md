@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.31](https://gitlab.com/baretheme/theme/compare/v0.0.29...v0.0.31) (2020-01-24)
+
+
+### Bug Fixes
+
+* do not ignore changelog ([99bddc5](https://gitlab.com/baretheme/theme/commit/99bddc5cdd3c6fd0bc8617b9e639d68f84137ebf))
+* scrollbar ([7532d4d](https://gitlab.com/baretheme/theme/commit/7532d4de92a32d17d08c0b87a538aea53ff20e28))
+* stability issues ([e3c1a9e](https://gitlab.com/baretheme/theme/commit/e3c1a9ed88009ff70f910906d1ea3c3da3bb2724))
+
+
+
+
+
 ## [0.0.30](https://gitlab.com/baretheme/theme/compare/v0.0.29...v0.0.30) (2020-01-24)
 
 
