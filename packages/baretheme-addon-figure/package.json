@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-plugin-baretheme-figure",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Figure component for baretheme",
   "main": "index.js",
   "publishConfig": {
@@ -11,8 +11,8 @@
     "react": "16.x"
   },
   "dependencies": {
-    "@baretheme/gatsby-theme-baretheme": "^0.3.1",
-    "@baretheme/ui": "^0.3.0",
+    "@baretheme/gatsby-theme-baretheme": "^0.3.2",
+    "@baretheme/ui": "^0.3.2",
     "@baretheme/utils": "^0.3.0",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27"
