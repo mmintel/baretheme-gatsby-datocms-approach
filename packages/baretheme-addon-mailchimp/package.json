@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-plugin-baretheme-mailchimp",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "Mailchimp component for baretheme",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
@@ -21,8 +21,8 @@
     "gatsby-plugin"
   ],
   "dependencies": {
-    "@baretheme/ui": "^0.3.2",
-    "@baretheme/utils": "^0.3.0",
+    "@baretheme/ui": "^0.4.0",
+    "@baretheme/utils": "^0.4.0",
     "@mdi/js": "^4.7.95",
     "gatsby-plugin-mailchimp": "^5.1.2",
     "react-hook-form": "^3.28.14"
