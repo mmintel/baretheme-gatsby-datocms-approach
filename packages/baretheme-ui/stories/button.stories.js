@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { number, select } from '@storybook/addon-knobs';
-import { palettes } from '@baretheme/gatsby-theme-baretheme';
+import { palettes } from '@baretheme/ui';
 import Button from '../components/button';
 
 export default {

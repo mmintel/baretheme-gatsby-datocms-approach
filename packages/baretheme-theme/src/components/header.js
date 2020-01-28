@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Header, Burger } from '@baretheme/ui';
-
 import UIContext from '../context/ui';
 import Brand from './brand';
 

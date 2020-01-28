@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { palettes } from '@baretheme/gatsby-theme-baretheme';
+import { palettes } from '@baretheme/ui';
 
 const withPalett = (Component) => {
   const WithPalett = ({ palett, ...props }) => {

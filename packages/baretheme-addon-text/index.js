@@ -4,17 +4,14 @@ module.exports = {
   models,
   register: [
     {
-      locations: ['blocks', 'before', 'after'],
+      locations: ['blocks', 'before', 'after'], // Todo delete, must be registered to all, always
       apiKeys: ['text'],
     },
   ],
-  query: `
+  contentQuery: `
     ...on DatoCmsText {
       id
       title
-      hideHeading
-      headingLevel
-      headingSize
       align
       content
     }

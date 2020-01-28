@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl';
 import UIContext from '../context/ui';
 import Layout from './layout';
 import Site from './site';
-import Blocks from './blocks';
+import Content from './content';
 
 const Document = ({ pageContext }) => {
   const ui = useContext(UIContext);
@@ -26,7 +26,7 @@ const Document = ({ pageContext }) => {
       <Site pageContext={pageContext}>
         <Layout pageContext={pageContext}>
           <HelmetDatoCms seo={pageContext.node.seoMetaTags} />
-          <Blocks blocks={pageContext.node.blocks} />
+          <Content items={pageContext.node.content} />
         </Layout>
       </Site>
     </IntlProvider>
@@ -40,6 +40,7 @@ Document.propTypes = {
       locale: PropTypes.string,
       seoMetaTags: PropTypes.object,
       blocks: PropTypes.array,
+      content: PropTypes.array,
     }),
   }).isRequired,
 };

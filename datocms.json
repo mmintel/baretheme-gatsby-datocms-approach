@@ -1,0 +1,8 @@
+{
+  "name": "Baretheme",
+  "previewImage": "https://www.datocms-assets.com/16103/1579877426-datocms.png",
+  "templateId": "21063",
+  "deploymentType": "netlify",
+  "netlifyBuildCommand": "gatsby build",
+  "netlifyBuildDirectory": "public"
+}

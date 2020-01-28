@@ -1,0 +1,30 @@
+{
+  "name": "@baretheme/gatsby-plugin-baretheme-mailchimp",
+  "version": "0.0.32",
+  "description": "Mailchimp component for baretheme",
+  "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
+  "license": "MIT",
+  "main": "index.js",
+  "peerDependencies": {
+    "@baretheme/gatsby-theme-baretheme": "^0.0.32",
+    "gatsby": "2.x",
+    "react": "16.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "baretheme",
+    "react-component",
+    "gatsby",
+    "mailchimp",
+    "gatsby-plugin"
+  ],
+  "dependencies": {
+    "@baretheme/ui": "^0.0.32",
+    "@baretheme/utils": "^0.0.32",
+    "@mdi/js": "^4.7.95",
+    "gatsby-plugin-mailchimp": "^5.1.2",
+    "react-hook-form": "^3.28.14"
+  }
+}

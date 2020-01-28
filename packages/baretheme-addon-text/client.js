@@ -1,7 +1,7 @@
 import Text from './components/text';
 
 export default {
-  components: [
+  contents: [
     {
       name: 'DatoCmsText',
       component: Text,

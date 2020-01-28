@@ -12,12 +12,16 @@ const StyledDisplay = styled('span', {
   shouldForwardProp: (prop) => isPropValid(prop) && !blacklistProps.includes(prop),
 })`
   font-style: ${(props) => props.italic && 'italic'};
-  font-weight: ${(props) => props.bold && 'bold'};
   text-transform: ${(props) => props.uppercase && 'uppercase'};
   font-size: ${(props) => props.theme.fontSize(props.size)};
   text-align: ${(props) => props.align};
   color: ${(props) => props.theme.color[props.color]};
   user-select: ${(props) => (props.selectable ? 'text' : 'none')};
+
+  ${(props) => props.bold && css`
+    font-weight: bold;
+    color: ${props.theme.color.highlight};
+  `}
 
   ${(props) => props.hidden && css`
     display: block;

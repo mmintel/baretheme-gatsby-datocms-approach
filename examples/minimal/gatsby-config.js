@@ -11,6 +11,8 @@ module.exports = {
         useTranslations: true,
         plugins: [
           '@baretheme/gatsby-plugin-baretheme-text',
+          '@baretheme/gatsby-plugin-baretheme-figure',
+          '@baretheme/gatsby-plugin-baretheme-mailchimp',
         ],
       },
     },

@@ -3,12 +3,16 @@ import PropTypes from 'prop-types';
 import { useInView } from 'react-hook-inview';
 import { animated, useSpring } from 'react-spring';
 
-const Reveal = ({ threshold, children, ...props }) => {
+const Reveal = ({
+  threshold, children, once, ...props
+}) => {
   const [ref, inView, entry] = useInView({ threshold });
   const [isTop, setIsTop] = React.useState();
+  const [wasVisible, setWasVisible] = React.useState(false);
   const yValue = isTop ? -50 : 50;
 
   React.useEffect(() => {
+    setWasVisible(true);
     if (entry) {
       setIsTop(entry.boundingClientRect.y < 0);
     }
@@ -16,8 +20,8 @@ const Reveal = ({ threshold, children, ...props }) => {
 
 
   const { y, o } = useSpring({
-    o: inView ? 1 : 0,
-    y: inView ? 0 : yValue,
+    o: wasVisible || inView ? 1 : 0,
+    y: wasVisible || inView ? 0 : yValue,
   });
 
   return (
@@ -37,9 +41,11 @@ const Reveal = ({ threshold, children, ...props }) => {
 
 Reveal.defaultProps = {
   threshold: 0.5,
+  once: false,
 };
 
 Reveal.propTypes = {
+  once: PropTypes.bool,
   threshold: PropTypes.number,
   children: PropTypes.node.isRequired,
 };

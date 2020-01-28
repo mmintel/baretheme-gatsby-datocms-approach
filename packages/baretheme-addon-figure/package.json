@@ -1,0 +1,26 @@
+{
+  "name": "@baretheme/gatsby-plugin-baretheme-figure",
+  "version": "0.0.32",
+  "description": "Figure component for baretheme",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@baretheme/gatsby-theme-baretheme": "^0.0.32",
+    "react": "16.x"
+  },
+  "dependencies": {
+    "@baretheme/gatsby-theme-baretheme": "^0.0.32",
+    "@baretheme/ui": "^0.0.32",
+    "@baretheme/utils": "^0.0.32",
+    "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27"
+  },
+  "keywords": [
+    "baretheme",
+    "react-component",
+    "gatsby",
+    "gatsby-theme"
+  ]
+}

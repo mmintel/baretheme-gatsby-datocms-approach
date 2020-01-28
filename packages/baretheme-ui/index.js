@@ -1,4 +1,6 @@
-export { default as themes } from './themes';
+export {
+  default as themes, colors, palettes, themeNames,
+} from './themes';
 export { default as Button } from './components/button';
 export { default as Flip } from './components/flip';
 export { default as Reveal } from './components/reveal';
@@ -33,6 +35,7 @@ export { default as Bootstrap } from './components/bootstrap';
 export { default as Bar } from './components/bar';
 export { default as Footer } from './components/footer';
 export { default as Header } from './components/header';
+export { default as Media } from './components/media';
 export { default as withSpacing } from './hocs/with-spacing';
 export { default as withColor } from './hocs/with-color';
 export { default as withPalett } from './hocs/with-palett';

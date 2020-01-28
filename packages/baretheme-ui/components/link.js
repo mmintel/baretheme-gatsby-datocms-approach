@@ -18,7 +18,8 @@ DefaultInternal.propTypes = {
 const Link = ({
   children, to, internal, external, activeClassName, ...props
 }) => {
-  const isInternal = isInternalLink(to);
+  // eslint-disable-next-line no-script-url
+  const isInternal = isInternalLink(to) && !to.startsWith('javascript:');
   const InternalComponent = internal;
   const ExternalComponent = external;
 

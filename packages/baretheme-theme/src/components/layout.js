@@ -14,7 +14,7 @@ import Header from './header';
 import Footer from './footer';
 import MainNavigation from './main-navigation';
 import LanguageSwitch from './language-switch';
-import Blocks from './blocks';
+import Content from './content';
 import filterNavItems from '../util/filter-nav-items';
 import Indicators from './indicators';
 
@@ -150,11 +150,11 @@ const Layout = ({ children, pageContext, data }) => {
         <Header navigation={mainNavigation} socialAccounts={pageContext.layout.socialAccounts} />
         <Main>
           { pageContext.layout.before && (
-            <Blocks blocks={pageContext.layout.before} />
+            <Content items={pageContext.layout.before} />
           )}
           {children}
           { pageContext.layout.after && (
-            <Blocks blocks={pageContext.layout.after} />
+            <Content items={pageContext.layout.after} />
           )}
         </Main>
         <Footer navigation={footerNavigation} />

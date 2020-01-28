@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "lerna run dev --scope example-minimal",
     "build": "lerna run build --scope example-minimal",
+    "bootstrap": "lerna bootstrap",
     "release": "lerna publish --conventional-commits",
     "fetch": "DATOCMS_API_KEY=4182957b4ca7cbc29b8d2e88d6b24f lerna exec --scope @baretheme/* node .bin/fetch.js",
     "postinstall": "lerna bootstrap",

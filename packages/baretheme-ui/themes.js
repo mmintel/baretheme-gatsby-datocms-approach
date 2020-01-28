@@ -31,7 +31,7 @@ const darkColors = {
   highlight: '#fff',
   raised: '#252525',
   lowered: '#161617',
-  shadow: '0, 0, 0',
+  shadow: '10, 10, 10',
   overlay: `rgba(0,0,0,${alpha[5]})`,
 };
 

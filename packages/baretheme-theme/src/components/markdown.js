@@ -9,14 +9,17 @@ import {
   Headline,
   List,
   TextLink,
+  Button,
 } from '@baretheme/ui';
-import { Link } from '@baretheme/gatsby-theme-baretheme';
+import { Link, useUI } from '@baretheme/gatsby-theme-baretheme';
 
 const parseHtml = htmlParser({
   isValidNode: (node) => node.type !== 'script',
 });
 
 const Markdown = ({ align, ...props }) => {
+  const ui = useUI();
+
   const StrongRenderer = ({ children }) => <Display bold>{children}</Display>;
   StrongRenderer.propTypes = {
     children: PropTypes.node.isRequired,
@@ -98,6 +101,17 @@ const Markdown = ({ align, ...props }) => {
     children: PropTypes.node.isRequired,
   };
 
+  const HTMLParser = ({ element, children }) => {
+    let Component = element;
+    let onClick = () => {};
+    if (element.type === 'button') Component = Button;
+    console.log(element.props);
+    if (element.props.toggletheme) {
+      onClick = () => ui.toggleTheme();
+    }
+    return <Component onClick={onClick} {...element.props}>{children}</Component>;
+  };
+
   return (
     <ReactMarkdown
       astPlugins={[parseHtml]}
@@ -111,6 +125,7 @@ const Markdown = ({ align, ...props }) => {
         link: LinkRenderer,
         strong: StrongRenderer,
         emphasis: EmphasisRenderer,
+        parsedHtml: HTMLParser,
       }}
       {...props}
     />

@@ -6,6 +6,11 @@ import themes from '@baretheme/ui/themes';
 
 const UIContext = React.createContext(null);
 
+const useUI = function useUI() {
+  const context = React.useContext(UIContext);
+  return context;
+};
+
 const supportsDarkMode = () => window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
 class UIProvider extends React.Component {
@@ -276,4 +281,4 @@ UIProvider.propTypes = {
 };
 
 export default UIContext;
-export { UIProvider };
+export { UIProvider, useUI };
