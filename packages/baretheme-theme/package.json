@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-theme-baretheme",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "main": "index.js",
   "description": "Theme for Gatsby",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
