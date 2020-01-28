@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-plugin-baretheme-text",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Text component for baretheme",
   "main": "index.js",
   "publishConfig": {
@@ -11,8 +11,8 @@
     "react": "16.x"
   },
   "dependencies": {
-    "@baretheme/ui": "^0.1.0",
-    "@baretheme/utils": "^0.1.0"
+    "@baretheme/ui": "^0.2.0",
+    "@baretheme/utils": "^0.2.0"
   },
   "keywords": [
     "baretheme",
