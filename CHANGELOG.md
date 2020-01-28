@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://gitlab.com/baretheme/theme/compare/v0.2.0...v0.3.0) (2020-01-28)
+
+
+### Features
+
+* add google package ([9cec9fe](https://gitlab.com/baretheme/theme/commit/9cec9feda1c28b97fbff3d55e94bdb3fd4a47af0))
+* add google package ([c2ed6d7](https://gitlab.com/baretheme/theme/commit/c2ed6d758a579928d3ad6ee8604e9c87467df31e))
+
+
+
+
+
 # [0.2.0](https://gitlab.com/baretheme/theme/compare/v0.0.32...v0.2.0) (2020-01-28)
 
 

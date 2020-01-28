@@ -1,7 +1,7 @@
 {
   "name": "example-minimal",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "main": "index.js",
   "author": "Marc <marc@mintel.me> (@mmintel)",
   "license": "MIT",
@@ -14,10 +14,10 @@
     "fetch": "echo \"Don't fetch anything in example\""
   },
   "dependencies": {
-    "@baretheme/gatsby-plugin-baretheme-figure": "^0.2.0",
-    "@baretheme/gatsby-plugin-baretheme-mailchimp": "^0.2.0",
-    "@baretheme/gatsby-plugin-baretheme-text": "^0.2.0",
-    "@baretheme/gatsby-theme-baretheme": "^0.2.0",
+    "@baretheme/gatsby-plugin-baretheme-figure": "^0.3.0",
+    "@baretheme/gatsby-plugin-baretheme-mailchimp": "^0.3.0",
+    "@baretheme/gatsby-plugin-baretheme-text": "^0.3.0",
+    "@baretheme/gatsby-theme-baretheme": "^0.3.0",
     "dotenv": "^8.2.0",
     "gatsby": "2.18.22",
     "react": "^16.11.0",
