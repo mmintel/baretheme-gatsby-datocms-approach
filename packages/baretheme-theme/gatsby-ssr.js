@@ -6,17 +6,17 @@ import UIContext, { UIProvider } from './src/context/ui';
 import config from './config';
 
 const RootWrapper = ({ element }, themeOptions) => (
-  <UIProvider config={{ ...config, ...themeOptions }}>
-    <UIContext.Consumer>
-      {(ctx) => (
-        <ViewportProvider breakpoints={ctx.theme.breakpoints}>
+  <ViewportProvider>
+    <UIProvider config={{ ...config, ...themeOptions }}>
+      <UIContext.Consumer>
+        {(ctx) => (
           <ThemeProvider theme={ctx.theme}>
             {element}
           </ThemeProvider>
-        </ViewportProvider>
-      )}
-    </UIContext.Consumer>
-  </UIProvider>
+        )}
+      </UIContext.Consumer>
+    </UIProvider>
+  </ViewportProvider>
 );
 
 RootWrapper.propTypes = {

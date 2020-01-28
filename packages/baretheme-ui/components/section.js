@@ -16,8 +16,8 @@ const Section = ({ mt, mb, ...props }) => {
   const viewport = useViewportContext();
   return (
     <SectionWithSpacing
-      mt={viewport.isGreaterThan('medium') ? mt : mt - 1}
-      mb={viewport.isGreaterThan('medium') ? mb : mb - 1}
+      mt={viewport.isLarge ? mt : mt - 1}
+      mb={viewport.isLarge ? mb : mb - 1}
       {...props}
     />
   );

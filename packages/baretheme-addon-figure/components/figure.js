@@ -7,32 +7,33 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Markdown, Image, useUI } from '@baretheme/gatsby-theme-baretheme';
 
-const blacklistProps = ['orientation', 'reverse'];
+const blacklistProps = ['orientation', 'reverse', 'shrink'];
 
 const StyledFigure = styled('div', {
   shouldForwardProp: (prop) => !blacklistProps.includes(prop),
 })`
   display: grid;
   align-items: center;
+  grid-column-gap: ${(props) => props.theme.spacing(2)};
+  grid-row-gap: ${(props) => props.theme.spacing(2)};
 
   ${(props) => props.orientation === 'horizontal' && css`
     grid-template-columns: 1fr 1fr;
-    grid-column-gap: ${props.theme.spacing(2)};
   `}
 
-  ${(props) => props.orientation === 'vertical' && css`
-    grid-row-gap: ${props.theme.spacing(2)};
+  ${(props) => props.shrink && css`
+    grid-column-gap: ${props.theme.spacing(1)};
   `}
 `;
 
 const Figure = ({ item }) => {
   const ui = useUI();
   const viewport = useViewportContext();
-  const orientation = !viewport.isGreaterThan('medium') ? 'vertical' : item.orientation;
+  const orientation = !viewport.isMedium ? 'vertical' : item.orientation;
   return (
     <Section>
       <Container size={item.orientation === 'vertical' ? 'small' : 'medium'}>
-        <StyledFigure orientation={orientation} reverse={item.reverse}>
+        <StyledFigure orientation={orientation} reverse={item.reverse} shrink={viewport.isOnlyMedium}>
           <Reveal once>
             { item.light && item.dark && (
               <>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 
 const ViewportContext = React.createContext(null);
 
@@ -8,55 +9,30 @@ const useViewportContext = function useViewportContext() {
   return context;
 };
 
-const ViewportProvider = ({ breakpoints, children }) => {
-  const getBreakpoint = (breakpoint) => {
-    const index = breakpoints.findIndex((item) => item.key === breakpoint);
-    const item = breakpoints[index];
-    if (!breakpoint) {
-      throw new Error(`Breakpoint "${breakpoint}" not found.`);
-    }
-    return {
-      ...item,
-      index,
-    };
-  };
-  const ssrBreakpoint = getBreakpoint('medium');
-
-  const isLessThan = function isLessThan(breakpoint) {
-    const br = getBreakpoint(breakpoint);
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(`(max-width: ${br.value}px)`).matches;
-    }
-    return br.index <= ssrBreakpoint.index;
-  };
-
-  const isGreaterThan = function isGreaterThan(breakpoint) {
-    const br = getBreakpoint(breakpoint);
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(`(min-width: ${br.value + 1}px)`).matches;
-    }
-    return br.index <= ssrBreakpoint.index;
-  };
-
-  const isBetween = function isBetween(min, max) {
-    const minBr = getBreakpoint(min);
-    const maxBr = getBreakpoint(max);
-    if (typeof window !== 'undefined') {
-      return window.matchMedia(
-        `(min-width: ${minBr.value + 1}px) and (max-width: ${maxBr.value}px)`,
-      ).matches;
-    }
-    return (
-      minBr.index <= ssrBreakpoint.index
-      && maxBr.index <= ssrBreakpoint.index
-    );
-  };
+const ViewportProvider = ({ children }) => {
+  const isOnlySmall = useMediaQuery({ query: '(max-width: 479px)' });
+  const isMedium = useMediaQuery({ query: '(min-width: 480px)' });
+  const isOnlyMedium = useMediaQuery({ query: '(min-width: 480px) and (max-width: 1169px)' });
+  const isLarge = useMediaQuery({ query: '(min-width: 1170px)' });
+  const isOnlyLarge = useMediaQuery({ query: '(min-width: 1170px) and (max-width: 1439px)' });
+  const isHuge = useMediaQuery({ query: '(min-width: 1440px)' });
+  const isOnlyHuge = useMediaQuery({ query: '(min-width: 1440px) and (max-width: 1999px)' });
+  const isGigantic = useMediaQuery({ query: '(min-width: 2000px)' });
+  const isPortrait = useMediaQuery({ query: '(orientation: portrait)' });
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   return (
     <ViewportContext.Provider value={{
-      isLessThan,
-      isGreaterThan,
-      isBetween,
+      isPortrait,
+      isRetina,
+      isOnlySmall,
+      isMedium,
+      isOnlyMedium,
+      isLarge,
+      isOnlyLarge,
+      isHuge,
+      isOnlyHuge,
+      isGigantic,
     }}
     >
       {children}
@@ -64,16 +40,8 @@ const ViewportProvider = ({ breakpoints, children }) => {
   );
 };
 
-ViewportProvider.defaultProps = {
-  breakpoints: [],
-};
-
 ViewportProvider.propTypes = {
   children: PropTypes.element.isRequired,
-  breakpoints: PropTypes.arrayOf(PropTypes.shape({
-    key: PropTypes.string,
-    value: PropTypes.number,
-  })),
 };
 
 export default ViewportContext;

@@ -9,7 +9,7 @@ const Wrapper = ({ children }) => {
   const theme = themes[0];
   return (
     <ThemeProvider theme={theme}>
-      <ViewportProvider breakpoints={theme.breakpoints}>
+      <ViewportProvider>
         {children}
       </ViewportProvider>
     </ThemeProvider>

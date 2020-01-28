@@ -3,7 +3,6 @@ import { uniq, merge } from 'lodash';
 import { darken, lighten } from 'polished';
 import alpha from './theme/alpha';
 import radius from './theme/radius';
-import breakpoints from './theme/breakpoints';
 
 const lightColors = {
   error: '#eb4034',
@@ -58,7 +57,6 @@ const shared = {
     return `${ms(n)}rem`;
   },
   radius,
-  breakpoints,
   alpha,
 };
 
