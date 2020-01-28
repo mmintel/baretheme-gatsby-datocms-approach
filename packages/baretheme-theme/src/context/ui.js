@@ -259,7 +259,7 @@ class UIProvider extends React.Component {
           toggleSearch: this.toggleSearch,
           toggleTheme: this.toggleTheme,
           toggleLanguageSwitch: this.toggleLanguageSwitch,
-          media: this.buildMediaQueries(theme.breakpoints),
+          media: this.buildMediaQueries(theme.breakpoints), // TODO use viewportContext
         }}
       >
         {children}

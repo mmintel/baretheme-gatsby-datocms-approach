@@ -28,7 +28,7 @@ const StyledFigure = styled('figure', {
 const Figure = ({ item }) => {
   const ui = useUI();
   const viewport = useViewportContext();
-  const orientation = viewport.media.isLessThan('medium') ? 'vertical' : item.orientation;
+  const orientation = !viewport.media.isGreaterThan('medium') ? 'vertical' : item.orientation;
   return (
     <Section>
       <Container size={item.orientation === 'vertical' && 'small'}>

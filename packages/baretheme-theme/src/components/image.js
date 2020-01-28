@@ -5,6 +5,10 @@ import { Media, withSpacing } from '@baretheme/ui';
 
 const Image = ({ fluid, title, ...props }) => <Media caption={title} {...props}><GatsbyImage fluid={fluid} /></Media>;
 
+Image.defaultProps = {
+  title: undefined,
+};
+
 Image.propTypes = {
   title: PropTypes.string,
   fluid: PropTypes.shape({
