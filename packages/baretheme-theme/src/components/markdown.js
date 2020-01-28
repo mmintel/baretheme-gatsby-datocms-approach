@@ -105,11 +105,15 @@ const Markdown = ({ align, ...props }) => {
     let Component = element;
     let onClick = () => {};
     if (element.type === 'button') Component = Button;
-    console.log(element.props);
     if (element.props.toggletheme) {
       onClick = () => ui.toggleTheme();
     }
     return <Component onClick={onClick} {...element.props}>{children}</Component>;
+  };
+
+  HTMLParser.propTypes = {
+    element: PropTypes.node.isRequired,
+    children: PropTypes.node.isRequired,
   };
 
   return (

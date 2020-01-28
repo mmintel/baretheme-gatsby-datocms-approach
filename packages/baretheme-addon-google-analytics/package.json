@@ -1,12 +1,12 @@
 {
-  "name": "@baretheme/gatsby-plugin-baretheme-mailchimp",
+  "name": "@baretheme/gatsby-plugin-baretheme-google-analytics",
   "version": "0.2.0",
-  "description": "Mailchimp component for baretheme",
+  "description": "Google analytics integration for Baretheme",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
   "main": "index.js",
   "peerDependencies": {
-    "@baretheme/gatsby-theme-baretheme": "^0.2.0",
+    "@baretheme/gatsby-theme-baretheme": "^0.2.2",
     "gatsby": "2.x",
     "react": "16.x"
   },
@@ -17,14 +17,12 @@
     "baretheme",
     "react-component",
     "gatsby",
-    "mailchimp",
+    "google-analytics",
     "gatsby-plugin"
   ],
   "dependencies": {
     "@baretheme/ui": "^0.2.0",
     "@baretheme/utils": "^0.2.0",
-    "@mdi/js": "^4.7.95",
-    "gatsby-plugin-mailchimp": "^5.1.2",
-    "react-hook-form": "^3.28.14"
+    "gatsby-plugin-google-analytics": "^2.1.31"
   }
 }
