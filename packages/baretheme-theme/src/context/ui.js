@@ -192,51 +192,6 @@ class UIProvider extends React.Component {
     this.closeLanguageSwitch();
   };
 
-  buildMediaQueries = (breakpoints) => {
-    const getBreakpoint = (breakpoint) => {
-      const index = breakpoints.findIndex((item) => item.key === breakpoint);
-      const item = breakpoints[index];
-      if (!breakpoint) {
-        throw new Error(`Breakpoint "${breakpoint}" not found.`);
-      }
-      return {
-        ...item,
-        index,
-      };
-    };
-    const ssrBreakpoint = getBreakpoint('medium');
-
-    return {
-      isLessThan(breakpoint) {
-        const br = getBreakpoint(breakpoint);
-        if (typeof window !== 'undefined') {
-          return window.matchMedia(`(max-width: ${br.value}px)`).matches;
-        }
-        return br.index <= ssrBreakpoint.index;
-      },
-      isGreaterThan(breakpoint) {
-        const br = getBreakpoint(breakpoint);
-        if (typeof window !== 'undefined') {
-          return window.matchMedia(`(min-width: ${br.value + 1}px)`).matches;
-        }
-        return br.index <= ssrBreakpoint.index;
-      },
-      isBetween(min, max) {
-        const minBr = getBreakpoint(min);
-        const maxBr = getBreakpoint(max);
-        if (typeof window !== 'undefined') {
-          return window.matchMedia(
-            `(min-width: ${minBr.value + 1}px) and (max-width: ${maxBr.value}px)`,
-          ).matches;
-        }
-        return (
-          minBr.index <= ssrBreakpoint.index
-          && maxBr.index <= ssrBreakpoint.index
-        );
-      },
-    };
-  };
-
   render() {
     const { config, children } = this.props;
     const theme = themes.find((theme) => theme.name === this.state.currentTheme);
@@ -259,7 +214,6 @@ class UIProvider extends React.Component {
           toggleSearch: this.toggleSearch,
           toggleTheme: this.toggleTheme,
           toggleLanguageSwitch: this.toggleLanguageSwitch,
-          media: this.buildMediaQueries(theme.breakpoints), // TODO use viewportContext
         }}
       >
         {children}

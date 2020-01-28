@@ -9,7 +9,7 @@ import { Markdown, Image, useUI } from '@baretheme/gatsby-theme-baretheme';
 
 const blacklistProps = ['orientation', 'reverse'];
 
-const StyledFigure = styled('figure', {
+const StyledFigure = styled('div', {
   shouldForwardProp: (prop) => !blacklistProps.includes(prop),
 })`
   display: grid;
@@ -28,10 +28,10 @@ const StyledFigure = styled('figure', {
 const Figure = ({ item }) => {
   const ui = useUI();
   const viewport = useViewportContext();
-  const orientation = !viewport.media.isGreaterThan('medium') ? 'vertical' : item.orientation;
+  const orientation = !viewport.isGreaterThan('medium') ? 'vertical' : item.orientation;
   return (
     <Section>
-      <Container size={item.orientation === 'vertical' && 'small'}>
+      <Container size={item.orientation === 'vertical' ? 'small' : 'medium'}>
         <StyledFigure orientation={orientation} reverse={item.reverse}>
           <Reveal once>
             { item.light && item.dark && (
@@ -51,11 +51,11 @@ const Figure = ({ item }) => {
               <Image title={item.light.title} fluid={item.dark.fluid} />
             )}
           </Reveal>
-          <figcaption>
+          <div>
             <Markdown>
               {item.caption}
             </Markdown>
-          </figcaption>
+          </div>
         </StyledFigure>
       </Container>
     </Section>

@@ -8,56 +8,55 @@ const useViewportContext = function useViewportContext() {
   return context;
 };
 
-
 const ViewportProvider = ({ breakpoints, children }) => {
-  const buildMediaQueries = (breakpoints) => {
-    const getBreakpoint = (breakpoint) => {
-      const index = breakpoints.findIndex((item) => item.key === breakpoint);
-      const item = breakpoints[index];
-      if (!breakpoint) {
-        throw new Error(`Breakpoint "${breakpoint}" not found.`);
-      }
-      return {
-        ...item,
-        index,
-      };
-    };
-    const ssrBreakpoint = getBreakpoint('medium');
-
+  const getBreakpoint = (breakpoint) => {
+    const index = breakpoints.findIndex((item) => item.key === breakpoint);
+    const item = breakpoints[index];
+    if (!breakpoint) {
+      throw new Error(`Breakpoint "${breakpoint}" not found.`);
+    }
     return {
-      isLessThan(breakpoint) {
-        const br = getBreakpoint(breakpoint);
-        if (typeof window !== 'undefined') {
-          return window.matchMedia(`(max-width: ${br.value}px)`).matches;
-        }
-        return br.index <= ssrBreakpoint.index;
-      },
-      isGreaterThan(breakpoint) {
-        const br = getBreakpoint(breakpoint);
-        if (typeof window !== 'undefined') {
-          return window.matchMedia(`(min-width: ${br.value + 1}px)`).matches;
-        }
-        return br.index <= ssrBreakpoint.index;
-      },
-      isBetween(min, max) {
-        const minBr = getBreakpoint(min);
-        const maxBr = getBreakpoint(max);
-        if (typeof window !== 'undefined') {
-          return window.matchMedia(
-            `(min-width: ${minBr.value + 1}px) and (max-width: ${maxBr.value}px)`,
-          ).matches;
-        }
-        return (
-          minBr.index <= ssrBreakpoint.index
-          && maxBr.index <= ssrBreakpoint.index
-        );
-      },
+      ...item,
+      index,
     };
+  };
+  const ssrBreakpoint = getBreakpoint('medium');
+
+  const isLessThan = function isLessThan(breakpoint) {
+    const br = getBreakpoint(breakpoint);
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(`(max-width: ${br.value}px)`).matches;
+    }
+    return br.index <= ssrBreakpoint.index;
+  };
+
+  const isGreaterThan = function isGreaterThan(breakpoint) {
+    const br = getBreakpoint(breakpoint);
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(`(min-width: ${br.value + 1}px)`).matches;
+    }
+    return br.index <= ssrBreakpoint.index;
+  };
+
+  const isBetween = function isBetween(min, max) {
+    const minBr = getBreakpoint(min);
+    const maxBr = getBreakpoint(max);
+    if (typeof window !== 'undefined') {
+      return window.matchMedia(
+        `(min-width: ${minBr.value + 1}px) and (max-width: ${maxBr.value}px)`,
+      ).matches;
+    }
+    return (
+      minBr.index <= ssrBreakpoint.index
+      && maxBr.index <= ssrBreakpoint.index
+    );
   };
 
   return (
     <ViewportContext.Provider value={{
-      media: buildMediaQueries(breakpoints),
+      isLessThan,
+      isGreaterThan,
+      isBetween,
     }}
     >
       {children}
