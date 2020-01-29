@@ -3,6 +3,7 @@ import { uniq, merge } from 'lodash';
 import { darken, lighten } from 'polished';
 import alpha from './theme/alpha';
 import radius from './theme/radius';
+import { breakpoint, breakpoints } from './theme/breakpoints';
 
 const lightColors = {
   error: '#eb4034',
@@ -45,7 +46,7 @@ const shared = {
   lineHeight: (n) => {
     const lh = modularScale({
       base: 1.65,
-      ratio: 'goldenSection',
+      ratio: 'majorThird',
     });
     return lh(n);
   },
@@ -58,6 +59,7 @@ const shared = {
   },
   radius,
   alpha,
+  breakpoint,
 };
 
 function generateShadows(color) {
@@ -112,11 +114,14 @@ const themes = [
   }),
 ];
 
-export const themeNames = themes.map((t) => t.name);
-export const colors = uniq([
+const themeNames = themes.map((t) => t.name);
+const colors = uniq([
   ...Object.keys(themes[0].color),
   ...Object.keys(themes[1].color),
 ]);
-export const palettes = uniq([...Object.keys(themes[0].palettes), ...Object.keys(themes[0].palettes)]);
+const palettes = uniq([...Object.keys(themes[0].palettes), ...Object.keys(themes[0].palettes)]);
 
+export {
+  themes, themeNames, colors, palettes, breakpoints,
+};
 export default themes;

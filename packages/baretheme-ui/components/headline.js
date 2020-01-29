@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 
 const StyledHeadline = styled(Display)`
   font-weight: bold;
+  line-height: ${(props) => props.theme.lineHeight(-1)};
   color: ${(props) => props.theme.color.highlight};
+  margin-bottom: ${(props) => props.theme.spacing(0)}
 `;
 
 const Headline = ({ as, ...props }) => <StyledHeadline as={as} {...props} />;

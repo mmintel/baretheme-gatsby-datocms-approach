@@ -1,6 +1,4 @@
-export {
-  default as themes, colors, palettes, themeNames,
-} from './themes';
+export * from './themes';
 export { default as Button } from './components/button';
 export { default as Flip } from './components/flip';
 export { default as Reveal } from './components/reveal';

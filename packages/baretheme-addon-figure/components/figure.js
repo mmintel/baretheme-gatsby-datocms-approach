@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Section, Container, Reveal, useViewportContext,
+  Section, Container, Reveal,
 } from '@baretheme/ui';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -17,23 +17,27 @@ const StyledFigure = styled('div', {
   grid-column-gap: ${(props) => props.theme.spacing(2)};
   grid-row-gap: ${(props) => props.theme.spacing(2)};
 
-  ${(props) => props.orientation === 'horizontal' && css`
-    grid-template-columns: 1fr 1fr;
-  `}
+  ${(props) => props.theme.breakpoint('medium')} {
+    ${(props) => props.orientation === 'horizontal' && css`
+      grid-template-columns: 1fr 1fr;
+    `}
+  }
 
   ${(props) => props.shrink && css`
     grid-column-gap: ${props.theme.spacing(1)};
+  `}
+
+  ${(props) => props.dense && css`
+    grid-auto-flow: dense;
   `}
 `;
 
 const Figure = ({ item }) => {
   const ui = useUI();
-  const viewport = useViewportContext();
-  const orientation = !viewport.isMedium ? 'vertical' : item.orientation;
   return (
     <Section>
       <Container size={item.orientation === 'vertical' ? 'small' : 'medium'}>
-        <StyledFigure orientation={orientation} reverse={item.reverse} shrink={viewport.isOnlyMedium}>
+        <StyledFigure orientation={item.orientation} reverse={item.reverse}>
           <Reveal once>
             { item.light && item.dark && (
               <>
