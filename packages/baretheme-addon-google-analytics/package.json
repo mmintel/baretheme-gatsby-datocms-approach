@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-plugin-baretheme-google-analytics",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Google analytics integration for Baretheme",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
   "license": "MIT",
@@ -21,7 +21,7 @@
     "gatsby-plugin"
   ],
   "dependencies": {
-    "@baretheme/ui": "^0.4.0",
+    "@baretheme/ui": "^0.4.1",
     "@baretheme/utils": "^0.4.0",
     "gatsby-plugin-google-analytics": "^2.1.31"
   }

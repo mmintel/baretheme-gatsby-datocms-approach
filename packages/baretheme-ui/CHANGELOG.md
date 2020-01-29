@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://gitlab.com/baretheme/theme/compare/v0.4.0...v0.4.1) (2020-01-29)
+
+
+### Bug Fixes
+
+* media queries ([9b811d3](https://gitlab.com/baretheme/theme/commit/9b811d318c3c1117734dfeabe64b1dd2fecb29e4))
+
+
+
+
+
 # [0.4.0](https://gitlab.com/baretheme/theme/compare/v0.3.2...v0.4.0) (2020-01-28)
 
 

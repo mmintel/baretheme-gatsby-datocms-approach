@@ -1,6 +1,6 @@
 {
   "name": "@baretheme/gatsby-theme-baretheme",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "main": "index.js",
   "description": "Theme for Gatsby",
   "author": "Marc Mintel <marc@mintel.me> (@mmintel)",
@@ -18,7 +18,7 @@
     "lint": "eslint ./**/* --ext js,jsx"
   },
   "dependencies": {
-    "@baretheme/ui": "^0.4.0",
+    "@baretheme/ui": "^0.4.1",
     "@baretheme/utils": "^0.4.0",
     "@emotion/core": "^10.0.27",
     "@emotion/styled": "^10.0.27",
