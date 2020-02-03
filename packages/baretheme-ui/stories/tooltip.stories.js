@@ -11,6 +11,12 @@ const placements = ['top', 'bottom', 'left', 'right'].reduce(
   [],
 );
 
+export const simple = () => (
+  <Tooltip content="I'm a tooltip">
+    <span>Tooltip</span>
+  </Tooltip>
+);
+
 export const manual = () => (
   <Tooltip
     content="I'm a tooltip"
@@ -19,12 +25,6 @@ export const manual = () => (
     interactive={boolean('interactive', true)}
     hideOnClick={boolean('hideOnClick', false)}
   >
-    <span>Tooltip</span>
-  </Tooltip>
-);
-
-export const automatic = () => (
-  <Tooltip content="I'm a tooltip">
     <span>Tooltip</span>
   </Tooltip>
 );

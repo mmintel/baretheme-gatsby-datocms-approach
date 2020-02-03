@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import UnregisteredContent from './unregistered-content';
 
 let components = [];
-let contents = [];
 
 try {
   // eslint-disable-next-line
   const addons = require('../../.cache/addons').default;
   components = addons.components;
-  contents = addons.contents;
 } catch (e) {
-  contents = [];
   components = [];
 }
 
@@ -36,7 +33,7 @@ const Content = ({ items }) => (
   <>
     {items.map((item) => {
       if (item.type === 'DatoCmsComponent') return <DatoCmsComponent item={item} key={item.id} />;
-      const content = contents && contents.find((c) => c.name === item.type);
+      const content = components.find((c) => c.name === item.type);
       if (content) {
         const Component = content.component;
         return <Component item={item} key={item.id} />;

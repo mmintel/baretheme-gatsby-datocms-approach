@@ -28,7 +28,6 @@ module.exports = async ({ graphql, actions }, themeOptions) => {
 
   const mergedComponentQueries = componentQueries.reduce(
     (acc, query) => `
-      id
       type: __typename
       ${acc}
       ${query}

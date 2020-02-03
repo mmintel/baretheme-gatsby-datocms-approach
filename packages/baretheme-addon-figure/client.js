@@ -1,7 +1,7 @@
 import Figure from './components/figure';
 
 export default {
-  contents: [
+  components: [
     {
       name: 'DatoCmsFigure',
       component: Figure,

@@ -14,6 +14,7 @@
     "fetch": "echo \"Don't fetch anything in example\""
   },
   "dependencies": {
+    "@baretheme/gatsby-plugin-baretheme-grid": "^0.4.1",
     "@baretheme/gatsby-plugin-baretheme-figure": "^0.4.1",
     "@baretheme/gatsby-plugin-baretheme-mailchimp": "^0.4.1",
     "@baretheme/gatsby-plugin-baretheme-text": "^0.4.1",

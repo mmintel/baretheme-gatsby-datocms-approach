@@ -10,6 +10,7 @@ import {
   List,
   TextLink,
   Button,
+  withSpacing,
 } from '@baretheme/ui';
 import { Link, useUI } from '@baretheme/gatsby-theme-baretheme';
 
@@ -144,4 +145,4 @@ Markdown.propTypes = {
   align: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
-export default Markdown;
+export default withSpacing(Markdown);
