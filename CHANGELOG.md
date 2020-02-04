@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://gitlab.com/baretheme/theme/compare/v0.5.0...v0.5.1) (2020-02-04)
+
+
+### Bug Fixes
+
+* language switch ([2057389](https://gitlab.com/baretheme/theme/commit/2057389f14783d6d52b8542e1c421a5b271ef770))
+
+
+
+
+
 # [0.5.0](https://gitlab.com/baretheme/theme/compare/v0.4.1...v0.5.0) (2020-02-03)
 
 
