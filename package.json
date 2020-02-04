@@ -85,7 +85,7 @@
   },
   "lint-staged": {
     "./packages/*/src/**/*.{js,jsx}": [
-      "eslint . --fix",
+      "eslint",
       "git add"
     ]
   }
