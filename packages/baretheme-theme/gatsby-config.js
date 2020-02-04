@@ -72,6 +72,14 @@ module.exports = (themeOptions) => {
           },
         },
       },
+      {
+        resolve: 'gatsby-plugin-sentry',
+        options: {
+          dsn: 'https://8f62efda6aab4dbeaf58700cba33af5a@sentry.io/2234534',
+          environment: process.env.NODE_ENV,
+          enabled: (() => ['production'].indexOf(process.env.NODE_ENV) !== -1)(),
+        },
+      },
     ],
   };
 };
