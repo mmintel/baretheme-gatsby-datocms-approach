@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ISO6391 from 'iso-639-1';
 import { useIntl } from 'react-intl';
-import { navigate } from 'gatsby';
+import { navigate, Link } from 'gatsby';
 import { globalHistory } from '@reach/router';
+
 
 import { List } from '@baretheme/ui';
 
@@ -12,7 +13,7 @@ const LanguageSwitch = ({ items, onSwitch }) => (
     <List.Body>
       {items.map((item) => (
         <List.Item key={item.id}>
-          <List.ItemText active={item.active} onClick={() => onSwitch(item)}>
+          <List.ItemText as={Link} active={item.active} to={item.localePath} onClick={() => onSwitch(item)}>
             {item.title}
           </List.ItemText>
         </List.Item>
@@ -41,7 +42,6 @@ const AppLanguageSwitch = ({ locales, allSlugLocales, parent }) => {
   const intl = useIntl();
 
   const handleSwitch = (item) => {
-    navigate(item.localePath);
     window.localStorage.setItem('language', item.locale);
   };
 
