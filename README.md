@@ -1,3 +1,3 @@
-# Baretheme <a href="https://github.com/storybooks/storybook" target="_blank"><img src="https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg"></a>
-## Deploy with DatoCMS
-[![Deploy with DatoCMS](https://dashboard.datocms.com/deploy/button.svg)](https://dashboard.datocms.com/deploy?repo=baretheme/gatsby-theme-baretheme)
+# Baretheme - Approach with Gatsby + DatoCMS
+
+This repository exists only for archiving reasons. It's not ready. Don't use it. Just read the code if you are interested.
