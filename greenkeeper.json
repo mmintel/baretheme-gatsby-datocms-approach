@@ -1,0 +1,19 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "examples/minimal/package.json",
+        "package.json",
+        "packages/baretheme-addon-figure/package.json",
+        "packages/baretheme-addon-google-analytics/package.json",
+        "packages/baretheme-addon-grid/package.json",
+        "packages/baretheme-addon-mailchimp/package.json",
+        "packages/baretheme-addon-teaser/package.json",
+        "packages/baretheme-addon-text/package.json",
+        "packages/baretheme-theme/package.json",
+        "packages/baretheme-ui/package.json",
+        "packages/baretheme-utils/package.json"
+      ]
+    }
+  }
+}
