@@ -23,8 +23,8 @@
   "dependencies": {
     "@baretheme/ui": "^0.5.0",
     "@baretheme/utils": "^0.5.0",
-    "@mdi/js": "^4.7.95",
+    "@mdi/js": "^5.0.45",
     "gatsby-plugin-mailchimp": "^5.1.2",
-    "react-hook-form": "^3.28.14"
+    "react-hook-form": "^5.1.1"
   }
 }
